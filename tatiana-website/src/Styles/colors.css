@@ -1,0 +1,35 @@
+:root {
+  --primary-color: #1e3a8a;
+  --secondary-color: #1e40af;
+  --text-color: #f3f4f6;
+  --background-color: #1f2937;
+  --border-color: #374151;
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-white {
+  color: var(--text-color);
+}
+
+.bg-background {
+  background-color: var(--background-color);
+}
+
+.border-custom {
+  border-color: var(--border-color);
+}
