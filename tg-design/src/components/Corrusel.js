@@ -43,8 +43,9 @@ const ImageCarousel = () => {
           <div
             style={{
               height: "100vh",
-              backgroundSize: 'cover',
+              backgroundSize: window.innerWidth <= 768 ? 'contain' : 'cover', // Cambia el tamaño de la imagen según el tamaño de la pantalla
               backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
               backgroundImage: `url(${image})`
             }}
           >
