@@ -1,0 +1,23 @@
+/* Archivo: styles.css */
+
+/* Estilos para las flechas de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-black; /* Cambia el color de las flechas a negro */
+}
+
+/* Asegúrate de que las flechas sean visibles */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  @apply text-4xl; /* Ajusta el tamaño de las flechas */
+}
+
+/* Estilos para los puntitos de paginación */
+.swiper-pagination-bullet {
+  @apply bg-black; /* Cambia los puntitos a color negro */
+}
+
+/* Cambia el color de los puntitos cuando están activos */
+.swiper-pagination-bullet-active {
+  @apply bg-black; /* Color negro para el puntito activo */
+}

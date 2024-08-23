@@ -39,9 +39,7 @@ const Header = () => {
                         <li>
                             <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('services')}</a>
                         </li>
-                        <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('pricing')}</a>
-                        </li>
+                       
                         <li>
                             <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('contact')}</a>
                         </li>

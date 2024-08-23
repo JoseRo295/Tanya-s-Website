@@ -1,0 +1,1 @@
+export const cvFilesUrl = 'http://157.100.244.57:6004';

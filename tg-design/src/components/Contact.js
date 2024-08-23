@@ -23,14 +23,14 @@ export default function ContactForm() {
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
-    
+
     const selectedCountryData = countries.find(
       (c) => c.name.common === country
     );
     if (selectedCountryData) {
       setPhonePrefix(selectedCountryData.idd.root + selectedCountryData.idd.suffixes[0]);
     } else {
-      setPhonePrefix('');
+      setPhonePrefix(0);
     }
   };
 
@@ -95,55 +95,51 @@ export default function ContactForm() {
                 />
               </div>
             </div>
-            <div>
-              <label htmlFor="company" className="block text-sm font-semibold leading-6 text-gray-900">
-                Compañía
-              </label>
-              <div className="mt-2.5">
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  autoComplete="organization"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+
             <div>
               <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
                 País
               </label>
-              <div className="mt-2.5">
+              <div className="mt-2.5 relative">
                 <select
                   id="country"
                   name="country"
                   value={selectedCountry}
                   onChange={handleCountryChange}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                  className="block w-full appearance-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
                 >
                   <option value="">Selecciona un país</option>
                   {countries.map((country) => (
                     <option key={country.cca3} value={country.name.common}>
-                      {country.name.common}
+                      <img
+                        src={`https://countryflagsapi.netlify.app/flag/${country.cca2.toLowerCase()}.svg`}
+                        alt={`Flag of ${country.name.common}`}
+                        className="inline-block mr-2 w-6 h-4"
+                      />
+                      {country.name.common} ({country.idd.root}{country.idd.suffixes && country.idd.suffixes[0]})
                     </option>
                   ))}
                 </select>
+                <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
             </div>
             <div>
               <label htmlFor="phone-number" className="block text-sm font-semibold leading-6 text-gray-900">
                 Teléfono
               </label>
-              <div className="relative mt-2.5">
+              <div className="relative mt-2.5 flex">
+                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                  {phonePrefix}
+                </span>
                 <input
                   id="phone-number"
                   name="phone-number"
                   type="tel"
                   value={phoneNumber}
                   onChange={handlePhoneNumberChange}
-                  placeholder={phonePrefix}
+                  placeholder="Tu número de teléfono"
                   autoComplete="tel"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                  className="block w-full rounded-r-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>

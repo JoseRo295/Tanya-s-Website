@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Corrusel from "../components/Corrusel";
 import TeamSection from "../components/TeamSection";
-
 import ProjectCarousel from "../components/ProjectCarousel";
 import ContactForm from "../components/Contact";
 
@@ -14,6 +13,7 @@ export default function Home() {
             <TeamSection/>
             <ProjectCarousel/>
             <ContactForm/>
+           
           
             
         </div>

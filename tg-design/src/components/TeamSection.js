@@ -14,7 +14,7 @@ const TeamSection = () => {
         <img 
           src={image1} 
           alt="Project Team Member 1" 
-          className="w-full h-64 lg:h-96 object-cover rounded-xl shadow-xl mb-4 transition-transform duration-300 hover:scale-105" 
+          className="w-full h-64 lg:h-[600px] object-cover rounded-xl shadow-xl mb-4 transition-transform duration-300 hover:scale-105" 
         />
         <h2 className="text-2xl font-semibold text-gray-800 mt-4">Татьяна Горшкова</h2>
         <p className="text-md text-gray-600">Руководитель проекта</p>
