@@ -41,7 +41,7 @@ const ProjectCarousel = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-10">
+    <div id="project-carousel" className="bg-gray-100 py-10">
       <div className="container mx-auto text-center mb-8">
         <h2 className="text-4xl font-bold text-gray-800">Nuestros Proyectos</h2>
         <p className="text-gray-600">Una selección de nuestros proyectos recientes</p>

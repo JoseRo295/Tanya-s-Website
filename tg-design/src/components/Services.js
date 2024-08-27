@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import image1 from "../Images/Services/1.jpeg";
 import image2 from "../Images/Services/2.jpeg";
 import image3 from "../Images/Services/3.jpeg";
@@ -10,7 +9,6 @@ import Button from "../components/Button.js";
 export default function Home() {
   return (
     <div>
-      <Header />
       <main className="pt-5 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
         <div
           className="w-full max-w-sm h-80 sm:h-96 lg:h-[28rem] rounded-lg relative overflow-hidden"

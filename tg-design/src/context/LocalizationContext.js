@@ -8,24 +8,24 @@ export const useLocalization = () => useContext(LocalizationContext);
 const translations = {
     en: {
         home: "Home",
-        about: "About",
+        proyectos: "Projects",
         services: "Services",
         pricing: "Pricing",
-        contact: "Contact"
+        contacts: "Contacts"
     },
     ru: {
         home: "Главная",
-        about: "О нас",
+        proyectos: "Проекты",
         services: "Услуги",
         pricing: "Цены",
-        contact: "Контакт"
+        contacts: "Контакты"
     },
     es: {
         home: "Inicio",
-        about: "Acerca de",
+        proyectos: "Proyectos",
         services: "Servicios",
         pricing: "Precios",
-        contact: "Contacto"
+        contacts: "Contactos"
     }
 };
 

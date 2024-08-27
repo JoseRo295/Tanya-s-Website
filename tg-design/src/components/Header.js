@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocalization } from "../context/LocalizationContext";
 import logo from "../Images/tgDesign.jpg";
+import SocialIcons from "../components/SocialIcons.js";
 
 const Header = () => {
     // Estado para controlar la visibilidad del menú en dispositivos móviles
@@ -15,7 +16,8 @@ const Header = () => {
                     <span className="text-2xl font-semibold text-gray-900 dark:text-white">TG Design</span>
                 </a>
                 <div className="flex items-center">
-                    <button
+                
+                    <button 
                         id="menu-toggle"
                         type="button"
                         className="inline-flex items-center p-2 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
@@ -29,28 +31,33 @@ const Header = () => {
                 </div>
 
                 <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
-                    <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-lg font-medium">
+                    <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-lg font-medium ">
+                        
                         <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('home')}</a>
+                            <a href="/" className="block  pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('home')}</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('about')}</a>
+                            <a href="/projectCarousel" className="block  pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('proyectos')}</a>
                         </li>
                         <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('services')}</a>
+                            <a href="/services" className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('services')}</a>
                         </li>
                        
                         <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('contact')}</a>
+                            <a href="/contact" className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('contacts')}</a>
+                        </li>
+                        
+                        <li className="md:ml-4">
+                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('ru')}>Ru</a>
+                        </li>
+                        <li>
+                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('en')}>En</a>
+                        </li>
+                        <li>
+                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('es')}>Es</a>
                         </li>
                         <li className="md:ml-4">
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('ru')}>Ru</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('en')}>En</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('es')}>Es</a>
+                        <SocialIcons className="flex md:hidden justify-center mt-4" /> {/* Visible en dispositivos móviles */}
                         </li>
                     </ul>
                 </div>

@@ -23,37 +23,49 @@ export default function ContactForm() {
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
-
+  
     const selectedCountryData = countries.find(
       (c) => c.name.common === country
     );
+  
     if (selectedCountryData) {
-      setPhonePrefix(selectedCountryData.idd.root + selectedCountryData.idd.suffixes[0]);
+      // Comprobamos si es Rusia y asignamos manualmente el prefijo correcto
+      if (selectedCountryData.name.common === "Russia") {
+        setPhonePrefix("+7");
+      } else {
+        // Verificamos si idd y suffixes están definidos
+        if (selectedCountryData.idd && selectedCountryData.idd.suffixes && selectedCountryData.idd.suffixes.length > 0) {
+          setPhonePrefix(selectedCountryData.idd.root + selectedCountryData.idd.suffixes[0]);
+        } else {
+          // Si no hay prefijo, establece un valor por defecto o deja el campo vacío
+          setPhonePrefix("");
+        }
+      }
     } else {
-      setPhonePrefix(0);
+      setPhonePrefix("");
     }
   };
 
   const handlePhoneNumberChange = (e) => {
-    const number = e.target.value;
-    setPhoneNumber(number.startsWith(phonePrefix) ? number : phonePrefix + number);
+    // Aquí solo actualizamos el número sin el prefijo
+    setPhoneNumber(e.target.value);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div id="contact" className="min-h-screen flex items-center justify-center ">
       <div className="max-w-7xl w-full mx-auto p-6 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Form Section */}
-        <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div className="bg-[#bcafa2] p-8 rounded-lg shadow-lg">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contáctanos</h2>
-            <p className="mt-2 text-lg leading-8 text-gray-600">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Contáctanos</h2>
+            <p className="mt-2 text-lg leading-8 text-white">
               Estamos aquí para ayudarte con cualquier pregunta o consulta que tengas.
             </p>
           </div>
           <form action="#" method="POST" className="space-y-6">
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
               <div>
-                <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-white">
                   Nombre
                 </label>
                 <div className="mt-2.5">
@@ -62,12 +74,12 @@ export default function ContactForm() {
                     name="first-name"
                     type="text"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-white">
                   Apellido
                 </label>
                 <div className="mt-2.5">
@@ -76,13 +88,13 @@ export default function ContactForm() {
                     name="last-name"
                     type="text"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label htmlFor="email" className="block text-sm font-semibold leading-6 text-white">
                 Email
               </label>
               <div className="mt-2.5">
@@ -91,13 +103,13 @@ export default function ContactForm() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label htmlFor="country" className="block text-sm font-semibold leading-6 text-white">
                 País
               </label>
               <div className="mt-2.5 relative">
@@ -106,17 +118,12 @@ export default function ContactForm() {
                   name="country"
                   value={selectedCountry}
                   onChange={handleCountryChange}
-                  className="block w-full appearance-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                  className="block w-full appearance-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
                 >
                   <option value="">Selecciona un país</option>
                   {countries.map((country) => (
                     <option key={country.cca3} value={country.name.common}>
-                      <img
-                        src={`https://countryflagsapi.netlify.app/flag/${country.cca2.toLowerCase()}.svg`}
-                        alt={`Flag of ${country.name.common}`}
-                        className="inline-block mr-2 w-6 h-4"
-                      />
-                      {country.name.common} ({country.idd.root}{country.idd.suffixes && country.idd.suffixes[0]})
+                      {country.name.common} 
                     </option>
                   ))}
                 </select>
@@ -124,7 +131,7 @@ export default function ContactForm() {
               </div>
             </div>
             <div>
-              <label htmlFor="phone-number" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label htmlFor="phone-number" className="block text-sm font-semibold leading-6 text-white">
                 Teléfono
               </label>
               <div className="relative mt-2.5 flex">
@@ -139,7 +146,7 @@ export default function ContactForm() {
                   onChange={handlePhoneNumberChange}
                   placeholder="Tu número de teléfono"
                   autoComplete="tel"
-                  className="block w-full rounded-r-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#FFD700] sm:text-sm sm:leading-6"
+                  className="block w-full rounded-r-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -148,7 +155,7 @@ export default function ContactForm() {
                 <Switch
                   checked={agreed}
                   onChange={setAgreed}
-                  className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFD700] data-[checked]:bg-[#FFD700]"
+                  className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a79584] data-[checked]:bg-[#a79584]"
                 >
                   <span className="sr-only">Agree to policies</span>
                   <span
@@ -157,9 +164,9 @@ export default function ContactForm() {
                   />
                 </Switch>
               </div>
-              <Label className="text-sm leading-6 text-gray-600">
+              <Label className="text-sm leading-6 text-white">
                 Al seleccionar esto, aceptas nuestra{' '}
-                <a href="#" className="font-semibold text-[#FFD700]">
+                <a href="#" className="font-semibold text-[#a79584]">
                   política de privacidad
                 </a>
                 .
@@ -168,7 +175,7 @@ export default function ContactForm() {
             <div>
               <button
                 type="submit"
-                className="block w-full rounded-md bg-[#8B0000] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#640000] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B0000]"
+                className="block w-full rounded-md bg-[#8a7866] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#640000] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B0000]"
               >
                 Enviar mensaje
               </button>
