@@ -4,21 +4,19 @@ import TeamSection from "../components/TeamSection";
 import ProjectCarousel from "../components/ProjectCarousel";
 import ContactForm from "../components/Contact";
 import Services from "../components/Services";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Home() {
     
     return (
-        <div >
+        <div>
             <Header/>
             <Corrusel/>
             <Services/>
             <TeamSection/>
             <ProjectCarousel/>
-           
             <ContactForm/>
-           
-          
-            
+           <WhatsAppButton/>  
         </div>
     
     );
