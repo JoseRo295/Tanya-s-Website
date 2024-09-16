@@ -5,7 +5,7 @@ import Otro from "../src/pages/Otro";
 import Services from "../src/pages/Services";
 import ProjectCarousel from "../src/pages/ProjectCarousel";
 import Contact from "./pages/Contacts";
-
+import './index.css';
 function App() {
   return (
     <BrowserRouter>

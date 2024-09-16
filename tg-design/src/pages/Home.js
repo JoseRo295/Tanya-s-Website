@@ -7,17 +7,25 @@ import Services from "../components/Services";
 import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Home() {
-    
     return (
         <div>
-            <Header/>
-            <Corrusel/>
-            <Services/>
-            <TeamSection/>
-            <ProjectCarousel/>
-            <ContactForm/>
-           <WhatsAppButton/>  
+            <Header />
+            <section id="home">
+                <Corrusel />
+            </section>
+            <section id="services">
+                <Services />
+            </section>
+            <section id="teamSection">
+                <TeamSection />
+            </section>
+            <section id="projectCarousel">
+                <ProjectCarousel />
+            </section>
+            <section id="contact">
+                <ContactForm />
+            </section>
+            <WhatsAppButton />
         </div>
-    
     );
 }

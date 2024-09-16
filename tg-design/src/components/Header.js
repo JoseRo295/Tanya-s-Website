@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { useLocalization } from "../context/LocalizationContext";
-import logo from "../Images/tgDesign.jpg";
-import SocialIcons from "../components/SocialIcons.js";
+import { useLocalization } from '../context/LocalizationContext'; // Asegúrate de que este contexto esté definido
+import logo from '../Images/tgDesign.jpg'; // Verifica que la ruta a la imagen sea correcta
+import SocialIcons from '../components/SocialIcons'; // Verifica que este componente exista y esté bien exportado
+import { Link } from 'react-scroll'; // Importar el Link de react-scroll para la navegación interna
 
 const Header = () => {
-    // Estado para controlar la visibilidad del menú en dispositivos móviles
-    const [isOpen, setIsOpen] = useState(false);
-    const { translate, switchLanguage } = useLocalization();
+    const [isOpen, setIsOpen] = useState(false); // Asegúrate de importar useState correctamente
+    const { translate, switchLanguage } = useLocalization(); // Verifica que el contexto Localization esté definido
 
     return (
-        <nav className="bg-white border-b border-gray-200 dark:border-gray-700 px-4 py-3 shadow-md dark:bg-gray-800">
+        <nav className="bg-white border-b border-gray-200 dark:border-gray-700 px-4 py-3 shadow-md dark:bg-gray-800 sticky top-0 z-50">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href="/" className="flex items-center">
                     <img src={logo} alt="Logotipo" className="h-16 w-auto mr-3 rounded-lg shadow-lg" />
                     <span className="text-2xl font-semibold text-gray-900 dark:text-white">TG Design</span>
                 </a>
                 <div className="flex items-center">
-                
                     <button 
                         id="menu-toggle"
                         type="button"
@@ -32,32 +31,61 @@ const Header = () => {
 
                 <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
                     <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-lg font-medium ">
-                        
                         <li>
-                            <a href="/" className="block  pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('home')}</a>
+                            <Link 
+                                to="home" 
+                                smooth={true} 
+                                duration={500} 
+                                offset={-80}  // Ajusta este valor según la altura del header
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                            >
+                                {translate('home')}
+                            </Link>
                         </li>
                         <li>
-                            <a href="/projectCarousel" className="block  pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('proyectos')}</a>
+                            <Link 
+                                to="projectCarousel" 
+                                smooth={true} 
+                                duration={500} 
+                                offset={-80}  // Ajusta este valor según la altura del header
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                            >
+                                {translate('proyectos')}
+                            </Link>
                         </li>
                         <li>
-                            <a href="/services" className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('services')}</a>
+                            <Link 
+                                to="services" 
+                                smooth={true} 
+                                duration={500} 
+                                offset={-80}  // Ajusta este valor según la altura del header
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                            >
+                                {translate('services')}
+                            </Link>
                         </li>
-                       
                         <li>
-                            <a href="/contact" className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200">{translate('contacts')}</a>
+                            <Link 
+                                to="contact" 
+                                smooth={true} 
+                                duration={500} 
+                                offset={-80}  // Ajusta este valor según la altura del header
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                            >
+                                {translate('contacts')}
+                            </Link>
                         </li>
-                        
                         <li className="md:ml-4">
-                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('ru')}>Ru</a>
+                            <a href="#" onClick={() => switchLanguage('ru')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">Ru</a>
                         </li>
                         <li>
-                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('en')}>En</a>
+                            <a href="#" onClick={() => switchLanguage('en')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">En</a>
                         </li>
                         <li>
-                            <a href="#" className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200" onClick={() => switchLanguage('es')}>Es</a>
+                            <a href="#" onClick={() => switchLanguage('es')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">Es</a>
                         </li>
                         <li className="md:ml-4">
-                        <SocialIcons className="flex md:hidden justify-center mt-4" /> {/* Visible en dispositivos móviles */}
+                            <SocialIcons className="flex md:hidden justify-center mt-4" /> {/* Visible en dispositivos móviles */}
                         </li>
                     </ul>
                 </div>
