@@ -18,20 +18,14 @@ import image4 from "../Images/corrusel/4.png";
 import image5 from "../Images/corrusel/Безимени-1.png";
 
 const ImageCarousel = () => {
-  const calculateHeight = () => {
-    const windowHeight = window.innerHeight;
-    // Ajustando a un 70% o 80% del viewport para reducir la altura adicional
-    const desiredHeight = windowHeight > 768 ? windowHeight * 0.7 : windowHeight * 0.8;
-    return desiredHeight;
-  };
   return (
     <Swiper
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Autoplay, Pagination, Navigation]} // Asegúrate de registrar los módulos que vas a usar
       spaceBetween={30}
       centeredSlides={true}
       slidesPerView={1}
       autoplay={{
-        delay: 10000,
+        delay: 5000,
         disableOnInteraction: false
       }}
       pagination={{
@@ -39,14 +33,20 @@ const ImageCarousel = () => {
       }}
       navigation={true}
       loop={true}
-      className="mySwiper"
+      className="mySwiper" // Puedes definir estilos adicionales en styles.css si es necesario
     >
-      {[image1, image2, image3, image4, image5].map((image, index) => (
+      {[
+        image1,
+        image2,
+        image3,
+        image4,
+        image5
+      ].map((image, index) => (
         <SwiperSlide key={index}>
           <div
             style={{
-              height: `${calculateHeight()}px`,
-              backgroundSize: 'contain', // Cambio a 'contain' para ajustar la imagen completa dentro del contenedor
+              height: "100vh",
+              backgroundSize: window.innerWidth <= 768 ? 'contain' : 'cover', // Cambia el tamaño de la imagen según el tamaño de la pantalla
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundImage: `url(${image})`

@@ -44,6 +44,17 @@ const Header = () => {
                         </li>
                         <li>
                             <Link 
+                                to="teamSection" 
+                                smooth={true} 
+                                duration={500} 
+                                offset={-80}  // Ajusta este valor según la altura del header
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                            >
+                                {translate('teamsection')}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link 
                                 to="projectCarousel" 
                                 smooth={true} 
                                 duration={500} 
@@ -76,14 +87,30 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="md:ml-4">
-                            <a href="#" onClick={() => switchLanguage('ru')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">Ru</a>
+                            <button
+                                onClick={(e) => switchLanguage("ru", e)}
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                            >
+                                Ru
+                            </button>
                         </li>
                         <li>
-                            <a href="#" onClick={() => switchLanguage('en')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">En</a>
+                            <button
+                                onClick={(e) => switchLanguage("en", e)}
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                            >
+                                En
+                            </button>
                         </li>
                         <li>
-                            <a href="#" onClick={() => switchLanguage('es')} className="block  pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200">Es</a>
+                            <button
+                                onClick={(e) => switchLanguage("es", e)}
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                            >
+                                Es
+                            </button>
                         </li>
+
                         <li className="md:ml-4">
                             <SocialIcons className="flex md:hidden justify-center mt-4" /> {/* Visible en dispositivos móviles */}
                         </li>

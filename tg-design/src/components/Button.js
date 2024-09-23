@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocalization } from '../context/LocalizationContext'; // Asegúrate de que la ruta de importación sea correcta
 
 const StyledButton = styled.button`
   width: 15em;
@@ -9,8 +10,8 @@ const StyledButton = styled.button`
   border: none;
   position: relative;
   overflow: hidden;
-  color: #212024; 
- 
+  color: #212024;
+
   z-index: 1;
   box-shadow: 1px 1px 4px #ffffff,
               -1px -1px 4px #ffffff;
@@ -43,8 +44,8 @@ const Button = ({ children, onClick }) => {
   );
 };
 
-
 const Home = () => {
+  const { translate } = useLocalization(); // Utilizar el hook de localización
   const handleClick = () => {
     const phoneNumber = '+593987149330'; 
     const url = `https://wa.me/${phoneNumber}`;
@@ -54,7 +55,7 @@ const Home = () => {
   return (
     <div>
       <Button onClick={handleClick}>
-      Elige este paquete
+        {translate('choosePackage')} 
       </Button>
     </div>
   );
