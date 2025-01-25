@@ -8,6 +8,7 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false); // Asegúrate de importar useState correctamente
     const { translate, switchLanguage } = useLocalization(); // Verifica que el contexto Localization esté definido
 
+    
     return (
         <nav className="bg-white border-b border-gray-200 dark:border-gray-700 px-4 py-3 shadow-md dark:bg-gray-800 sticky top-0 z-50">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -37,7 +38,7 @@ const Header = () => {
                                 smooth={true} 
                                 duration={500} 
                                 offset={-80}  // Ajusta este valor según la altura del header
-                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
                             >
                                 {translate('home')}
                             </Link>
@@ -48,7 +49,7 @@ const Header = () => {
                                 smooth={true} 
                                 duration={500} 
                                 offset={-80}  // Ajusta este valor según la altura del header
-                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
                             >
                                 {translate('teamsection')}
                             </Link>
@@ -59,7 +60,7 @@ const Header = () => {
                                 smooth={true} 
                                 duration={500} 
                                 offset={-80}  // Ajusta este valor según la altura del header
-                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
                             >
                                 {translate('proyectos')}
                             </Link>
@@ -70,7 +71,7 @@ const Header = () => {
                                 smooth={true} 
                                 duration={500} 
                                 offset={-80}  // Ajusta este valor según la altura del header
-                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
                             >
                                 {translate('services')}
                             </Link>
@@ -81,7 +82,7 @@ const Header = () => {
                                 smooth={true} 
                                 duration={500} 
                                 offset={-80}  // Ajusta este valor según la altura del header
-                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200"
+                                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
                             >
                                 {translate('contacts')}
                             </Link>

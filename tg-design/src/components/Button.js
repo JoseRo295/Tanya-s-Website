@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   border: none;
   position: relative;
   overflow: hidden;
-  color: #212024;
+  color: #ffffff;
 
   z-index: 1;
   box-shadow: 1px 1px 4px #ffffff,
@@ -28,6 +28,7 @@ const StyledButton = styled.button`
     transition: .5s ease;
     display: block;
     z-index: -1;
+    color:
   }
 
   &:hover::before {

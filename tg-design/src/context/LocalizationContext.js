@@ -72,7 +72,31 @@ const translations = {
         teamDescription: "Hello! I’m Tatiana Gorshkova, an interior designer with experience working on projects in Russia and Ecuador. I am fluent in English, Russian, and Spanish, which allows me to easily connect with clients around the world. My portfolio features a range of styles, from refined neoclassicism to bold lofts. However, my primary focus is the uniqueness of each project. I love to bring unconventional and creative solutions to life, paying attention to every detail to ensure the interior not only reflects the client’s individuality but also creates a sense of comfort and aesthetic pleasure.",
         tatianaName: "Tatiana Gorshkova",
         projectLead: "Project Lead",
+        downloadBrochure: "Download package example",
         
+        
+        
+        conceptItems: [
+            "Furniture layout plan (1–2 options)",
+            "Mood board with furniture and materials",
+            "Shopping list (furniture, materials)",
+            "Online consultation for implementation"
+        ],
+        result100Items: [
+            "Furniture layout plan (2–3 options)",
+            "Mood board with furniture and materials",
+            "3D visualization",
+            "Complete set of drawings for builders",
+            "Shopping list",
+            "Online support during implementation"
+        ],
+        wowEffectItems: [
+            "Everything from the '100% Result' package",
+            "Interior panoramas and videos",
+            "Online/offline shopping trips together",
+            "Purchase of materials and furniture",
+            "Site visits and implementation control"
+        ]
 
     },
     ru: {
@@ -141,6 +165,29 @@ const translations = {
         teamDescription: "Привет! Я Татьяна Горшкова, дизайнер интерьера, с опытом работы над проектами в России и Эквадоре. Свободно владею английским, русским и испанским, что позволяет мне легко находить общий язык с клиентами по всему миру. В моем портфолио вы найдете разнообразие стилей — от утонченной неоклассики до смелого лофта. Однако для меня главным остается уникальность каждого проекта. Я люблю воплощать нестандартные и креативные решения, уделяя внимание каждой детали, чтобы интерьер не только подчеркивал индивидуальность клиента, но и создавал атмосферу уюта и эстетического удовольствия.",
         tatianaName: "Татьяна Горшкова",
         projectLead: "Руководитель проекта",
+        downloadBrochure: "Скачать пример пакета",
+
+        conceptItems: [
+            "План расстановки мебели (1–2 варианта)",
+            "Коллаж с примерами мебели и материалов",
+            "Шопинг-лист (мебель, материалы)",
+            "Онлайн-консультация по реализации"
+        ],
+        result100Items: [
+            "План расстановки мебели (2–3 варианта)",
+            "Коллаж с примерами мебели и материалов",
+            "3D-визуализация",
+            "Полный комплект чертежей для строителей",
+            "Шопинг-лист",
+            "Онлайн сопровождение реализации"
+        ],
+        wowEffectItems: [
+            "Всё из пакета '100% результат'",
+            "Панорамы и видео вашего интерьера",
+            "Онлайн/офлайн поход в магазины вместе",
+            "Закупка материалов и мебели",
+            "Выезды на стройку, контроль реализации"
+        ]
          
     },
     es: {
@@ -208,6 +255,29 @@ const translations = {
         teamDescription: "¡Hola! Soy Tatiana Gorshkova, diseñadora de interiores con experiencia trabajando en proyectos en Rusia y Ecuador. Hablo inglés, ruso y español con fluidez, lo que me permite conectar fácilmente con clientes de todo el mundo. Mi portafolio incluye una variedad de estilos, desde el refinado neoclásico hasta el loft atrevido. Sin embargo, mi enfoque principal es la singularidad de cada proyecto. Me encanta dar vida a soluciones no convencionales y creativas, prestando atención a cada detalle para asegurar que el interior no solo refleje la individualidad del cliente, sino que también cree una sensación de comodidad y placer estético.",
         tatianaName: "Tatiana Gorshkova",
         projectLead: "Líder del Proyecto",
+        downloadBrochure: "Descargar ejemplo del paquete",
+
+        conceptItems: [
+            "Plano de distribución de muebles (1–2 opciones)",
+            "Collage con ejemplos de muebles y materiales",
+            "Lista de compras (muebles, materiales)",
+            "Consulta online para la implementación"
+        ],
+        result100Items: [
+            "Plano de distribución de muebles (2–3 opciones)",
+            "Collage con ejemplos de muebles y materiales",
+            "Visualización en 3D",
+            "Conjunto completo de planos para los constructores/albañiles",
+            "Lista de compras",
+            "Soporte online durante la implementación"
+        ],
+        wowEffectItems: [
+            "Todo lo del paquete '100% Resultado'",
+            "Panoramas y videos del interior",
+            "Visitas online/presenciales a tiendas juntos",
+            "Compra de materiales y muebles",
+            "Visitas a la obra y control de implementación"
+        ]
 
     }
 };

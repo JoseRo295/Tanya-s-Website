@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import image1 from "../Images/Services/1.jpeg";
 import image2 from "../Images/Services/2.jpeg";
 import image3 from "../Images/Services/3.jpeg";
@@ -6,7 +6,7 @@ import image4 from "../Images/Services/4.jpeg";
 import image5 from "../Images/Services/5.jpeg";
 import image6 from "../Images/Services/6.jpeg";
 import Button from "../components/Button.js";
-import { useLocalization } from '../context/LocalizationContext'; // Importar el contexto de localización
+import { useLocalization } from "../context/LocalizationContext"; // Importar el contexto de localización
 
 export default function Home() {
   const { translate } = useLocalization(); // Usar la función translate
@@ -14,76 +14,99 @@ export default function Home() {
   return (
     <div className="pt-10">
       <div className="container mx-auto text-center mb-8">
-        <h2 className="text-4xl font-bold text-gray-800">{translate("nuestrosServicios")}</h2>
+        <h2 className="text-4xl font-bold text-gray-800">
+          {translate("nuestrosServicios")}
+        </h2>
       </div>
       <main className="pt-5 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
         {[
           {
             id: "service1",
             image: image1,
-            title: translate('paqueteEsencial'),
-            items: [
-              translate("tomaDeMedidas"),
-              translate("planAmoblamiento"),
-              translate("planosElectricos"),
-              translate("planosLuz"),
-            ],
+            title: translate("paqueteConcepto"),
+            items: translate("conceptItems"),
+            pdfLink: "/pdfs/Example_Concept.pdf",
           },
           {
             id: "service2",
             image: image2,
-            title: translate('paqueteConcepto'),
-            items: [
-              translate("paqueteEsencial"),
-              translate("moodboards"),
-              translate("collagesConceptuales"),
-              translate("plantaBaja"),
-              translate("planTecho"),
-              translate("shoppingList"),
-            ],
+            title: translate("paquete100"),
+            items: translate("result100Items"),
+            pdfLink: "/pdfs/Example_100.pdf",
           },
           {
             id: "service3",
             image: image3,
-            title: translate('paqueteEfectoWOW'),
-            items: [
-              translate("paqueteConcepto"),
-              translate("visualizaciones3D"),
-              translate("rendersMueblesPersonalizados"),
-              translate("visitasSitio"),
-            ],
+            title: translate("paqueteEfectoWOW"),
+            items: translate("wowEffectItems"),
+            pdfLink: "/pdfs/Example_WOW Effect.pdf ",
           },
-          {
-            id: "service4",
-            image: image4,
-            title: translate('paquete100'),
-            items: [
-              translate("paqueteEfectoWOW"),
-              translate("panoramica360"),
-              translate("compraMuebles"),
-              translate("controlEntregas"),
-            ],
-          },
-          {
-            id: "service5",
-            image: image5,
-            title: translate('paqueteDecoracion'),
-            items: [
-              translate("moodboards"),
-              translate("collagesConceptuales"),
-              translate("shoppingList"),
-            ],
-          },
-          {
-            id: "service6",
-            image: image6,
-            title: translate('paqueteConsulta'),
-            items: [
-              translate("consultaTiempo"),
-              translate("respuestasPreguntas"),
-              translate("materialesFinales"),
-            ],
-          },
+          // {
+          //   id: "service1",
+          //   image: image1,
+          //   title: translate('paqueteEsencial'),
+          //   items: [
+          //     translate("tomaDeMedidas"),
+          //     translate("planAmoblamiento"),
+          //     translate("planosElectricos"),
+          //     translate("planosLuz"),
+          //   ],
+          // },
+          // {
+          //   id: "service2",
+          //   image: image2,
+          //   title: translate('paqueteConcepto'),
+          //   items: [
+          //     translate("paqueteEsencial"),
+          //     translate("moodboards"),
+          //     translate("collagesConceptuales"),
+          //     translate("plantaBaja"),
+          //     translate("planTecho"),
+          //     translate("shoppingList"),
+          //   ],
+          // },
+          // {
+          //   id: "service3",
+          //   image: image3,
+          //   title: translate('paqueteEfectoWOW'),
+          //   items: [
+          //     translate("paqueteConcepto"),
+          //     translate("visualizaciones3D"),
+          //     translate("rendersMueblesPersonalizados"),
+          //     translate("visitasSitio"),
+          //   ],
+          // },
+          // {
+          //   id: "service4",
+          //   image: image4,
+          //   title: translate('paquete100'),
+          //   items: [
+          //     translate("paqueteEfectoWOW"),
+          //     translate("panoramica360"),
+          //     translate("compraMuebles"),
+          //     translate("controlEntregas"),
+          //   ],
+          // },
+          // {
+          //   id: "service5",
+          //   image: image5,
+          //   title: translate('paqueteDecoracion'),
+          //   items: [
+          //     translate("moodboards"),
+          //     translate("collagesConceptuales"),
+          //     translate("shoppingList"),
+          //   ],
+          // },
+          // {
+          //   id: "service6",
+          //   image: image6,
+          //   title: translate('paqueteConsulta'),
+          //   items: [
+          //     translate("consultaTiempo"),
+          //     translate("respuestasPreguntas"),
+          //     translate("materialesFinales"),
+          //   ],
+          // },
         ].map((service, index) => (
           <div
             key={index}
@@ -105,13 +128,18 @@ export default function Home() {
                   <li key={idx}>• {item}</li>
                 ))}
               </ul>
-              <div className="mt-auto flex justify-center p-3">
-                <Button
-                  className="text-white text-xs sm:text-sm lg:text-base mt-2 sm:mt-4 lg:mt-6 italic"
-                  onClick={() => console.log("Botón clickeado")}
-                >
+              <div className="mt-auto flex flex-col items-center p-3">
+                <Button className="text-white text-xs sm:text-sm lg:text-base mt-2 sm:mt-4 lg:mt-6 italic">
                   {translate("choosePackage")}
                 </Button>
+                <a
+                  href={service.pdfLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white mt-4 underline text-sm sm:text-base"
+                >
+                  {translate("downloadBrochure")}
+                </a>
               </div>
             </div>
           </div>

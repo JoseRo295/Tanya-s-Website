@@ -11,11 +11,20 @@ import '../Styles/style.css' // Asegúrate de que todos los estilos necesarios e
 // Import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-import image1 from "../Images/corrusel/1.png";
-import image2 from "../Images/corrusel/2.png";
-import image3 from "../Images/corrusel/3.png";
-import image4 from "../Images/corrusel/4.png";
-import image5 from "../Images/corrusel/Безимени-1.png";
+// import image1 from "../Images/corrusel/1.png";
+// import image2 from "../Images/corrusel/2.png";
+// import image3 from "../Images/corrusel/3.png";
+// import image4 from "../Images/corrusel/4.png";
+// import image5 from "../Images/corrusel/Безимени-1.png";
+
+import image1 from "../Images/corrusel2/1.png";
+import image2 from "../Images/corrusel2/2.png";
+import image3 from "../Images/corrusel2/3.png";
+import image4 from "../Images/corrusel2/4.png";
+import image5 from "../Images/corrusel2/5.png";
+import image6 from "../Images/corrusel2/6.png";
+
+
 
 const ImageCarousel = () => {
   return (
@@ -40,13 +49,14 @@ const ImageCarousel = () => {
         image2,
         image3,
         image4,
-        image5
+        image5,
+        image6
       ].map((image, index) => (
         <SwiperSlide key={index}>
           <div
             style={{
-              height: "100vh",
-              backgroundSize: window.innerWidth <= 768 ? 'contain' : 'cover', // Cambia el tamaño de la imagen según el tamaño de la pantalla
+              height: "80vh",
+              backgroundSize: window.innerWidth <= 768 ? 'cover' : 'cover', // Cambia el tamaño de la imagen según el tamaño de la pantalla
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundImage: `url(${image})`

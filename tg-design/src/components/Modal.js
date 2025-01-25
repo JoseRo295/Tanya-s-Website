@@ -1,73 +1,91 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+  import React from "react";
+  import { Swiper, SwiperSlide } from "swiper/react";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import "swiper/css/navigation";
 
-const Modal = ({ isOpen, onClose, project }) => {
-  if (!isOpen || !project) return null;
+  const Modal = ({ isOpen, onClose, project }) => {
+    if (!isOpen || !project) return null;
 
-  // Estilos en línea para el modal y el contenido del carrusel
-  const modalStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 50,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)' // Fondo semi-transparente oscuro
-  };
+    // Estilos en línea para el modal y el contenido del carrusel
+    const modalStyle = {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 50,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "rgba(255, 255, 255, 0.3)", // Fondo semi-transparente oscuro
+      backdropFilter: "blur(8px)", // Desenfoque de fondo
+    };
 
-  const modalContentStyle = {
-    position: 'relative',
-    padding: '20px',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)', // Blanco muy transparente
-    borderRadius: '8px',
-    maxWidth: '960px',
-    width: '90%',
-    maxHeight: '80vh', // Altura máxima del modal
-    overflow: 'hidden',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'  // Sombras suaves para mejorar la visibilidad del modal
-  };
+    const modalContentStyle = {
+      position: "relative",
+      padding: "30px",
+      backgroundColor: "white", 
+      borderRadius: "12px",
+      maxWidth: "800px",
+      width: "90%",
+      maxHeight: "85vh",
+      overflowY: "auto",
+      
+      backdropFilter: "blur(8px)", 
+    };
 
-  const buttonCloseStyle = {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    padding: '5px',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  };
+    const buttonCloseStyle = {
+      position: "absolute",
+      top: "15px",
+      right: "20px",
+      padding: "10px",
+      fontSize: "28px",
+      fontWeight: "bold",
+      color: "#000",
+      cursor: "pointer",
+      background: "transparent",
+      border: "none",
+      transition: "color 0.3s ease-in-out", 
+    };
 
-  const swiperStyle = {
-    height: '70vh' // Altura del carrusel
-  };
+    const swiperStyle = {
+      height: "65vh",
+    };
 
-  return (
-    <div style={modalStyle}>
-      <div style={modalContentStyle}>
-        <button style={buttonCloseStyle} onClick={onClose}>×</button>
-        <h2 className="text-xl font-bold text-center mb-4">{project.title}</h2>
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={1}
-          navigation={true}
-          pagination={{ clickable: true }}
-          style={swiperStyle}
-        >
-          {project.images.map((img, index) => (
-            <SwiperSlide key={index}>
-              <img src={img} alt={`Imagen ${index + 1}`} className="w-full h-full object-contain" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    return (
+      <div style={modalStyle} onClick={onClose}>
+        <div style={modalContentStyle}  onClick={(e) => e.stopPropagation()}>
+          <button
+            style={buttonCloseStyle}
+            onClick={onClose}
+            onMouseEnter={(e) => (e.target.style.color = "gray")}  // Negro más claro en hover
+            onMouseLeave={(e) => (e.target.style.color = "#000")} 
+          >
+            ×
+          </button>
+
+          <h2 className="text-xl font-bold text-center mb-4  ">{project.title}</h2>
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1}
+            navigation={true}
+            pagination={{ clickable: true }}
+            style={swiperStyle}
+          >
+            {project.images.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`Imagen ${index + 1}`}
+                  className="w-full h-full object-contain"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default Modal;
+  export default Modal;

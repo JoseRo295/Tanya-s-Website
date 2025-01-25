@@ -17,11 +17,13 @@ const WhatsAppButton = () => {
     height: '60px',
     borderRadius: '100%',
     border: 'none',
-    backgroundColor: isHovered ? '#2bac47' : '#30C04F',
+    backgroundColor: isHovered ? '#6E5E50' : '#A79584',
     position: 'fixed',
     bottom: '20px',
     right: '20px',
     cursor: 'pointer',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+    transition: 'all 0.3s ease-in-out',
     zIndex: 1000,
   };
 
