@@ -34,21 +34,32 @@ const translations = {
     descripcionProyecto1:
       "A vibrant studio with accent wallpaper, a concrete wall, and a neutral bathroom featuring black accents in plumbing and lighting.",
 
-      proyecto2: "One-bedroom apartment, 35 m², St. Petersburg",
-      descripcionProyecto2: "A one-bedroom apartment for a female lawyer, with a light color palette, vibrant blue accents, and the use of dark wood. A concrete accent wall in the bedroom highlights the character of the apartment."
-    ,      
+    proyecto2: "One-bedroom apartment, 35 m², St. Petersburg",
+    descripcionProyecto2:
+      "A one-bedroom apartment for a female lawyer, with a light color palette, vibrant blue accents, and the use of dark wood. A concrete accent wall in the bedroom highlights the character of the apartment.",
     proyecto3: "One-bedroom apartment, 43 m², Nizhny Novgorod",
-descripcionProyecto3: "A bright apartment for a young woman, in gray tones.",
+    descripcionProyecto3:
+      "A bright apartment for a young woman, in gray tones.",
 
-proyecto4: "Two-bedroom apartment, 64 m², Novosibirsk",
-descripcionProyecto4: "A stylish two-bedroom apartment for a young couple with a small child, designed in a vibrant combination of pink and turquoise.",
+    proyecto4: "Two-bedroom apartment, 64 m², Novosibirsk",
+    descripcionProyecto4:
+      "A stylish two-bedroom apartment for a young couple with a small child, designed in a vibrant combination of pink and turquoise.",
 
-proyecto5: "Office, 15 m², Kstovo",
-descripcionProyecto5: "An office designed for a young gamer who enjoys fresh shades of green, light wood, and minimalist aesthetics.",
+    proyecto5: "Office, 15 m², Kstovo",
+    descripcionProyecto5:
+      "An office designed for a young gamer who enjoys fresh shades of green, light wood, and minimalist aesthetics.",
 
-proyecto6: "Two-room apartment, 54 m², Nizhny Novgorod",
-descripcionProyecto6: "A cozy two-room apartment for a mother and her teenage daughter, as well as two cats and a small dog. Designed in soft shades of blue and beige with gold accents. The apartment features plenty of storage space, and even a cat scratcher is seamlessly integrated into the interior.",
+    proyecto6: "Two-room apartment, 54 m², Nizhny Novgorod",
+    descripcionProyecto6:
+      "A cozy two-room apartment for a mother and her teenage daughter, as well as two cats and a small dog. Designed in soft shades of blue and beige with gold accents. The apartment features plenty of storage space, and even a cat scratcher is seamlessly integrated into the interior.",
 
+    proyecto7: "Family Apartment, 80 m², Nizhny Novgorod",
+    descripcionProyecto7:
+      "A cozy one-bedroom apartment in industrial style with elements of minimalism, designed in a neutral color palette with black accents and a pleasant olive hue that adds dynamism to the interior.",
+
+    proyecto8: "Three-Bedroom Apartment, 65 m², Moscow",
+    descripcionProyecto8:
+      "A three-bedroom apartment that considers the wishes of each family member. The modern style and neutral color palette unify all spaces, creating a cohesive concept.",
 
     nuestrosServicios: "Our Services",
     paqueteEsencial: 'Package "Essential"',
@@ -133,22 +144,32 @@ descripcionProyecto6: "A cozy two-room apartment for a mother and her teenage da
     descripcionProyecto1:
       "Яркая студия с акцентными обоями, бетонной стеной и нейтральной ванной с черными акцентами в сантехнике и освещении.",
 
-      proyecto2: "Однокомнатная квартира, 35 м², г. Санкт-Петербург",
-      descripcionProyecto2: "Однокомнатная квартира для девушки-юриста в светлой цветовой гамме с яркими синими акцентами, использованием темного дерева. Акцентная бетонная стена в спальне показывает характер квартиры.",
+    proyecto2: "Однокомнатная квартира, 35 м², г. Санкт-Петербург",
+    descripcionProyecto2:
+      "Однокомнатная квартира для девушки-юриста в светлой цветовой гамме с яркими синими акцентами, использованием темного дерева. Акцентная бетонная стена в спальне показывает характер квартиры.",
 
-      
-      proyecto3: "Однокомнатная квартира, 43 м², г. Нижний Новгород",
-      descripcionProyecto3: "Светлая квартира для молодой девушки в серых тонах.",
-      
-      proyecto4: "Двухкомнатная квартира, 64 м², г. Новосибирск",
-      descripcionProyecto4: "Стильная двухкомнатная квартира для молодой пары с маленьким ребенком, выполненная в ярком цветовом решении сочетания розового и бирюзового.",
-      
-      proyecto5: "Кабинет, 15 м², г. Кстово",
-      descripcionProyecto5: "Кабинет для молодого человека-геймера, которому нравятся свежие оттенки зеленого, светлого дерева и эстетика минимализма.",
-      
-      proyecto6: "Двухкомнатная квартира, 54 м², г. Нижний Новгород",
-      descripcionProyecto6: "Уютная двухкомнатная квартира для мамы и дочки-подростка, а также 2 кошек и собачки, выполненная в нежных голубых, бежевых оттенках с золотыми акцентами. В квартире предусмотрено много мест хранения, и даже когтеточка вписана в интерьер.",
-      
+    proyecto3: "Однокомнатная квартира, 43 м², г. Нижний Новгород",
+    descripcionProyecto3: "Светлая квартира для молодой девушки в серых тонах.",
+
+    proyecto4: "Двухкомнатная квартира, 64 м², г. Новосибирск",
+    descripcionProyecto4:
+      "Стильная двухкомнатная квартира для молодой пары с маленьким ребенком, выполненная в ярком цветовом решении сочетания розового и бирюзового.",
+
+    proyecto5: "Кабинет, 15 м², г. Кстово",
+    descripcionProyecto5:
+      "Кабинет для молодого человека-геймера, которому нравятся свежие оттенки зеленого, светлого дерева и эстетика минимализма.",
+
+    proyecto6: "Двухкомнатная квартира, 54 м², г. Нижний Новгород",
+    descripcionProyecto6:
+      "Уютная двухкомнатная квартира для мамы и дочки-подростка, а также 2 кошек и собачки, выполненная в нежных голубых, бежевых оттенках с золотыми акцентами. В квартире предусмотрено много мест хранения, и даже когтеточка вписана в интерьер.",
+
+    proyecto7: "Семейная квартира, 80 м², г. Нижний Новгород",
+    descripcionProyecto7:
+      "Уютная однокомнатная квартира в стиле индастриал с элементами минимализма, выполненная в нейтральной цветовой гамме с черными акцентами и приятным оливковым цветом, который добавляет динамики интерьеру.",
+
+    proyecto8: "Трехкомнатная квартира, 65 м², г. Москва",
+    descripcionProyecto8:
+      "Трехкомнатная квартира, в которой учтены пожелания каждого члена семьи. Современный стиль и нейтральная цветовая гамма объединяют все помещения, создавая единую концепцию.",
 
     nuestrosServicios: "Наши услуги",
     paqueteEsencial: 'Пакет "Основной"',
@@ -234,21 +255,34 @@ descripcionProyecto6: "A cozy two-room apartment for a mother and her teenage da
     descripcionProyecto1:
       "Un estudio vibrante con papel tapiz llamativo, una pared de hormigón y un baño neutro con acentos negros en la grifería e iluminación.",
 
-      proyecto2: "Apartamento de una habitación, 35 m², San Petersburgo",
-      descripcionProyecto2: "Un apartamento de una habitación para una abogada, con una paleta de colores claros y acentos azules vibrantes, además del uso de madera oscura. Una pared de hormigón en la habitación resalta el carácter del apartamento.",
-      
-      proyecto3: "Apartamento de una habitación, 43 m², Nizhni Nóvgorod",
-      descripcionProyecto3: "Un apartamento luminoso para una joven, en tonos grises.",
-      
-      proyecto4: "Apartamento de dos habitaciones, 64 m², Novosibirsk",
-      descripcionProyecto4: "Un apartamento elegante de dos habitaciones para una pareja joven con un niño pequeño, diseñado en una combinación vibrante de rosa y turquesa.",
-      
-      proyecto5: "Estudio, 15 m², Kstovo",
-      descripcionProyecto5: "Un estudio diseñado para un joven gamer que disfruta de los tonos frescos de verde, la madera clara y la estética minimalista.",
-      
-      proyecto6: "Apartamento de 2 habitaciones, 54 m², Nizhni Nóvgorod",
-      descripcionProyecto6: "Un acogedor apartamento de dos habitaciones para una madre y su hija adolescente, además de dos gatos y un perrito. Decorado en tonos suaves de azul y beige con acentos dorados. El diseño incluye múltiples espacios de almacenamiento e incluso un rascador integrado en el interior.",
-      
+    proyecto2: "Apartamento de una habitación, 35 m², San Petersburgo",
+    descripcionProyecto2:
+      "Un apartamento de una habitación para una abogada, con una paleta de colores claros y acentos azules vibrantes, además del uso de madera oscura. Una pared de hormigón en la habitación resalta el carácter del apartamento.",
+
+    proyecto3: "Apartamento de una habitación, 43 m², Nizhni Nóvgorod",
+    descripcionProyecto3:
+      "Un apartamento luminoso para una joven, en tonos grises.",
+
+    proyecto4: "Apartamento de dos habitaciones, 64 m², Novosibirsk",
+    descripcionProyecto4:
+      "Un apartamento elegante de dos habitaciones para una pareja joven con un niño pequeño, diseñado en una combinación vibrante de rosa y turquesa.",
+
+    proyecto5: "Estudio, 15 m², Kstovo",
+    descripcionProyecto5:
+      "Un estudio diseñado para un joven gamer que disfruta de los tonos frescos de verde, la madera clara y la estética minimalista.",
+
+    proyecto6: "Apartamento de 2 habitaciones, 54 m², Nizhni Nóvgorod",
+    descripcionProyecto6:
+      "Un acogedor apartamento de dos habitaciones para una madre y su hija adolescente, además de dos gatos y un perrito. Decorado en tonos suaves de azul y beige con acentos dorados. El diseño incluye múltiples espacios de almacenamiento e incluso un rascador integrado en el interior.",
+
+    proyecto7: "Apartamento familiar, 80 m², Nizhni Nóvgorod",
+    descripcionProyecto7:
+      "Un acogedor apartamento de un dormitorio en estilo industrial con elementos de minimalismo, diseñado en una paleta de colores neutros con acentos negros y un agradable tono oliva que agrega dinamismo al interior.",
+
+    proyecto8: "Apartamento de tres habitaciones, 65 m², Moscú",
+    descripcionProyecto8:
+      "Un apartamento de tres habitaciones que tiene en cuenta los deseos de cada miembro de la familia. El estilo moderno y la paleta de colores neutros unifican todos los espacios, creando un concepto armonioso.",
+
     nuestrosServicios: "Nuestros Servicios",
     paqueteEsencial: 'Paquete "Esencial"',
     paqueteConcepto: 'Paquete "Concepto"',

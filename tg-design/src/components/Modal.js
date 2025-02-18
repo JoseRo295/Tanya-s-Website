@@ -3,6 +3,8 @@
   import "swiper/css";
   import "swiper/css/pagination";
   import "swiper/css/navigation";
+  import { Navigation, Pagination } from "swiper/modules";
+
 
   const Modal = ({ isOpen, onClose, project }) => {
     if (!isOpen || !project) return null;
@@ -67,22 +69,23 @@
 
           <h2 className="text-xl font-bold text-center mb-4  ">{project.title}</h2>
           <Swiper
-            spaceBetween={10}
-            slidesPerView={1}
-            navigation={true}
-            pagination={{ clickable: true }}
-            style={swiperStyle}
-          >
-            {project.images.map((img, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={img}
-                  alt={`Imagen ${index + 1}`}
-                  className="w-full h-full object-contain"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          modules={[Navigation, Pagination]}
+          navigation
+          pagination={{ clickable: true }}
+          spaceBetween={10}
+          slidesPerView={1}
+          className="h-[65vh]"
+        >
+          {project.images.map((img, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={img}
+                alt={`Imagen ${index + 1}`}
+                className="w-full h-full object-contain"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
         </div>
       </div>
     );
