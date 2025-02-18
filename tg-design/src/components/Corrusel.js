@@ -17,12 +17,14 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 // import image4 from "../Images/corrusel/4.png";
 // import image5 from "../Images/corrusel/Безимени-1.png";
 
-import image1 from "../Images/corrusel2/1.png";
+// import image1 from "../Images/corrusel2/1.png";
 import image2 from "../Images/corrusel2/2.png";
 import image3 from "../Images/corrusel2/3.png";
 import image4 from "../Images/corrusel2/4.png";
 import image5 from "../Images/corrusel2/5.png";
 import image6 from "../Images/corrusel2/6.png";
+
+import image1 from "../Images/corrusel/5.png";
 
 
 
@@ -50,21 +52,32 @@ const ImageCarousel = () => {
         image3,
         image4,
         image5,
-        image6
+        image6,
+        
       ].map((image, index) => (
         <SwiperSlide key={index}>
-          <div
-            style={{
-              height: "80vh",
-              backgroundSize: window.innerWidth <= 768 ? 'cover' : 'cover', // Cambia el tamaño de la imagen según el tamaño de la pantalla
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundImage: `url(${image})`
-            }}
-          >
-            {/* Contenido opcional aquí */}
-          </div>
-        </SwiperSlide>
+  <div
+    style={{
+      height: "85vh", // Mantiene la altura del carrusel
+      width: "100%", // Asegura que ocupe todo el ancho
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <img
+      src={image}
+      alt={`Slide ${index + 1}`}
+      style={{
+        width: "100%", // Se ajusta al contenedor
+        height: "100%", // Ocupa el 100% del contenedor
+        objectFit: "contain", // Evita que se recorte la imagen
+        borderRadius: "10px", // Agrega bordes redondeados si es necesario
+      }}
+    />
+  </div>
+</SwiperSlide>
+
       ))}
     </Swiper>
   );
