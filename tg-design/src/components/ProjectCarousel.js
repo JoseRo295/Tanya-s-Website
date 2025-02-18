@@ -13,12 +13,16 @@ import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 // Importa las imágenes de tus proyectos
-import image1 from "../Images/projects/project1/ГЛАВНАЯКАРТИНКА.png";
-import image2 from "../Images/projects/project2/ЗАГЛАВНАЯКАРТИНКА.png";
-import image3 from "../Images/projects/project3/ЗАГЛКАртинка.png";
-import image4 from "../Images/projects/project4/главнаякартинка(2).png";
-import image5 from "../Images/projects/project5/главнаякартинка(3).png";
-import image6 from "../Images/projects/project6/заглкартинка(2).png";
+import image1 from "../Images/projects/project1/основнойвид.png";
+import image2 from "../Images/projects/project2/Спальня3.png";
+import image3 from "../Images/projects/project3/Кухня2.png";
+import image4 from "../Images/projects/project4/Кухня1.png";
+import image5 from "../Images/projects/project5/Кабинет1.png";
+import image6 from "../Images/projects/project6/Спальня15,6м2_1.png";
+
+
+
+//poyecto1
 
 const ProjectCarousel = () => {
   const { translate } = useLocalization(); // Usar el contexto para traducciones
@@ -100,7 +104,7 @@ const ProjectCarousel = () => {
           },
         }}
         autoplay={{
-          delay: 5000,
+          delay: 50000,
           disableOnInteraction: false
         }}
         pagination={{
