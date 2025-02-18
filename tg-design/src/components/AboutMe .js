@@ -2,7 +2,7 @@ import React from "react";
 import image1 from "../Images/Tanya/6.jpg"; // Asegúrate de que esta ruta sea correcta
 import { useLocalization } from "../context/LocalizationContext"; // Importar el contexto de localización
 
-const TeamSection = () => {
+const AboutMe  = () => {
   const { translate } = useLocalization(); // Usar la función translate
 
   return (
@@ -36,4 +36,4 @@ const TeamSection = () => {
   );
 };
 
-export default TeamSection;
+export default AboutMe ;

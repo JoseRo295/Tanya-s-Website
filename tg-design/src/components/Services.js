@@ -18,7 +18,8 @@ export default function Home() {
           {translate("nuestrosServicios")}
         </h2>
       </div>
-      <main className="pt-5 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+      <main className="px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center h-full">
+
         {[
           {
             id: "service1",

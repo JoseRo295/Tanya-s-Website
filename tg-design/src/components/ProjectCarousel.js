@@ -14,7 +14,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 // Importa las imágenes de tus proyectos
 import image1 from "../Images/projects/project1/основнойвид.png";
-import image2 from "../Images/projects/project2/Спальня3.png";
+
 import image3 from "../Images/projects/project3/Кухня2.png";
 import image4 from "../Images/projects/project4/Кухня1.png";
 import image5 from "../Images/projects/project5/1.png";
@@ -111,20 +111,39 @@ import img7_23 from "../Images/projects/project7/23.png";
 import img7_24 from "../Images/projects/project7/24.png";
 
 
-// Importa las imágenes del Proyecto 8
+//Proyecto 8
 import img8_1 from "../Images/projects/project8/1.png";
 import img8_2 from "../Images/projects/project8/2.png";
 import img8_3 from "../Images/projects/project8/3.png";
-import img8_4 from "../Images/projects/project8/4.png";
 import img8_5 from "../Images/projects/project8/5.png";
-import img8_6 from "../Images/projects/project8/6.png";
 
+//proyecto9
+import img9_1 from "../Images/projects/project9/1.jpg";
+import img9_2 from "../Images/projects/project9/2.jpg";
+import img9_3 from "../Images/projects/project9/3.jpg";
+import img9_4 from "../Images/projects/project9/4.jpg";
+import img9_5 from "../Images/projects/project9/5.jpg";
+import img9_6 from "../Images/projects/project9/6.jpg";
+import img9_7 from "../Images/projects/project9/7.jpg";
+import img9_8 from "../Images/projects/project9/8.jpg";
+import img9_9 from "../Images/projects/project9/9.jpg";
+import img9_main from "../Images/projects/project9/ПЕРВАЯ картинка.jpg"; // Imagen principal
+
+//proyecto10
+// Importa las imágenes del Proyecto 10
+import img10_1 from "../Images/projects/project10/1.jpg";
+import img10_2 from "../Images/projects/project10/2.jpg";
+import img10_3 from "../Images/projects/project10/3.jpg";
+import img10_4 from "../Images/projects/project10/4.jpg";
+import img10_5 from "../Images/projects/project10/5.jpg";
 
 
 const ProjectCarousel = () => {
   const { translate } = useLocalization(); // Usar el contexto para traducciones
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  
 
   const projects = [
     {
@@ -146,10 +165,22 @@ const ProjectCarousel = () => {
     {
       image: img8_1, // Imagen principal del carrusel
       images: [
-        img8_1, img8_2, img8_3, img8_4, img8_5, img8_6
+        img8_1, img8_2, img8_3,img8_5, 
       ], // Imágenes adicionales para el Modal
       title: translate("proyecto8"),
       description: translate("descripcionProyecto8"),
+    },
+    {
+      image: img9_main, // Imagen principal del proyecto
+      images: [img9_main,img9_1, img9_2, img9_3, img9_4, img9_5, img9_6, img9_7, img9_8, img9_9], // Imágenes adicionales
+      title: translate("proyecto9"),
+      description: translate("descripcionProyecto9"),
+    },
+    {
+      image: img10_1, // Imagen principal del proyecto
+      images: [img10_1, img10_2, img10_3, img10_4, img10_5], // Imágenes adicionales
+      title: translate("proyecto10"),
+      description: translate("descripcionProyecto10"),
     },
     {
       image: image1,
@@ -158,7 +189,7 @@ const ProjectCarousel = () => {
       description: translate("descripcionProyecto1"), // Traducción de la descripción
     },
     {
-      image: image2,
+      image: img2_4,
       images: [img2_1, img2_2, img2_3, img2_4, img2_5, img2_6], 
       title: translate("proyecto2"),
       description: translate("descripcionProyecto2"),
@@ -192,6 +223,7 @@ const ProjectCarousel = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+  
 
   return (
     <div>

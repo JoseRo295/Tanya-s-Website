@@ -8,7 +8,7 @@ export const useLocalization = () => useContext(LocalizationContext);
 const translations = {
   en: {
     home: "Home",
-    teamsection: "Team Section",
+    aboutMe: "About Me",
     proyectos: "Projects",
     services: "Services",
     pricing: "Pricing",
@@ -60,6 +60,14 @@ const translations = {
     proyecto8: "Three-Bedroom Apartment, 65 m², Moscow",
     descripcionProyecto8:
       "A three-bedroom apartment that considers the wishes of each family member. The modern style and neutral color palette unify all spaces, creating a cohesive concept.",
+
+    proyecto9: "One-room apartment, 37m², Nizhny Novgorod",
+    descripcionProyecto9:
+      "Cozy one-room apartment in an industrial style with elements of minimalism, designed in a neutral color palette with black accents and a pleasant olive tone that adds dynamism to the interior.",
+
+    proyecto10: "Three-room apartment, Quito, Ecuador",
+    descripcionProyecto10:
+      "As part of this project, furniture was designed for the hallway and living room, and decor and lighting were selected to match the existing furniture and finishes.",
 
     nuestrosServicios: "Our Services",
     paqueteEsencial: 'Package "Essential"',
@@ -119,7 +127,7 @@ const translations = {
   },
   ru: {
     home: "Главная",
-    teamsection: "Команда проекта",
+    aboutMe: "Обо мне",
     proyectos: "Проекты",
     services: "Услуги",
     pricing: "Цены",
@@ -170,6 +178,14 @@ const translations = {
     proyecto8: "Трехкомнатная квартира, 65 м², г. Москва",
     descripcionProyecto8:
       "Трехкомнатная квартира, в которой учтены пожелания каждого члена семьи. Современный стиль и нейтральная цветовая гамма объединяют все помещения, создавая единую концепцию.",
+
+    proyecto9: "Однокомнатная квартира, 37м², г. Нижний Новгород",
+    descripcionProyecto9:
+      "Уютная однокомнатная квартира в стиле индастриал с элементами минимализма, выполненная в нейтральной цветовой гамме с черными акцентами и приятным оливковым цветом, который добавляет динамики интерьеру.",
+
+    proyecto10: "Трехкомнатная квартира, Кито, Эквадор",
+    descripcionProyecto10:
+      "В рамках проекта была разработана мебель для прихожей и гостиной, подобран декор и светильники таким образом, чтобы все сочеталось с уже существующей мебелью и отделкой.",
 
     nuestrosServicios: "Наши услуги",
     paqueteEsencial: 'Пакет "Основной"',
@@ -229,7 +245,7 @@ const translations = {
   },
   es: {
     home: "Inicio",
-    teamsection: "Sección del Equipo",
+    aboutMe: "Sobre mí",
     proyectos: "Proyectos",
     services: "Servicios",
     pricing: "Precios",
@@ -282,6 +298,13 @@ const translations = {
     proyecto8: "Apartamento de tres habitaciones, 65 m², Moscú",
     descripcionProyecto8:
       "Un apartamento de tres habitaciones que tiene en cuenta los deseos de cada miembro de la familia. El estilo moderno y la paleta de colores neutros unifican todos los espacios, creando un concepto armonioso.",
+    proyecto9: "Apartamento de una habitación, 37m², Nizhni Nóvgorod",
+    descripcionProyecto9:
+      "Acogedor apartamento de una habitación en estilo industrial con elementos de minimalismo, diseñado en una paleta de colores neutros con acentos en negro y un agradable tono oliva que aporta dinamismo al interior.",
+
+    proyecto10: "Apartamento de tres habitaciones, Quito, Ecuador",
+    descripcionProyecto10:
+      "En este proyecto se diseñó el mobiliario para la entrada y la sala de estar, además de seleccionar la decoración y las luminarias de manera que combinaran con los muebles y acabados existentes.",
 
     nuestrosServicios: "Nuestros Servicios",
     paqueteEsencial: 'Paquete "Esencial"',

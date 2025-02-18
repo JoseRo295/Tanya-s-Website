@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Corrusel from "../components/Corrusel";
-import TeamSection from "../components/TeamSection";
+import AboutMe from "../components/AboutMe ";
 import ProjectCarousel from "../components/ProjectCarousel";
 import ContactForm from "../components/Contact";
 import Services from "../components/Services";
@@ -25,8 +25,8 @@ export default function Home() {
             <section id="home" data-aos="fade-up">
                 <Corrusel />
             </section>
-            <section id="teamSection" data-aos="fade-up">
-                <TeamSection />
+            <section id="aboutMe" data-aos="fade-up">
+                <AboutMe />
             </section>
             <section id="projectCarousel" data-aos="fade-up">
                 <ProjectCarousel />
