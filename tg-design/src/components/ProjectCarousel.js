@@ -227,7 +227,7 @@ const ProjectCarousel = () => {
     setModalOpen(false);
   };
   const openWhatsApp = (message) => {
-    const phoneNumber = "+593987149330"; // Reemplázalo con tu número real
+    const phoneNumber = "+593983548611"; // Reemplázalo con tu número real
     const encodedMessage = encodeURIComponent(message);
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(url, "_blank");

@@ -316,7 +316,7 @@ Aceptó términos: ${agreed ? 'Sí' : 'No'}
                       </p>
                       <h4 className="font-semibold">5. Tus Derechos</h4>
                       <p>
-                        Tienes derecho a acceder, rectificar o eliminar tu información personal. También puedes oponerte al tratamiento de tus datos o solicitar la portabilidad de los mismos. Para ejercer estos derechos, por favor, contáctanos a +593987149330.
+                        Tienes derecho a acceder, rectificar o eliminar tu información personal. También puedes oponerte al tratamiento de tus datos o solicitar la portabilidad de los mismos. Para ejercer estos derechos, por favor, contáctanos a +593983548611.
                       </p>
                       <h4 className="font-semibold">6. Cambios en la Política de Privacidad</h4>
                       <p>
@@ -324,7 +324,7 @@ Aceptó términos: ${agreed ? 'Sí' : 'No'}
                       </p>
                       <h4 className="font-semibold">7. Contacto</h4>
                       <p>
-                        Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información personal, puedes contactarnos a +593987149330.
+                        Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información personal, puedes contactarnos a +593983548611.
                       </p>
                     </div>
                   </div>

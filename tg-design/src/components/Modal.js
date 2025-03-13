@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { useLocalization } from "../context/LocalizationContext"; // Importamos el contexto para traducciones
 
 const openWhatsApp = () => {
-  const phoneNumber = "+593987149330"; // Reemplázalo con tu número real
+  const phoneNumber = "+593983548611"; // Reemplázalo con tu número real
   const url = `https://wa.me/${phoneNumber}`;
   window.open(url, "_blank");
 };

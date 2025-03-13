@@ -4,7 +4,7 @@ const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const openWhatsApp = () => {
-    const phoneNumber = '+593987149330'; // Reemplaza con tu número
+    const phoneNumber = '+593983548611'; // Reemplaza con tu número
     const url = `https://wa.me/${phoneNumber}`;
     window.open(url, '_blank');
   };

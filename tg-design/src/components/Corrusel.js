@@ -19,7 +19,7 @@ import image3 from "../Images/corrusel/9.png";
 import image4 from "../Images/corrusel/10.png";
 
 const openWhatsApp = () => {
-  const phoneNumber = '+593987149330'; // Reemplaza con tu número
+  const phoneNumber = '+593983548611'; // Reemplaza con tu número
   const url = `https://wa.me/${phoneNumber}`;
   window.open(url, '_blank');
 };

@@ -131,7 +131,7 @@ const translations = {
       "Purchase of materials and furniture",
       "Site visits and implementation control",
     ],
-    designerSpaceTitle:[ "Get a Designer Space You'll Love"],
+    designerSpaceTitle:[ "The design of your dreams is closer than you think.."],
     orderDesignProject: ["Order a design project"],
   },
   ru: {
@@ -258,7 +258,7 @@ const translations = {
       "Закупка материалов и мебели",
       "Выезды на стройку, контроль реализации",
     ],
-    designerSpaceTitle: ["Получите дизайнерское пространство, которое вам понравится"],
+    designerSpaceTitle: ["Дизайн вашей мечты – уже рядом..."],
     orderDesignProject: ["Заказать дизайн-проект"],
   },
   es: {
@@ -385,7 +385,7 @@ const translations = {
       "Compra de materiales y muebles",
       "Visitas a la obra y control de implementación",
     ],
-    designerSpaceTitle:[ "Obtén un espacio de diseño que te encantará"],
+    designerSpaceTitle:[ "El diseño de tus sueños está más cerca de lo que piensas..."],
     orderDesignProject: ["Ordenar un proyecto de diseño"],
   },
 };

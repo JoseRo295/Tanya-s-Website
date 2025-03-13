@@ -48,7 +48,7 @@ const Button = ({ children, onClick }) => {
 const Home = () => {
   const { translate } = useLocalization(); // Utilizar el hook de localización
   const handleClick = () => {
-    const phoneNumber = '+593987149330'; 
+    const phoneNumber = '+593983548611'; 
     const url = `https://wa.me/${phoneNumber}`;
     window.open(url, '_blank');
   };
