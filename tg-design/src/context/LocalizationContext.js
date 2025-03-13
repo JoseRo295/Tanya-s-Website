@@ -67,8 +67,15 @@ const translations = {
 
     proyecto10: "Three-room apartment, Quito, Ecuador",
     descripcionProyecto10:
-      "As part of this project, furniture was designed for the hallway and living room, and decor and lighting were selected to match the existing furniture and finishes.",
+      "As part of this project, furniture was designed for the entryway, living room, and children's room. Additionally, decor, wallpaper, paint color, and lighting fixtures were selected to harmoniously match the existing furniture and finishes.",
 
+
+    airbnbOfferTitle: "Do you need a project for an Airbnb apartment?",
+    airbnbOfferText: "We have a special offer for you!",
+    whatsappButton: "Write on WhatsApp",
+
+    airbnbOffer: "Airbnb Offer",
+    
     nuestrosServicios: "Our Services",
     paqueteEsencial: 'Package "Essential"',
     paqueteConcepto: 'Package "Concept"',
@@ -124,6 +131,8 @@ const translations = {
       "Purchase of materials and furniture",
       "Site visits and implementation control",
     ],
+    designerSpaceTitle:[ "Get a Designer Space You'll Love"],
+    orderDesignProject: ["Order a design project"],
   },
   ru: {
     home: "Главная",
@@ -185,8 +194,15 @@ const translations = {
 
     proyecto10: "Трехкомнатная квартира, Кито, Эквадор",
     descripcionProyecto10:
-      "В рамках проекта была разработана мебель для прихожей и гостиной, подобран декор и светильники таким образом, чтобы все сочеталось с уже существующей мебелью и отделкой.",
+      "В рамках проекта была разработана мебель для прихожей, гостиной и детской комнаты. Также был подобран декор, обои, цвет краски и светильники таким образом, чтобы они гармонично сочетались с уже существующей мебелью и отделкой.",
 
+
+    airbnbOfferTitle: "Вам нужен проект для квартиры Airbnb?",
+    airbnbOfferText: "У нас есть специальное предложение для вас!",
+    whatsappButton: "Написать в WhatsApp",
+   
+    airbnbOffer: "Предложение Airbnb",
+      
     nuestrosServicios: "Наши услуги",
     paqueteEsencial: 'Пакет "Основной"',
     paqueteConcepto: 'Пакет "Концепт"',
@@ -242,6 +258,8 @@ const translations = {
       "Закупка материалов и мебели",
       "Выезды на стройку, контроль реализации",
     ],
+    designerSpaceTitle: ["Получите дизайнерское пространство, которое вам понравится"],
+    orderDesignProject: ["Заказать дизайн-проект"],
   },
   es: {
     home: "Inicio",
@@ -304,8 +322,14 @@ const translations = {
 
     proyecto10: "Apartamento de tres habitaciones, Quito, Ecuador",
     descripcionProyecto10:
-      "En este proyecto se diseñó el mobiliario para la entrada y la sala de estar, además de seleccionar la decoración y las luminarias de manera que combinaran con los muebles y acabados existentes.",
+      "En este proyecto se diseñó el mobiliario para la entrada, la sala de estar y la habitación infantil. Además, se seleccionó la decoración, el papel tapiz, el color de la pintura y las luminarias de manera que combinaran armoniosamente con los muebles y acabados existentes",
 
+    airbnbOfferTitle: "¿Necesitas un proyecto para un apartamento Airbnb?",
+    airbnbOfferText: "¡Tenemos una oferta especial para ti!",
+    whatsappButton: "Escribir en WhatsApp",
+    
+    airbnbOffer: "Oferta Airbnb",
+    
     nuestrosServicios: "Nuestros Servicios",
     paqueteEsencial: 'Paquete "Esencial"',
     paqueteConcepto: 'Paquete "Concepto"',
@@ -361,6 +385,8 @@ const translations = {
       "Compra de materiales y muebles",
       "Visitas a la obra y control de implementación",
     ],
+    designerSpaceTitle:[ "Obtén un espacio de diseño que te encantará"],
+    orderDesignProject: ["Ordenar un proyecto de diseño"],
   },
 };
 

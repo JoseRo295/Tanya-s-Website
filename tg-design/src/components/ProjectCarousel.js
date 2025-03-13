@@ -136,6 +136,9 @@ import img10_2 from "../Images/projects/project10/2.jpg";
 import img10_3 from "../Images/projects/project10/3.jpg";
 import img10_4 from "../Images/projects/project10/4.jpg";
 import img10_5 from "../Images/projects/project10/5.jpg";
+import img10_6 from "../Images/projects/project10/6.jpg";
+import img10_7 from "../Images/projects/project10/7.jpg";
+import img10_8 from "../Images/projects/project10/8.jpg";
 
 
 const ProjectCarousel = () => {
@@ -178,7 +181,7 @@ const ProjectCarousel = () => {
     },
     {
       image: img10_1, // Imagen principal del proyecto
-      images: [img10_1, img10_2, img10_3, img10_4, img10_5], // Imágenes adicionales
+      images: [img10_1, img10_2, img10_3, img10_4, img10_5, img10_6, img10_7, img10_8], // Imágenes adicionales
       title: translate("proyecto10"),
       description: translate("descripcionProyecto10"),
     },
@@ -223,6 +226,12 @@ const ProjectCarousel = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+  const openWhatsApp = (message) => {
+    const phoneNumber = "+593987149330"; // Reemplázalo con tu número real
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, "_blank");
+  };
   
 
   return (
@@ -250,7 +259,7 @@ const ProjectCarousel = () => {
             slidesPerView: 3,
             spaceBetween: 40,
           },
-        }}
+        }}zzz
         autoplay={{
           delay: 15000,
           disableOnInteraction: false
