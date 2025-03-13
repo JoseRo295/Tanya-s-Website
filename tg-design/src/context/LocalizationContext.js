@@ -131,7 +131,7 @@ const translations = {
       "Purchase of materials and furniture",
       "Site visits and implementation control",
     ],
-    designerSpaceTitle:[ "The design of your dreams is closer than you think.."],
+    designerSpaceTitle:[ "The design of your dreams is closer than you think..."],
     orderDesignProject: ["Order a design project"],
   },
   ru: {
