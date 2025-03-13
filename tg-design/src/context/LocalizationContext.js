@@ -69,13 +69,12 @@ const translations = {
     descripcionProyecto10:
       "As part of this project, furniture was designed for the entryway, living room, and children's room. Additionally, decor, wallpaper, paint color, and lighting fixtures were selected to harmoniously match the existing furniture and finishes.",
 
-
     airbnbOfferTitle: "Do you need a project for an Airbnb apartment?",
     airbnbOfferText: "We have a special offer for you!",
     whatsappButton: "Write on WhatsApp",
 
     airbnbOffer: "Airbnb Offer",
-    
+
     nuestrosServicios: "Our Services",
     paqueteEsencial: 'Package "Essential"',
     paqueteConcepto: 'Package "Concept"',
@@ -131,8 +130,40 @@ const translations = {
       "Purchase of materials and furniture",
       "Site visits and implementation control",
     ],
-    designerSpaceTitle:[ "The design of your dreams is closer than you think..."],
+    designerSpaceTitle: [
+      "The design of your dreams is closer than you think...",
+    ],
     orderDesignProject: ["Order a design project"],
+    closeButton: "Close",
+
+    privacyPolicyTitle: "Privacy Policy",
+    privacyPolicyText:
+      "At TG-Design, we are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and protect the personal information you provide through our website and other related services.",
+    infoWeCollect: "1. Information We Collect",
+    infoWeCollectText:
+      "We collect personal information that you provide directly, such as your name, email address, phone number, and any other information you choose to share with us.",
+    useOfInfo: "2. Use of Information",
+    useOfInfoList: [
+      "Provide and improve our services.",
+      "Communicate with you and respond to your inquiries.",
+      "Fulfill our legal obligations.",
+      "Analyze the use of our website and improve its functionality.",
+    ],
+    shareInfo: "3. Sharing Information",
+    shareInfoText:
+      "We do not share your personal information with third parties, except when necessary to comply with our legal obligations, protect our rights, or as part of a business agreement (such as service providers assisting us in our operations).",
+    protectInfo: "4. Protection of Information",
+    protectInfoText:
+      "We implement technical and organizational security measures to protect your personal information against unauthorized access, loss, or misuse. However, please note that no data transmission over the internet is completely secure.",
+    yourRights: "5. Your Rights",
+    yourRightsText:
+      "You have the right to access, rectify, or delete your personal information. You can also object to the processing of your data or request the portability of it. To exercise these rights, please contact us at +593983548611.",
+    privacyChanges: "6. Changes to the Privacy Policy",
+    privacyChangesText:
+      "We may update this Privacy Policy. We will notify you of any changes by posting the new policy on our website. We recommend reviewing this page periodically to stay informed of any changes.",
+    contact: "7. Contact",
+    contactText:
+      "If you have any questions regarding this Privacy Policy or how we handle your personal information, you can contact us at +593983548611.",
   },
   ru: {
     home: "Главная",
@@ -196,13 +227,12 @@ const translations = {
     descripcionProyecto10:
       "В рамках проекта была разработана мебель для прихожей, гостиной и детской комнаты. Также был подобран декор, обои, цвет краски и светильники таким образом, чтобы они гармонично сочетались с уже существующей мебелью и отделкой.",
 
-
     airbnbOfferTitle: "Вам нужен проект для квартиры Airbnb?",
     airbnbOfferText: "У нас есть специальное предложение для вас!",
     whatsappButton: "Написать в WhatsApp",
-   
+
     airbnbOffer: "Предложение Airbnb",
-      
+
     nuestrosServicios: "Наши услуги",
     paqueteEsencial: 'Пакет "Основной"',
     paqueteConcepto: 'Пакет "Концепт"',
@@ -260,6 +290,36 @@ const translations = {
     ],
     designerSpaceTitle: ["Дизайн вашей мечты – уже рядом..."],
     orderDesignProject: ["Заказать дизайн-проект"],
+    closeButton: "Закрыть",
+
+    privacyPolicyTitle: "Политика конфиденциальности",
+    privacyPolicyText:
+      "В TG-Design мы стремимся защищать и уважать вашу конфиденциальность. Эта политика конфиденциальности объясняет, как мы собираем, используем и защищаем личную информацию, которую вы предоставляете через наш сайт и другие сопутствующие услуги.",
+    infoWeCollect: "1. Информация, которую мы собираем",
+    infoWeCollectText:
+      "Мы собираем личную информацию, которую вы предоставляете напрямую, такую как ваше имя, адрес электронной почты, номер телефона и любую другую информацию, которую вы решите с нами поделиться.",
+    useOfInfo: "2. Использование информации",
+    useOfInfoList: [
+      "Предоставление и улучшение наших услуг.",
+      "Общение с вами и ответы на ваши запросы.",
+      "Выполнение наших юридических обязательств.",
+      "Анализ использования нашего сайта и улучшение его функциональности.",
+    ],
+    shareInfo: "3. Передача информации",
+    shareInfoText:
+      "Мы не передаем вашу личную информацию третьим лицам, за исключением случаев, когда это необходимо для выполнения наших юридических обязательств, защиты наших прав или в рамках коммерческого соглашения (например, поставщиков услуг, которые помогают нам в нашей деятельности).",
+    protectInfo: "4. Защита информации",
+    protectInfoText:
+      "Мы внедряем технические и организационные меры безопасности для защиты вашей личной информации от несанкционированного доступа, потери или неправильного использования. Однако, пожалуйста, обратите внимание, что передача данных через интернет не является полностью безопасной.",
+    yourRights: "5. Ваши права",
+    yourRightsText:
+      "Вы имеете право на доступ, исправление или удаление вашей личной информации. Вы также можете возразить против обработки ваших данных или запросить их переносимость. Чтобы воспользоваться этими правами, пожалуйста, свяжитесь с нами по телефону +593983548611.",
+    privacyChanges: "6. Изменения в политике конфиденциальности",
+    privacyChangesText:
+      "Мы можем обновить эту Политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив новую политику на нашем сайте. Мы рекомендуем периодически проверять эту страницу, чтобы быть в курсе изменений.",
+    contact: "7. Контакт",
+    contactText:
+      "Если у вас есть вопросы по этой Политике конфиденциальности или по тому, как мы обрабатываем вашу личную информацию, вы можете связаться с нами по телефону +593983548611.",
   },
   es: {
     home: "Inicio",
@@ -327,9 +387,9 @@ const translations = {
     airbnbOfferTitle: "¿Necesitas un proyecto para un apartamento Airbnb?",
     airbnbOfferText: "¡Tenemos una oferta especial para ti!",
     whatsappButton: "Escribir en WhatsApp",
-    
+
     airbnbOffer: "Oferta Airbnb",
-    
+
     nuestrosServicios: "Nuestros Servicios",
     paqueteEsencial: 'Paquete "Esencial"',
     paqueteConcepto: 'Paquete "Concepto"',
@@ -385,8 +445,39 @@ const translations = {
       "Compra de materiales y muebles",
       "Visitas a la obra y control de implementación",
     ],
-    designerSpaceTitle:[ "El diseño de tus sueños está más cerca de lo que piensas..."],
+    designerSpaceTitle: [
+      "El diseño de tus sueños está más cerca de lo que piensas...",
+    ],
+    closeButton: "Cerrar",
     orderDesignProject: ["Ordenar un proyecto de diseño"],
+    privacyPolicyTitle: "Política de Privacidad",
+    privacyPolicyText:
+      "En TG-Design nosotros, estamos comprometidos a proteger y respetar tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos la información personal que nos proporcionas a través de nuestro sitio web y otros servicios asociados.",
+    infoWeCollect: "1. Información que Recopilamos",
+    infoWeCollectText:
+      "Recopilamos información personal que nos proporcionas directamente, como tu nombre, dirección de correo electrónico, número de teléfono, y cualquier otra información que decidas compartir con nosotros.",
+    useOfInfo: "2. Uso de la Información",
+    useOfInfoList: [
+      "Proveer y mejorar nuestros servicios.",
+      "Comunicarnos contigo y responder a tus consultas.",
+      "Cumplir con nuestras obligaciones legales.",
+      "Analizar el uso de nuestro sitio web y mejorar su funcionalidad.",
+    ],
+    shareInfo: "3. Compartir la Información",
+    shareInfoText:
+      "No compartimos tu información personal con terceros, excepto cuando sea necesario para cumplir con nuestras obligaciones legales, proteger nuestros derechos, o como parte de un acuerdo comercial (como proveedores de servicios que nos asisten en nuestras operaciones).",
+    protectInfo: "4. Protección de la Información",
+    protectInfoText:
+      "Implementamos medidas de seguridad técnicas y organizativas para proteger tu información personal contra el acceso no autorizado, la pérdida, o el uso indebido. Sin embargo, ten en cuenta que ninguna transmisión de datos por Internet es completamente segura.",
+    yourRights: "5. Tus Derechos",
+    yourRightsText:
+      "Tienes derecho a acceder, rectificar o eliminar tu información personal. También puedes oponerte al tratamiento de tus datos o solicitar la portabilidad de los mismos. Para ejercer estos derechos, por favor, contáctanos a +593983548611.",
+    privacyChanges: "6. Cambios en la Política de Privacidad",
+    privacyChangesText:
+      "Podemos actualizar esta Política de Privacidad. Te notificaremos de cualquier cambio publicando la nueva política en nuestro sitio web. Te recomendamos revisar esta página periódicamente para estar al tanto de cualquier cambio.",
+    contact: "7. Contacto",
+    contactText:
+      "Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información personal, puedes contactarnos a +593983548611.",
   },
 };
 
