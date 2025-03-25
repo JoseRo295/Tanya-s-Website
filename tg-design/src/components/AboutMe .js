@@ -33,9 +33,9 @@ const AboutMe = () => {
           alt="Tatiana Gorshkova"
           className="w-full max-w-[500px] h-auto object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
         />
-        <h2 className="text-2xl font-semibold text-gray-800 mt-4 text-center">
+        {/* <h2 className="text-2xl font-semibold text-gray-800 mt-4 text-center">
           {translate("tatianaName")}
-        </h2>
+        </h2> */}
       </div>
     </div>
   );
