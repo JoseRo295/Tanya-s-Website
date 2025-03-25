@@ -14,7 +14,7 @@ const translations = {
     pricing: "Pricing",
     contacts: "Contacts",
     choosePackage: "Choose this package",
-    contactUs: "Contact Us",
+    contactUs: "Contact Me",
     helpText:
       "We are here to assist you with any questions or inquiries you might have.",
     firstName: "First Name",
@@ -237,7 +237,7 @@ const translations = {
     pricing: "Цены",
     contacts: "Контакты",
     choosePackage: "Выберите этот пакет",
-    contactUs: "Связаться с Нами",
+    contactUs: "Связаться со мной",
     helpText: "Мы здесь, чтобы помочь вам с любыми вопросами или запросами.",
     firstName: "Имя",
     lastName: "Фамилия",
@@ -458,7 +458,7 @@ const translations = {
     pricing: "Precios",
     contacts: "Contactos",
     choosePackage: "Elige este paquete",
-    contactUs: "Contáctanos",
+    contactUs: "Contáctame",
     helpText:
       "Estamos aquí para ayudarte con cualquier pregunta o consulta que tengas.",
     firstName: "Nombre",

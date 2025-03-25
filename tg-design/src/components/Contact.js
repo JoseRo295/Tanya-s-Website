@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Field, Label, Switch } from "@headlessui/react";
-import image from "../Images/corrusel/3.png";
-import { useLocalization } from "../context/LocalizationContext"; // Ajusta la ruta si es necesario
+import image from "../Images/2.jpg"; // Ajusta la ruta de tu imagen
+import { useLocalization } from "../context/LocalizationContext";
 
 export default function ContactForm() {
   const { translate } = useLocalization();
@@ -77,12 +77,22 @@ export default function ContactForm() {
     setIsModalOpen(false);
   };
 
+  // Verificar si el formulario está completo
+  const isFormValid = 
+    firstName.trim() !== "" &&
+    lastName.trim() !== "" &&
+    email.trim() !== "" &&
+    selectedCountry.trim() !== "" &&
+    phoneNumber.trim() !== "" &&
+    agreed;
+
   // Enviar formulario a WhatsApp
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Si no es válido, no hacemos nada
+    if (!isFormValid) return;
 
     // Construir el texto del mensaje
-    // Usamos saltos de línea (\n) y encodeURIComponent para que WhatsApp los interprete correctamente
     const message = `
 Nombre: ${firstName} ${lastName}
 Email: ${email}
@@ -91,27 +101,52 @@ Teléfono: ${phonePrefix} ${phoneNumber}
 Aceptó términos: ${agreed ? "Sí" : "No"}
     `.trim();
 
-    // Número sin signo '+'
-    const phone = "593983548611";
+    // Número de WhatsApp (sin '+')
+    const phone = "593983548611"; // Reemplaza con tu número
     // Crear la URL de WhatsApp con el texto codificado
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    // Abrir WhatsApp (o WhatsApp Web) en una nueva pestaña
+    // Abrir WhatsApp en otra pestaña
     window.open(url, "_blank");
   };
 
   return (
-    <div id="contact" className="min-h-screen flex items-center justify-center">
-      <div className="max-w-7xl w-full mx-auto p-6 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="w-full flex items-center justify-center bg-gray-50 py-10 px-4">
+      {/* Contenedor con grid para imagen y formulario de la misma altura */}
+      <div
+        className="
+          max-w-7xl 
+          w-full 
+          mx-auto 
+          min-h-[600px] 
+          grid 
+          grid-cols-1 
+          lg:grid-cols-2 
+          items-stretch 
+          rounded-xl 
+          shadow-2xl 
+          overflow-hidden
+        "
+      >
+        {/* Imagen a la izquierda (oculta en móviles) */}
+        <div className="relative hidden lg:block">
+          <img
+            src={image}
+            alt="Form side"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+
         {/* Sección del formulario */}
-        <div className="bg-[#bcafa2] p-8 rounded-lg shadow-lg">
+        <div className="bg-white p-8 flex flex-col justify-center">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-gray-800 sm:text-4xl">
               {translate("contactUs")}
             </h2>
-            <p className="mt-2 text-lg leading-8 text-white">
+            <p className="mt-2 text-base sm:text-lg text-gray-600">
               {translate("helpText")}
             </p>
           </div>
+
           {/* Formulario con onSubmit */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
@@ -119,11 +154,11 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
               <div>
                 <label
                   htmlFor="first-name"
-                  className="block text-sm font-semibold leading-6 text-white"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   {translate("firstName")}
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2">
                   <input
                     id="first-name"
                     name="first-name"
@@ -131,7 +166,22 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
+                    className="
+                      block 
+                      w-full 
+                      rounded-md 
+                      border 
+                      border-gray-300
+                      px-3 
+                      py-2 
+                      text-gray-700
+                      shadow-sm
+                      focus:outline-none 
+                      focus:ring-2 
+                      focus:ring-[#556B2F] 
+                      focus:border-transparent
+                      sm:text-sm
+                    "
                   />
                 </div>
               </div>
@@ -139,11 +189,11 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
               <div>
                 <label
                   htmlFor="last-name"
-                  className="block text-sm font-semibold leading-6 text-white"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   {translate("lastName")}
                 </label>
-                <div className="mt-2.5">
+                <div className="mt-2">
                   <input
                     id="last-name"
                     name="last-name"
@@ -151,20 +201,36 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
+                    className="
+                      block 
+                      w-full 
+                      rounded-md 
+                      border 
+                      border-gray-300
+                      px-3 
+                      py-2 
+                      text-gray-700
+                      shadow-sm
+                      focus:outline-none 
+                      focus:ring-2 
+                      focus:ring-[#556B2F] 
+                      focus:border-transparent
+                      sm:text-sm
+                    "
                   />
                 </div>
               </div>
             </div>
+
             {/* Campo Email */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold leading-6 text-white"
+                className="block text-sm font-medium text-gray-700"
               >
                 {translate("email")}
               </label>
-              <div className="mt-2.5">
+              <div className="mt-2">
                 <input
                   id="email"
                   name="email"
@@ -172,25 +238,57 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
+                  className="
+                    block 
+                    w-full 
+                    rounded-md 
+                    border 
+                    border-gray-300
+                    px-3 
+                    py-2 
+                    text-gray-700
+                    shadow-sm
+                    focus:outline-none 
+                    focus:ring-2 
+                    focus:ring-[#556B2F] 
+                    focus:border-transparent
+                    sm:text-sm
+                  "
                 />
               </div>
             </div>
+
             {/* Campo País */}
             <div>
               <label
                 htmlFor="country"
-                className="block text-sm font-semibold leading-6 text-white"
+                className="block text-sm font-medium text-gray-700"
               >
                 {translate("country")}
               </label>
-              <div className="mt-2.5 relative">
+              <div className="relative mt-2">
                 <select
                   id="country"
                   name="country"
                   value={selectedCountry}
                   onChange={handleCountryChange}
-                  className="block w-full appearance-none rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
+                  className="
+                    block 
+                    w-full 
+                    appearance-none 
+                    rounded-md 
+                    border 
+                    border-gray-300
+                    px-3 
+                    py-2 
+                    text-gray-700
+                    shadow-sm
+                    focus:outline-none 
+                    focus:ring-2 
+                    focus:ring-[#556B2F] 
+                    focus:border-transparent
+                    sm:text-sm
+                  "
                 >
                   <option value="">{translate("selectCountry")}</option>
                   {countries.map((country) => (
@@ -199,19 +297,20 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                     </option>
                   ))}
                 </select>
-                <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <ChevronDownIcon className="absolute right-3 top-3 h-5 w-5 text-gray-400 pointer-events-none" />
               </div>
             </div>
+
             {/* Campo Teléfono */}
             <div>
               <label
                 htmlFor="phone-number"
-                className="block text-sm font-semibold leading-6 text-white"
+                className="block text-sm font-medium text-gray-700"
               >
                 {translate("phoneNumber")}
               </label>
-              <div className="relative mt-2.5 flex">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+              <div className="mt-2 flex">
+                <span className="inline-flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   {phonePrefix}
                 </span>
                 <input
@@ -222,57 +321,111 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                   onChange={handlePhoneNumberChange}
                   placeholder={translate("yourPhoneNumber")}
                   autoComplete="tel"
-                  className="block w-full rounded-r-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#a79584] sm:text-sm sm:leading-6"
+                  className="
+                    block 
+                    w-full 
+                    rounded-r-md 
+                    border 
+                    border-gray-300
+                    px-3 
+                    py-2 
+                    text-gray-700
+                    shadow-sm
+                    focus:outline-none 
+                    focus:ring-2 
+                    focus:ring-[#556B2F] 
+                    focus:border-transparent
+                    sm:text-sm
+                  "
                 />
               </div>
             </div>
+
             {/* Aceptar términos */}
-            <Field className="flex gap-x-4">
+            <Field className="flex items-center gap-x-3">
               <div className="flex h-6 items-center">
                 <Switch
                   checked={agreed}
                   onChange={setAgreed}
-                  className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a79584] data-[checked]:bg-[#a79584]"
+                  className="
+                    group 
+                    flex 
+                    w-8 
+                    flex-none 
+                    cursor-pointer 
+                    rounded-full 
+                    bg-gray-200 
+                    p-px 
+                    ring-1 ring-inset ring-gray-300 
+                    transition-colors 
+                    duration-200 
+                    ease-in-out
+                    focus-visible:outline-none
+                    data-[checked]:bg-[#556B2F]
+                  "
                 >
-                  <span className="sr-only">
-                    {translate("agreeToPolicies")}
-                  </span>
+                  <span className="sr-only">{translate("agreeToPolicies")}</span>
                   <span
                     aria-hidden="true"
-                    className="h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
+                    className="
+                      h-4 
+                      w-4 
+                      transform 
+                      rounded-full 
+                      bg-white 
+                      shadow-sm 
+                      ring-1 ring-gray-300 
+                      transition 
+                      duration-200 
+                      ease-in-out 
+                      group-data-[checked]:translate-x-3.5
+                    "
                   />
                 </Switch>
               </div>
-              <Label className="text-sm leading-6 text-white">
+              <Label className="text-sm text-gray-600">
                 {translate("acceptTerms")}{" "}
                 <button
                   type="button"
-                  className="font-semibold text-[#a79584] underline"
+                  className="font-semibold text-[#556B2F] underline"
                   onClick={handleModalOpen}
                 >
                   {translate("privacyPolicy")}
                 </button>
               </Label>
             </Field>
-            {/* Botón de Envío */}
+
+            {/* Botón de Envío con validación */}
             <div>
               <button
                 type="submit"
-                className="block w-full rounded-md bg-[#8a7866] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#640000] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B0000]"
+                disabled={!isFormValid}
+                className={`
+                  block 
+                  w-full 
+                  rounded-md 
+                  px-4 
+                  py-2 
+                  text-center 
+                  text-sm 
+                  font-semibold 
+                  text-white 
+                  shadow-sm 
+                  focus:outline-none 
+                  focus:ring-2 
+                  focus:ring-[#556B2F] 
+                  focus:border-transparent
+                  ${
+                    isFormValid
+                      ? "bg-[#556B2F] hover:bg-[#6B8E23]"
+                      : "bg-gray-300 cursor-not-allowed"
+                  }
+                `}
               >
                 {translate("send")}
               </button>
             </div>
           </form>
-        </div>
-
-        {/* Imagen lateral (solo en pantallas grandes) */}
-        <div className="hidden lg:block">
-          <img
-            src={image}
-            alt="phot"
-            className="object-cover object-center w-full h-full rounded-lg shadow-lg"
-          />
         </div>
       </div>
 
@@ -299,9 +452,7 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                         {translate("infoWeCollect")}
                       </h4>
                       <p>{translate("infoWeCollectText")}</p>
-                      <h4 className="font-semibold">
-                        {translate("useOfInfo")}
-                      </h4>
+                      <h4 className="font-semibold">{translate("useOfInfo")}</h4>
                       <ul className="list-disc ml-5">
                         {translate("useOfInfoList").map((item, index) => (
                           <li key={index}>{item}</li>
@@ -332,7 +483,28 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  className="
+                    w-full 
+                    inline-flex 
+                    justify-center 
+                    rounded-md 
+                    border border-transparent 
+                    shadow-sm 
+                    px-4 
+                    py-2 
+                    bg-red-600 
+                    text-base 
+                    font-medium 
+                    text-white 
+                    hover:bg-red-700 
+                    focus:outline-none 
+                    focus:ring-2 
+                    focus:ring-offset-2 
+                    focus:ring-red-500 
+                    sm:ml-3 
+                    sm:w-auto 
+                    sm:text-sm
+                  "
                   onClick={handleModalClose}
                 >
                   {translate("closeButton")}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocalization } from "../context/LocalizationContext";
-import logo from "../Images/tgDesign.png";
+import logoLight from "../Images/tgDesign.png";
+import logoDark from "../Images/tgDesig_white.png"
 import SocialIcons from "../components/SocialIcons";
 import { Link } from "react-scroll";
 
@@ -13,12 +14,20 @@ const Header = () => {
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         {/* Logo */}
         <a href="/" className="flex items-center">
+ 
           <img
-            src={logo}
-            alt="Logotipo"
-            className="h-16 w-auto"
+            src={logoLight}
+            alt="Logotipo claro"
+            className="h-16 w-auto block dark:hidden"
+          />
+          
+          <img
+            src={logoDark}
+            alt="Logotipo oscuro"
+            className="h-16 w-auto hidden dark:block"
           />
         </a>
+
 
         {/* Contenedor derecho (idiomas en móvil + botón hamburguesa) */}
         <div className="flex items-center">
