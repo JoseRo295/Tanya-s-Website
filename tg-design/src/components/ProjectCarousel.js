@@ -205,7 +205,7 @@ const ProjectCarousel = () => {
     },    
     {
       image: image4,
-      images: [img4_1, img4_2, img4_5, img4_6, img4_7, img4_8],
+      images: [img4_1, img4_5, img4_6, img4_7, img4_8,img4_2,],
       title: translate("proyecto4"),
       description: translate("descripcionProyecto4"),
     },
