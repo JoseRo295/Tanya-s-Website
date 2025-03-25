@@ -4,10 +4,15 @@ import { Field, Label, Switch } from "@headlessui/react";
 import image from "../Images/2.jpg"; // Ajusta la ruta de tu imagen
 import { useLocalization } from "../context/LocalizationContext";
 
+// Importar componentes de MUI
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import InputAdornment from "@mui/material/InputAdornment";
+
 export default function ContactForm() {
   const { translate } = useLocalization();
 
-  // Estados para los datos del formulario
+  // Estados del formulario
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,10 +22,10 @@ export default function ContactForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [agreed, setAgreed] = useState(false);
 
-  // Estado para el modal de política de privacidad
+  // Modal de política de privacidad
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Cargar países al montar el componente
+  // Cargar países al montar
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
@@ -32,7 +37,7 @@ export default function ContactForm() {
       });
   }, []);
 
-  // Manejar cambio de país y prefijo telefónico
+  // Manejar cambio de país
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
@@ -44,41 +49,33 @@ export default function ContactForm() {
     if (selectedCountryData) {
       if (selectedCountryData.name.common === "Russia") {
         setPhonePrefix("+7");
+      } else if (
+        selectedCountryData.idd &&
+        selectedCountryData.idd.suffixes &&
+        selectedCountryData.idd.suffixes.length > 0
+      ) {
+        setPhonePrefix(
+          selectedCountryData.idd.root + selectedCountryData.idd.suffixes[0]
+        );
       } else {
-        if (
-          selectedCountryData.idd &&
-          selectedCountryData.idd.suffixes &&
-          selectedCountryData.idd.suffixes.length > 0
-        ) {
-          setPhonePrefix(
-            selectedCountryData.idd.root + selectedCountryData.idd.suffixes[0]
-          );
-        } else {
-          setPhonePrefix("");
-        }
+        setPhonePrefix("");
       }
     } else {
       setPhonePrefix("");
     }
   };
 
-  // Manejar cambio de número telefónico
+  // Manejar cambio de número
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
   };
 
-  // Abrir modal de política de privacidad
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  // Cerrar modal de política de privacidad
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+  // Modal de privacidad
+  const handleModalOpen = () => setIsModalOpen(true);
+  const handleModalClose = () => setIsModalOpen(false);
 
   // Verificar si el formulario está completo
-  const isFormValid = 
+  const isFormValid =
     firstName.trim() !== "" &&
     lastName.trim() !== "" &&
     email.trim() !== "" &&
@@ -86,13 +83,11 @@ export default function ContactForm() {
     phoneNumber.trim() !== "" &&
     agreed;
 
-  // Enviar formulario a WhatsApp
+  // Enviar a WhatsApp
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Si no es válido, no hacemos nada
     if (!isFormValid) return;
 
-    // Construir el texto del mensaje
     const message = `
 Nombre: ${firstName} ${lastName}
 Email: ${email}
@@ -101,17 +96,13 @@ Teléfono: ${phonePrefix} ${phoneNumber}
 Aceptó términos: ${agreed ? "Sí" : "No"}
     `.trim();
 
-    // Número de WhatsApp (sin '+')
-    const phone = "593983548611"; // Reemplaza con tu número
-    // Crear la URL de WhatsApp con el texto codificado
+    const phone = "593983548611"; // Ajusta tu número (sin '+')
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    // Abrir WhatsApp en otra pestaña
     window.open(url, "_blank");
   };
 
   return (
     <div className="w-full flex items-center justify-center bg-gray-50 py-10 px-4">
-      {/* Contenedor con grid para imagen y formulario de la misma altura */}
       <div
         className="
           max-w-7xl 
@@ -147,198 +138,107 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
             </p>
           </div>
 
-          {/* Formulario con onSubmit */}
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* 2 columnas (Nombre, Apellido) */}
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-              {/* Campo Nombre */}
+              {/* Campo Nombre (MUI TextField) */}
               <div>
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  {translate("firstName")}
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="first-name"
-                    name="first-name"
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    autoComplete="given-name"
-                    className="
-                      block 
-                      w-full 
-                      rounded-md 
-                      border 
-                      border-gray-300
-                      px-3 
-                      py-2 
-                      text-gray-700
-                      shadow-sm
-                      focus:outline-none 
-                      focus:ring-2 
-                      focus:ring-[#556B2F] 
-                      focus:border-transparent
-                      sm:text-sm
-                    "
-                  />
-                </div>
+                <TextField
+                  label={translate("firstName")}
+                  variant="outlined"
+                  fullWidth
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  error={firstName.trim() === ""}
+                  helperText={
+                    firstName.trim() === "" ? "Este campo es obligatorio" : ""
+                  }
+                />
               </div>
-              {/* Campo Apellido */}
-              <div>
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  {translate("lastName")}
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="last-name"
-                    name="last-name"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    autoComplete="family-name"
-                    className="
-                      block 
-                      w-full 
-                      rounded-md 
-                      border 
-                      border-gray-300
-                      px-3 
-                      py-2 
-                      text-gray-700
-                      shadow-sm
-                      focus:outline-none 
-                      focus:ring-2 
-                      focus:ring-[#556B2F] 
-                      focus:border-transparent
-                      sm:text-sm
-                    "
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* Campo Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                {translate("email")}
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="email"
-                  className="
-                    block 
-                    w-full 
-                    rounded-md 
-                    border 
-                    border-gray-300
-                    px-3 
-                    py-2 
-                    text-gray-700
-                    shadow-sm
-                    focus:outline-none 
-                    focus:ring-2 
-                    focus:ring-[#556B2F] 
-                    focus:border-transparent
-                    sm:text-sm
-                  "
+              {/* Campo Apellido (MUI TextField) */}
+              <div>
+                <TextField
+                  label={translate("lastName")}
+                  variant="outlined"
+                  fullWidth
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  error={lastName.trim() === ""}
+                  helperText={
+                    lastName.trim() === "" ? "Este campo es obligatorio" : ""
+                  }
                 />
               </div>
             </div>
 
-            {/* Campo País */}
+            {/* Campo Email (MUI TextField) */}
             <div>
-              <label
-                htmlFor="country"
-                className="block text-sm font-medium text-gray-700"
-              >
-                {translate("country")}
-              </label>
-              <div className="relative mt-2">
-                <select
-                  id="country"
-                  name="country"
-                  value={selectedCountry}
-                  onChange={handleCountryChange}
-                  className="
-                    block 
-                    w-full 
-                    appearance-none 
-                    rounded-md 
-                    border 
-                    border-gray-300
-                    px-3 
-                    py-2 
-                    text-gray-700
-                    shadow-sm
-                    focus:outline-none 
-                    focus:ring-2 
-                    focus:ring-[#556B2F] 
-                    focus:border-transparent
-                    sm:text-sm
-                  "
-                >
-                  <option value="">{translate("selectCountry")}</option>
-                  {countries.map((country) => (
-                    <option key={country.cca3} value={country.name.common}>
-                      {country.name.common}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDownIcon className="absolute right-3 top-3 h-5 w-5 text-gray-400 pointer-events-none" />
-              </div>
+              <TextField
+                label={translate("email")}
+                variant="outlined"
+                fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={email.trim() === ""}
+                helperText={
+                  email.trim() === "" ? "Por favor ingresa tu email" : ""
+                }
+              />
             </div>
 
-            {/* Campo Teléfono */}
+            {/* Campo País (MUI TextField con select) */}
             <div>
-              <label
-                htmlFor="phone-number"
-                className="block text-sm font-medium text-gray-700"
+              <TextField
+                select
+                label={translate("country")}
+                variant="outlined"
+                fullWidth
+                value={selectedCountry}
+                onChange={handleCountryChange}
+                error={selectedCountry.trim() === ""}
+                helperText={
+                  selectedCountry.trim() === ""
+                    ? "Selecciona un país"
+                    : ""
+                }
               >
-                {translate("phoneNumber")}
-              </label>
-              <div className="mt-2 flex">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                  {phonePrefix}
-                </span>
-                <input
-                  id="phone-number"
-                  name="phone-number"
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={handlePhoneNumberChange}
-                  placeholder={translate("yourPhoneNumber")}
-                  autoComplete="tel"
-                  className="
-                    block 
-                    w-full 
-                    rounded-r-md 
-                    border 
-                    border-gray-300
-                    px-3 
-                    py-2 
-                    text-gray-700
-                    shadow-sm
-                    focus:outline-none 
-                    focus:ring-2 
-                    focus:ring-[#556B2F] 
-                    focus:border-transparent
-                    sm:text-sm
-                  "
-                />
-              </div>
+                <MenuItem value="">
+                  {translate("selectCountry")}
+                </MenuItem>
+                {countries.map((country) => (
+                  <MenuItem
+                    key={country.cca3}
+                    value={country.name.common}
+                  >
+                    {country.name.common}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+
+            {/* Campo Teléfono con prefijo (MUI TextField + InputAdornment) */}
+            <div>
+              <TextField
+                label={translate("phoneNumber")}
+                variant="outlined"
+                fullWidth
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                error={phoneNumber.trim() === ""}
+                helperText={
+                  phoneNumber.trim() === ""
+                    ? "Por favor ingresa tu teléfono"
+                    : ""
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      {phonePrefix}
+                    </InputAdornment>
+                  ),
+                }}
+              />
             </div>
 
             {/* Aceptar términos */}
@@ -364,7 +264,9 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                     data-[checked]:bg-[#556B2F]
                   "
                 >
-                  <span className="sr-only">{translate("agreeToPolicies")}</span>
+                  <span className="sr-only">
+                    {translate("agreeToPolicies")}
+                  </span>
                   <span
                     aria-hidden="true"
                     className="
@@ -395,11 +297,10 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
               </Label>
             </Field>
 
-            {/* Botón de Envío con validación */}
+            {/* Botón de Envío */}
             <div>
               <button
                 type="submit"
-                disabled={!isFormValid}
                 className={`
                   block 
                   w-full 
@@ -421,6 +322,7 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                       : "bg-gray-300 cursor-not-allowed"
                   }
                 `}
+                disabled={!isFormValid}
               >
                 {translate("send")}
               </button>
