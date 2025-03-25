@@ -165,69 +165,78 @@ const translations = {
     contactText:
       "If you have any questions regarding this Privacy Policy or how we handle your personal information, you can contact us at +593983548611.",
 
-      detailsButton: "More details",
+    detailsButton: "More details",
 
-      // Package "Concept"
-      conceptPackageTitle: 'Package "Concept"',
-      conceptPackageSubtitle: "For those needing a design with essential planning",
-      conceptPackagePrice: "from 18 $/m2",
-      conceptPackageTime: "2-3 weeks",
-      conceptPackageItems: [
-        "Furniture layout plan (1–2 options)",
-        "Mood board with furniture and materials",
-        "Shopping list (furniture, materials)",
-        "Online consultation for implementation (1 call)",
-      ],
-  
-      // Package "100%"
-      hundredPackageTitle: 'Package "100%"',
-      hundredPackageSubtitle: "For those needing a full design package with drawings",
-      hundredPackagePrice: "from 25 $/m2",
-      hundredPackageTime: "6 weeks",
-      hundredPackageItems: [
-        "Furniture layout plan (2–3 options)",
-        "Mood board with furniture and materials",
-        "3D visualization",
-        "Complete set of drawings for builders",
-        "Shopping list (furniture, materials)",
-        "Online consultation for implementation (1 call)",
-      ],
-  
-      // Package "Airbnb"
-      airbnbPackageTitle: 'Package "Airbnb" (apartments up to 40 m2)',
-      airbnbPackageSubtitle: "For those preparing a property for rent",
-      airbnbPackagePrice: "from 27 $/m2",
-      airbnbPackageTime: "5 weeks + renovation time",
-      airbnbPackageItems: [
-        "Furniture layout plan (2–3 options)",
-        "Mood board with furniture and materials",
-        "3D visualization",
-        "Complete set of drawings for builders",
-        "Shopping list (furniture, materials)",
-        "Organization of purchase of materials, furniture, decor, necessary things (from towels to soap)",
-        "Online/offline shopping trips together",
-        "Site visits and implementation control (only in Ecuador)",
-        "Apartment Decoration",
-        "Photoshoot of an apartment for posting on a website",
-      ],
-  
-      // Package "WOW Effect"
-      wowPackageTitle: 'Package "WOW Effect"',
-      wowPackageSubtitle: "For those who want to entrust the complete process to professionals",
-      wowPackagePrice: "from 40 $/m2",
-      wowPackageTime: "6 weeks + renovation time",
-      wowPackageItems: [
-        "Furniture layout plan (2–3 options)",
-        "Mood board with furniture and materials",
-        "3D visualization",
-        "Complete set of drawings for builders",
-        "Shopping list (furniture, materials)",
-        "Online unlimited support during implementation",
-        "Interior panoramas and videos",
-        "Online/offline shopping trips together",
-        "Purchase of materials and furniture",
-        "Site visits and implementation control (only in Ecuador)",
-      ],
+    // Package "Concept"
+    conceptPackageTitle: 'Package "Concept"',
+    conceptPackageSubtitle:
+      "For those needing a design with essential planning",
+    conceptPackagePrice: "from 18 $/m2",
+    conceptPackageTime: "2-3 weeks",
+    conceptPackageItems: [
+      "Furniture layout plan (1–2 options)",
+      "Mood board with furniture and materials",
+      "Shopping list (furniture, materials)",
+      "Online consultation for implementation (1 call)",
+    ],
+
+    // Package "100%"
+    hundredPackageTitle: 'Package "100%"',
+    hundredPackageSubtitle:
+      "For those needing a full design package with drawings",
+    hundredPackagePrice: "from 25 $/m2",
+    hundredPackageTime: "6 weeks",
+    hundredPackageItems: [
+      "Furniture layout plan (2–3 options)",
+      "Mood board with furniture and materials",
+      "3D visualization",
+      "Complete set of drawings for builders",
+      "Shopping list (furniture, materials)",
+      "Online consultation for implementation (1 call)",
+    ],
+
+    // Package "Airbnb"
+    airbnbPackageTitle: 'Package "Airbnb" (apartments up to 40 m2)',
+    airbnbPackageSubtitle: "For those preparing a property for rent",
+    airbnbPackagePrice: "from 27 $/m2",
+    airbnbPackageTime: "5 weeks + renovation time",
+    airbnbPackageItems: [
+      "Furniture layout plan (2–3 options)",
+      "Mood board with furniture and materials",
+      "3D visualization",
+      "Complete set of drawings for builders",
+      "Shopping list (furniture, materials)",
+      "Organization of purchase of materials, furniture, decor, necessary things (from towels to soap)",
+      "Online/offline shopping trips together",
+      "Site visits and implementation control (only in Ecuador)",
+      "Apartment Decoration",
+      "Photoshoot of an apartment for posting on a website",
+    ],
+
+    // Package "WOW Effect"
+    wowPackageTitle: 'Package "WOW Effect"',
+    wowPackageSubtitle:
+      "For those who want to entrust the complete process to professionals",
+    wowPackagePrice: "from 40 $/m2",
+    wowPackageTime: "6 weeks + renovation time",
+    wowPackageItems: [
+      "Furniture layout plan (2–3 options)",
+      "Mood board with furniture and materials",
+      "3D visualization",
+      "Complete set of drawings for builders",
+      "Shopping list (furniture, materials)",
+      "Online unlimited support during implementation",
+      "Interior panoramas and videos",
+      "Online/offline shopping trips together",
+      "Purchase of materials and furniture",
+      "Site visits and implementation control (only in Ecuador)",
+    ],
+    firstNameRequired: "This field is required",
+    lastNameRequired: "This field is required",
+    emailRequired: "Please enter your email",
+    countryRequired: "Please select a country",
+    phoneNumberRequired: "Please enter your phone number",
+    agreeRequired: "You must agree to the terms",
   },
   ru: {
     home: "Главная",
@@ -385,70 +394,78 @@ const translations = {
     contactText:
       "Если у вас есть вопросы по этой Политике конфиденциальности или по тому, как мы обрабатываем вашу личную информацию, вы можете связаться с нами по телефону +593983548611.",
 
-      detailsButton: "Подробнее",
+    detailsButton: "Подробнее",
 
-      // Package "Concept"
-      conceptPackageTitle: 'Пакет «Concept»',
-      conceptPackageSubtitle: "Для тех, кому нужен дизайн с базовым планированием",
-      conceptPackagePrice: "от 18 $/м2",
-      conceptPackageTime: "2-3 недели",
-      conceptPackageItems: [
-        "План расстановки мебели (1–2 варианта)",
-        "Мудборд с мебелью и материалами",
-        "Список покупок (мебель, материалы)",
-        "Онлайн-консультация по внедрению (1 звонок)",
-      ],
-      
-      // Package "100%"
-      hundredPackageTitle: 'Пакет «100%»',
-      hundredPackageSubtitle: "Для тех, кому нужен полный дизайн-проект с чертежами",
-      hundredPackagePrice: "от 25 $/м2",
-      hundredPackageTime: "6 недель",
-      hundredPackageItems: [
-        "План расстановки мебели (2–3 варианта)",
-        "Мудборд с мебелью и материалами",
-        "3D-визуализация",
-        "Полный комплект чертежей для строителей",
-        "Список покупок (мебель, материалы)",
-        "Онлайн-консультация по внедрению (1 звонок)",
-      ],
-      
-      // Package "Airbnb"
-      airbnbPackageTitle: 'Пакет «Airbnb» (квартиры до 40 м²)',
-      airbnbPackageSubtitle: "Для тех, кто готовит недвижимость для аренды",
-      airbnbPackagePrice: "от 27 $/м2",
-      airbnbPackageTime: "5 недель + время ремонта",
-      airbnbPackageItems: [
-        "План расстановки мебели (2–3 варианта)",
-        "Мудборд с мебелью и материалами",
-        "3D-визуализация",
-        "Полный комплект чертежей для строителей",
-        "Список покупок (мебель, материалы)",
-        "Организация закупки материалов, мебели, декора и необходимых предметов (от полотенец до мыла)",
-        "Совместные онлайн/офлайн покупки",
-        "Выезды на объект и контроль реализации (только в Эквадоре)",
-        "Декорирование квартиры",
-        "Фотосессия квартиры для размещения на сайте",
-      ],
-      
-      // Package "WOW Effect"
-      wowPackageTitle: 'Пакет «WOW Effect»',
-      wowPackageSubtitle: "Для тех, кто хочет доверить весь процесс профессионалам",
-      wowPackagePrice: "от 40 $/м2",
-      wowPackageTime: "6 недель + время ремонта",
-      wowPackageItems: [
-        "План расстановки мебели (2–3 варианта)",
-        "Мудборд с мебелью и материалами",
-        "3D-визуализация",
-        "Полный комплект чертежей для строителей",
-        "Список покупок (мебель, материалы)",
-        "Неограниченная онлайн-поддержка во время реализации",
-        "Панорамы и видео интерьера",
-        "Совместные онлайн/офлайн покупки",
-        "Закупка материалов и мебели",
-        "Выезды на объект и контроль реализации (только в Эквадоре)",
-      ],
-      
+    // Package "Concept"
+    conceptPackageTitle: "Пакет «Concept»",
+    conceptPackageSubtitle:
+      "Для тех, кому нужен дизайн с базовым планированием",
+    conceptPackagePrice: "от 18 $/м2",
+    conceptPackageTime: "2-3 недели",
+    conceptPackageItems: [
+      "План расстановки мебели (1–2 варианта)",
+      "Мудборд с мебелью и материалами",
+      "Список покупок (мебель, материалы)",
+      "Онлайн-консультация по внедрению (1 звонок)",
+    ],
+
+    // Package "100%"
+    hundredPackageTitle: "Пакет «100%»",
+    hundredPackageSubtitle:
+      "Для тех, кому нужен полный дизайн-проект с чертежами",
+    hundredPackagePrice: "от 25 $/м2",
+    hundredPackageTime: "6 недель",
+    hundredPackageItems: [
+      "План расстановки мебели (2–3 варианта)",
+      "Мудборд с мебелью и материалами",
+      "3D-визуализация",
+      "Полный комплект чертежей для строителей",
+      "Список покупок (мебель, материалы)",
+      "Онлайн-консультация по внедрению (1 звонок)",
+    ],
+
+    // Package "Airbnb"
+    airbnbPackageTitle: "Пакет «Airbnb» (квартиры до 40 м²)",
+    airbnbPackageSubtitle: "Для тех, кто готовит недвижимость для аренды",
+    airbnbPackagePrice: "от 27 $/м2",
+    airbnbPackageTime: "5 недель + время ремонта",
+    airbnbPackageItems: [
+      "План расстановки мебели (2–3 варианта)",
+      "Мудборд с мебелью и материалами",
+      "3D-визуализация",
+      "Полный комплект чертежей для строителей",
+      "Список покупок (мебель, материалы)",
+      "Организация закупки материалов, мебели, декора и необходимых предметов (от полотенец до мыла)",
+      "Совместные онлайн/офлайн покупки",
+      "Выезды на объект и контроль реализации (только в Эквадоре)",
+      "Декорирование квартиры",
+      "Фотосессия квартиры для размещения на сайте",
+    ],
+
+    // Package "WOW Effect"
+    wowPackageTitle: "Пакет «WOW Effect»",
+    wowPackageSubtitle:
+      "Для тех, кто хочет доверить весь процесс профессионалам",
+    wowPackagePrice: "от 40 $/м2",
+    wowPackageTime: "6 недель + время ремонта",
+    wowPackageItems: [
+      "План расстановки мебели (2–3 варианта)",
+      "Мудборд с мебелью и материалами",
+      "3D-визуализация",
+      "Полный комплект чертежей для строителей",
+      "Список покупок (мебель, материалы)",
+      "Неограниченная онлайн-поддержка во время реализации",
+      "Панорамы и видео интерьера",
+      "Совместные онлайн/офлайн покупки",
+      "Закупка материалов и мебели",
+      "Выезды на объект и контроль реализации (только в Эквадоре)",
+    ],
+    firstNameRequired: "Это поле обязательно",
+    lastNameRequired: "Это поле обязательно",
+    emailRequired: "Пожалуйста, введите ваш email",
+    countryRequired: "Выберите страну",
+    phoneNumberRequired: "Пожалуйста, введите ваш телефон",
+    agreeRequired: "Вы должны согласиться с условиями",
   },
   es: {
     home: "Inicio",
@@ -608,69 +625,78 @@ const translations = {
     contactText:
       "Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tu información personal, puedes contactarnos a +593983548611.",
 
-      detailsButton: "Más detalles",
+    detailsButton: "Más detalles",
 
-      // Package "Concept"
-      conceptPackageTitle: 'Paquete "Concepto"',
-      conceptPackageSubtitle: "Para quienes necesitan un diseño con planificación esencial",
-      conceptPackagePrice: "desde 18 $/m2",
-      conceptPackageTime: "2-3 semanas",
-      conceptPackageItems: [
-        "Plan de distribución de muebles (1–2 opciones)",
-        "Mood board con muebles y materiales",
-        "Lista de compras (muebles, materiales)",
-        "Consulta online para la implementación (1 llamada)",
-      ],
-      
-      // Package "100%"
-      hundredPackageTitle: 'Paquete "100%"',
-      hundredPackageSubtitle: "Para quienes necesitan un paquete de diseño completo con planos",
-      hundredPackagePrice: "desde 25 $/m2",
-      hundredPackageTime: "6 semanas",
-      hundredPackageItems: [
-        "Plan de distribución de muebles (2–3 opciones)",
-        "Mood board con muebles y materiales",
-        "Visualización 3D",
-        "Conjunto completo de planos para los constructores",
-        "Lista de compras (muebles, materiales)",
-        "Consulta en línea para la implementación (1 llamada)",
-      ],
-      
-      // Package "Airbnb"
-      airbnbPackageTitle: 'Paquete "Airbnb" (apartamentos hasta 40 m2)',
-      airbnbPackageSubtitle: "Para quienes preparan una propiedad para alquiler",
-      airbnbPackagePrice: "desde 27 $/m2",
-      airbnbPackageTime: "5 semanas + tiempo de renovación",
-      airbnbPackageItems: [
-        "Plan de distribución de muebles (2–3 opciones)",
-        "Mood board con muebles y materiales",
-        "Visualización 3D",
-        "Conjunto completo de planos para los constructores",
-        "Lista de compras (muebles, materiales)",
-        "Organización de la compra de materiales, muebles, decoración y artículos necesarios (desde toallas hasta jabón)",
-        "Compras en línea/presenciales juntos",
-        "Visitas al sitio y control de la implementación (solo en Ecuador)",
-        "Decoración del apartamento",
-        "Sesión de fotos del apartamento para publicarlo en un sitio web",
-      ],
-      
-      // Package "WOW Effect"
-      wowPackageTitle: 'Paquete "WOW Effect"',
-      wowPackageSubtitle: "Para quienes desean confiar el proceso completo a profesionales",
-      wowPackagePrice: "desde 40 $/m2",
-      wowPackageTime: "6 semanas + tiempo de renovación",
-      wowPackageItems: [
-        "Plan de distribución de muebles (2–3 opciones)",
-        "Mood board con muebles y materiales",
-        "Visualización 3D",
-        "Conjunto completo de planos para los constructores",
-        "Lista de compras (muebles, materiales)",
-        "Soporte en línea ilimitado durante la implementación",
-        "Panoramas y videos del interior",
-        "Compras en línea/presenciales juntos",
-        "Adquisición de materiales y muebles",
-        "Visitas al sitio y control de la implementación (solo en Ecuador)",
-      ],
+    // Package "Concept"
+    conceptPackageTitle: 'Paquete "Concepto"',
+    conceptPackageSubtitle:
+      "Para quienes necesitan un diseño con planificación esencial",
+    conceptPackagePrice: "desde 18 $/m2",
+    conceptPackageTime: "2-3 semanas",
+    conceptPackageItems: [
+      "Plan de distribución de muebles (1–2 opciones)",
+      "Mood board con muebles y materiales",
+      "Lista de compras (muebles, materiales)",
+      "Consulta online para la implementación (1 llamada)",
+    ],
+
+    // Package "100%"
+    hundredPackageTitle: 'Paquete "100%"',
+    hundredPackageSubtitle:
+      "Para quienes necesitan un paquete de diseño completo con planos",
+    hundredPackagePrice: "desde 25 $/m2",
+    hundredPackageTime: "6 semanas",
+    hundredPackageItems: [
+      "Plan de distribución de muebles (2–3 opciones)",
+      "Mood board con muebles y materiales",
+      "Visualización 3D",
+      "Conjunto completo de planos para los constructores",
+      "Lista de compras (muebles, materiales)",
+      "Consulta en línea para la implementación (1 llamada)",
+    ],
+
+    // Package "Airbnb"
+    airbnbPackageTitle: 'Paquete "Airbnb" (apartamentos hasta 40 m2)',
+    airbnbPackageSubtitle: "Para quienes preparan una propiedad para alquiler",
+    airbnbPackagePrice: "desde 27 $/m2",
+    airbnbPackageTime: "5 semanas + tiempo de renovación",
+    airbnbPackageItems: [
+      "Plan de distribución de muebles (2–3 opciones)",
+      "Mood board con muebles y materiales",
+      "Visualización 3D",
+      "Conjunto completo de planos para los constructores",
+      "Lista de compras (muebles, materiales)",
+      "Organización de la compra de materiales, muebles, decoración y artículos necesarios (desde toallas hasta jabón)",
+      "Compras en línea/presenciales juntos",
+      "Visitas al sitio y control de la implementación (solo en Ecuador)",
+      "Decoración del apartamento",
+      "Sesión de fotos del apartamento para publicarlo en un sitio web",
+    ],
+
+    // Package "WOW Effect"
+    wowPackageTitle: 'Paquete "WOW Effect"',
+    wowPackageSubtitle:
+      "Para quienes desean confiar el proceso completo a profesionales",
+    wowPackagePrice: "desde 40 $/m2",
+    wowPackageTime: "6 semanas + tiempo de renovación",
+    wowPackageItems: [
+      "Plan de distribución de muebles (2–3 opciones)",
+      "Mood board con muebles y materiales",
+      "Visualización 3D",
+      "Conjunto completo de planos para los constructores",
+      "Lista de compras (muebles, materiales)",
+      "Soporte en línea ilimitado durante la implementación",
+      "Panoramas y videos del interior",
+      "Compras en línea/presenciales juntos",
+      "Adquisición de materiales y muebles",
+      "Visitas al sitio y control de la implementación (solo en Ecuador)",
+    ],
+    firstNameRequired: "Este campo es obligatorio",
+    lastNameRequired: "Este campo es obligatorio",
+    emailRequired: "Por favor ingresa tu email",
+    countryRequired: "Selecciona un país",
+    phoneNumberRequired: "Por favor ingresa tu teléfono",
+    agreeRequired: "Debes aceptar los términos",
   },
 };
 

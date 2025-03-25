@@ -89,12 +89,13 @@ export default function ContactForm() {
     if (!isFormValid) return;
 
     const message = `
-Nombre: ${firstName} ${lastName}
-Email: ${email}
-País: ${selectedCountry}
-Teléfono: ${phonePrefix} ${phoneNumber}
-Aceptó términos: ${agreed ? "Sí" : "No"}
+    Name: ${firstName} ${lastName}
+    Email: ${email}
+    Country: ${selectedCountry}
+    Phone: ${phonePrefix} ${phoneNumber}
+    Accepted Terms: ${agreed ? "Yes" : "No"}
     `.trim();
+    
 
     const phone = "593983548611"; // Ajusta tu número (sin '+')
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -139,9 +140,8 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* 2 columnas (Nombre, Apellido) */}
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-              {/* Campo Nombre (MUI TextField) */}
+              {/* Campo Nombre */}
               <div>
                 <TextField
                   label={translate("firstName")}
@@ -151,12 +151,14 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                   onChange={(e) => setFirstName(e.target.value)}
                   error={firstName.trim() === ""}
                   helperText={
-                    firstName.trim() === "" ? "Este campo es obligatorio" : ""
+                    firstName.trim() === ""
+                      ? translate("firstNameRequired")
+                      : ""
                   }
                 />
               </div>
 
-              {/* Campo Apellido (MUI TextField) */}
+              {/* Campo Apellido */}
               <div>
                 <TextField
                   label={translate("lastName")}
@@ -166,13 +168,15 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                   onChange={(e) => setLastName(e.target.value)}
                   error={lastName.trim() === ""}
                   helperText={
-                    lastName.trim() === "" ? "Este campo es obligatorio" : ""
+                    lastName.trim() === ""
+                      ? translate("lastNameRequired")
+                      : ""
                   }
                 />
               </div>
             </div>
 
-            {/* Campo Email (MUI TextField) */}
+            {/* Campo Email */}
             <div>
               <TextField
                 label={translate("email")}
@@ -182,12 +186,12 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                 onChange={(e) => setEmail(e.target.value)}
                 error={email.trim() === ""}
                 helperText={
-                  email.trim() === "" ? "Por favor ingresa tu email" : ""
+                  email.trim() === "" ? translate("emailRequired") : ""
                 }
               />
             </div>
 
-            {/* Campo País (MUI TextField con select) */}
+            {/* Campo País */}
             <div>
               <TextField
                 select
@@ -199,25 +203,20 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                 error={selectedCountry.trim() === ""}
                 helperText={
                   selectedCountry.trim() === ""
-                    ? "Selecciona un país"
+                    ? translate("countryRequired")
                     : ""
                 }
               >
-                <MenuItem value="">
-                  {translate("selectCountry")}
-                </MenuItem>
+                <MenuItem value="">{translate("selectCountry")}</MenuItem>
                 {countries.map((country) => (
-                  <MenuItem
-                    key={country.cca3}
-                    value={country.name.common}
-                  >
+                  <MenuItem key={country.cca3} value={country.name.common}>
                     {country.name.common}
                   </MenuItem>
                 ))}
               </TextField>
             </div>
 
-            {/* Campo Teléfono con prefijo (MUI TextField + InputAdornment) */}
+            {/* Campo Teléfono */}
             <div>
               <TextField
                 label={translate("phoneNumber")}
@@ -228,7 +227,7 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                 error={phoneNumber.trim() === ""}
                 helperText={
                   phoneNumber.trim() === ""
-                    ? "Por favor ingresa tu teléfono"
+                    ? translate("phoneNumberRequired")
                     : ""
                 }
                 InputProps={{
@@ -248,39 +247,17 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
                   checked={agreed}
                   onChange={setAgreed}
                   className="
-                    group 
-                    flex 
-                    w-8 
-                    flex-none 
-                    cursor-pointer 
-                    rounded-full 
-                    bg-gray-200 
-                    p-px 
-                    ring-1 ring-inset ring-gray-300 
-                    transition-colors 
-                    duration-200 
-                    ease-in-out
-                    focus-visible:outline-none
-                    data-[checked]:bg-[#556B2F]
+                    group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px 
+                    ring-1 ring-inset ring-gray-300 transition-colors duration-200 ease-in-out
+                    focus-visible:outline-none data-[checked]:bg-[#556B2F]
                   "
                 >
-                  <span className="sr-only">
-                    {translate("agreeToPolicies")}
-                  </span>
+                  <span className="sr-only">{translate("agreeToPolicies")}</span>
                   <span
                     aria-hidden="true"
                     className="
-                      h-4 
-                      w-4 
-                      transform 
-                      rounded-full 
-                      bg-white 
-                      shadow-sm 
-                      ring-1 ring-gray-300 
-                      transition 
-                      duration-200 
-                      ease-in-out 
-                      group-data-[checked]:translate-x-3.5
+                      h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-300 transition 
+                      duration-200 ease-in-out group-data-[checked]:translate-x-3.5
                     "
                   />
                 </Switch>
@@ -302,20 +279,8 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
               <button
                 type="submit"
                 className={`
-                  block 
-                  w-full 
-                  rounded-md 
-                  px-4 
-                  py-2 
-                  text-center 
-                  text-sm 
-                  font-semibold 
-                  text-white 
-                  shadow-sm 
-                  focus:outline-none 
-                  focus:ring-2 
-                  focus:ring-[#556B2F] 
-                  focus:border-transparent
+                  block w-full rounded-md px-4 py-2 text-center text-sm font-semibold text-white shadow-sm 
+                  focus:outline-none focus:ring-2 focus:ring-[#556B2F] focus:border-transparent
                   ${
                     isFormValid
                       ? "bg-[#556B2F] hover:bg-[#6B8E23]"
