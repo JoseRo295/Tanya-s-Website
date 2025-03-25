@@ -21,6 +21,7 @@ export default function NewPricingPlans() {
       price: translate("conceptPackagePrice"),
       time: translate("conceptPackageTime"),
       features: translate("conceptPackageItems"),
+      pdfLink: "/pdfs/Example_Concept.pdf", // Enlace al PDF de Concept
     },
     {
       id: "100",
@@ -29,14 +30,16 @@ export default function NewPricingPlans() {
       price: translate("hundredPackagePrice"),
       time: translate("hundredPackageTime"),
       features: translate("hundredPackageItems"),
+      pdfLink: "/pdfs/Example_100.pdf", // Enlace al PDF de 100%
     },
     {
-      id: "airbnb", // Paquete especial
+      id: "airbnb", // Paquete especial, sin PDF
       title: translate("airbnbPackageTitle"),
       subtitle: translate("airbnbPackageSubtitle"),
       price: translate("airbnbPackagePrice"),
       time: translate("airbnbPackageTime"),
       features: translate("airbnbPackageItems"),
+      // NO pdfLink aquí
     },
     {
       id: "wow",
@@ -45,6 +48,7 @@ export default function NewPricingPlans() {
       price: translate("wowPackagePrice"),
       time: translate("wowPackageTime"),
       features: translate("wowPackageItems"),
+      pdfLink: "/pdfs/Example_WOW Effect.pdf ", // Enlace al PDF de WOW
     },
   ];
 
@@ -55,7 +59,7 @@ export default function NewPricingPlans() {
           {translate("pricing")}
         </h2>
 
-        {/* 
+        {/*
           Grid responsivo:
           1 columna en móviles,
           2 en pantallas pequeñas,
@@ -153,38 +157,55 @@ export default function NewPricingPlans() {
                   </ul>
                 </div>
 
-                {/* Botón de WhatsApp con mensaje personalizado */}
-                <a
-                  href={getWhatsAppLink(pack.title)} // Usamos la función
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`
-                    inline-block 
-                    w-full 
-                    text-center 
-                    px-4 
-                    py-2 
-                    font-bold 
-                    rounded 
-                    transition-colors 
-                    duration-300
-                    ${
-                      isAirbnb
-                        ? `
-                          bg-[#FF5A5F] 
-                          text-white
-                          group-hover:bg-[#FD3A3F]
-                        `
-                        : `
-                          bg-[#556B2F] 
-                          text-white
-                          group-hover:bg-[#6B8E23]
-                        `
-                    }
-                  `}
-                >
-                  {translate("detailsButton")}
-                </a>
+                {/* Parte inferior: Botón WhatsApp + PDF */}
+                <div>
+                  {/* Botón de WhatsApp con mensaje personalizado */}
+                  <a
+                    href={getWhatsAppLink(pack.title)} // Usamos la función
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`
+                      inline-block 
+                      w-full 
+                      text-center 
+                      px-4 
+                      py-2 
+                      font-bold 
+                      rounded 
+                      transition-colors 
+                      duration-300
+                      ${
+                        isAirbnb
+                          ? `
+                            bg-[#FF5A5F] 
+                            text-white
+                            group-hover:bg-[#FD3A3F]
+                          `
+                          : `
+                            bg-[#556B2F] 
+                            text-white
+                            group-hover:bg-[#6B8E23]
+                          `
+                      }
+                    `}
+                  >
+                    {translate("detailsButton")}
+                  </a>
+
+                  {/* Enlace PDF (solo si existe pdfLink) */}
+                  {pack.pdfLink && (
+                    <div className="mt-4 text-center">
+                      <a
+                        href={pack.pdfLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-[#556B2F] underline"
+                      >
+                        {translate("downloadBrochure")}
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}
