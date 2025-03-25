@@ -29,7 +29,7 @@ const translations = {
     privacyPolicy: "privacy policy",
     send: "Send ",
 
-    nuestrosProyectos: "Our Projects",
+    nuestrosProyectos: "Projects",
     proyecto1: "Studio, 25 m², Saint Petersburg",
     descripcionProyecto1:
       "A vibrant studio with accent wallpaper, a concrete wall, and a neutral bathroom featuring black accents in plumbing and lighting.",
@@ -187,7 +187,7 @@ const translations = {
     privacyPolicy: "политикой конфиденциальности",
     send: "Отправить",
 
-    nuestrosProyectos: "Наши проекты",
+    nuestrosProyectos: "Проекты",
     proyecto1: "Студия, 25 м², г. Санкт-Петербург",
     descripcionProyecto1:
       "Яркая студия с акцентными обоями, бетонной стеной и нейтральной ванной с черными акцентами в сантехнике и освещении.",
@@ -344,7 +344,7 @@ const translations = {
     privacyPolicy: "política de privacidad",
     send: "Enviar",
 
-    nuestrosProyectos: "Nuestros Proyectos",
+    nuestrosProyectos: "Proyectos",
     proyecto1: "Estudio, 25 m², San Petersburgo",
     descripcionProyecto1:
       "Un estudio vibrante con papel tapiz llamativo, una pared de hormigón y un baño neutro con acentos negros en la grifería e iluminación.",
