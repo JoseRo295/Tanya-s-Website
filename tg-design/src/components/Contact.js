@@ -92,7 +92,7 @@ Aceptó términos: ${agreed ? "Sí" : "No"}
     `.trim();
 
     // Número sin signo '+'
-    const phone = "593987149330";
+    const phone = "593983548611";
     // Crear la URL de WhatsApp con el texto codificado
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     // Abrir WhatsApp (o WhatsApp Web) en una nueva pestaña
