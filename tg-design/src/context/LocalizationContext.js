@@ -55,7 +55,7 @@ const translations = {
 
     proyecto7: "Family Apartment, 80 m², Nizhny Novgorod",
     descripcionProyecto7:
-      "A cozy one-bedroom apartment in industrial style with elements of minimalism, designed in a neutral color palette with black accents and a pleasant olive hue that adds dynamism to the interior.",
+      "A cozy three-room family apartment with a spacious kitchen-living room, a bedroom with a thoughtfully designed walk-in closet, a study, a children's room, and two separate bathrooms. The apartment is designed in a modern style with bright emerald accents in the textiles.",
 
     proyecto8: "Three-Bedroom Apartment, 65 m², Moscow",
     descripcionProyecto8:
@@ -213,7 +213,7 @@ const translations = {
 
     proyecto7: "Семейная квартира, 80 м², г. Нижний Новгород",
     descripcionProyecto7:
-      "Уютная однокомнатная квартира в стиле индастриал с элементами минимализма, выполненная в нейтральной цветовой гамме с черными акцентами и приятным оливковым цветом, который добавляет динамики интерьеру.",
+      "Семейная трехкомнатная квартира с просторной кухней-гостиной, спальней с продуманной гардеробной, кабинетом, детской и 2 отдельными санузлами. Дизайн квартиры выполнен в современном стиле в яркими изумрудными акцентами в текстиле",
 
     proyecto8: "Трехкомнатная квартира, 65 м², г. Москва",
     descripcionProyecto8:
@@ -371,7 +371,7 @@ const translations = {
 
     proyecto7: "Apartamento familiar, 80 m², Nizhni Nóvgorod",
     descripcionProyecto7:
-      "Un acogedor apartamento de un dormitorio en estilo industrial con elementos de minimalismo, diseñado en una paleta de colores neutros con acentos negros y un agradable tono oliva que agrega dinamismo al interior.",
+      "Acogedor apartamento familiar de tres habitaciones con una amplia cocina-sala de estar, un dormitorio con vestidor bien diseñado, un estudio, una habitación infantil y dos baños independientes. El diseño del apartamento está realizado en un estilo moderno con acentos esmeralda vibrantes en los textiles.",
 
     proyecto8: "Apartamento de tres habitaciones, 65 m², Moscú",
     descripcionProyecto8:
