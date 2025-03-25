@@ -9,7 +9,7 @@ const WhatsAppButton = () => {
     window.open(url, '_blank');
   };
 
-  // Estilo del botón
+  // Estilo del botón (ahora con colores de WhatsApp)
   const buttonStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -18,8 +18,8 @@ const WhatsAppButton = () => {
     height: '60px',
     borderRadius: '100%',
     border: 'none',
-    // Color base: #556B2F | Hover: #6B8E23
-    backgroundColor: isHovered ? '#6B8E23' : '#556B2F',
+    // Color base: #25D366 | Hover: #20B855
+    backgroundColor: isHovered ? '#20B855' : '#25D366',
     position: 'fixed',
     bottom: '20px',
     right: '20px',
