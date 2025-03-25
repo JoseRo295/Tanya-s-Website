@@ -11,21 +11,55 @@ const Header = () => {
   return (
     <nav className="bg-white border-b border-gray-200 dark:border-gray-700 px-4 py-3 shadow-md dark:bg-gray-800 sticky top-0 z-50">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
+        {/* Logo */}
         <a href="/" className="flex items-center">
           <img
             src={logo}
             alt="Logotipo"
-            className="h-16 w-auto "
+            className="h-16 w-auto"
           />
-          {/* <span className="text-2xl font-semibold text-gray-900 dark:text-white">
-            TG Design
-          </span> */}
         </a>
+
+        {/* Contenedor derecho (idiomas en móvil + botón hamburguesa) */}
         <div className="flex items-center">
+          {/* Botones de idioma para MOBILE (ocultos en desktop) */}
+          <div className="flex space-x-2 mr-2 md:hidden">
+            <button
+              onClick={(e) => {
+                switchLanguage("ru", e);
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+            >
+              Ru
+            </button>
+            <button
+              onClick={(e) => {
+                switchLanguage("en", e);
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+            >
+              En
+            </button>
+            <button
+              onClick={(e) => {
+                switchLanguage("es", e);
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+            >
+              Es
+            </button>
+          </div>
+
+          {/* Botón hamburguesa */}
           <button
             id="menu-toggle"
             type="button"
-            className="inline-flex items-center p-2 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+            className="inline-flex items-center p-2 text-gray-500 rounded-lg hover:bg-gray-100 
+                       focus:outline-none focus:ring-2 focus:ring-gray-200 
+                       dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -45,18 +79,18 @@ const Header = () => {
           </button>
         </div>
 
-        <div
-          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
-        >
-          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-lg font-medium ">
+        {/* Menú desplegable (versión desktop y móvil) */}
+        <div className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}>
+          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 text-lg font-medium">
             <li>
               <Link
                 to="home"
                 smooth={true}
                 duration={500}
                 offset={-80}
-                onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
               >
                 {translate("home")}
               </Link>
@@ -68,7 +102,8 @@ const Header = () => {
                 duration={500}
                 offset={-80}
                 onClick={() => setIsOpen(false)}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
               >
                 {translate("aboutMe")}
               </Link>
@@ -80,35 +115,38 @@ const Header = () => {
                 duration={500}
                 offset={-80}
                 onClick={() => setIsOpen(false)}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
               >
                 {translate("proyectos")}
               </Link>
             </li>
             <li>
               <Link
-                to="services"
+                to="newpricingplans"
                 smooth={true}
                 duration={500}
                 offset={-80}
                 onClick={() => setIsOpen(false)}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
               >
                 {translate("services")}
               </Link>
             </li>
-            <li>
-                <Link
-                  to="airbnbofferbanner"
-                  smooth={true}
-                  duration={500}
-                  offset={-80}
-                  onClick={() => setIsOpen(false)}
-                  className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
-                >
-                  {translate("airbnbOffer")}
-                </Link>
-              </li>
+            {/* <li>
+              <Link
+                to="airbnbofferbanner"
+                smooth={true}
+                duration={500}
+                offset={-80}
+                onClick={() => setIsOpen(false)}
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+              >
+                {translate("airbnbOffer")}
+              </Link>
+            </li> */}
             <li>
               <Link
                 to="contact"
@@ -116,51 +154,54 @@ const Header = () => {
                 duration={500}
                 offset={-80}
                 onClick={() => setIsOpen(false)}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
+                className="block pt-5 py-2 pr-4 pl-3 text-gray-900 hover:text-blue-600 
+                           dark:text-white dark:hover:text-blue-400 transition duration-200 cursor-pointer"
               >
                 {translate("contacts")}
               </Link>
             </li>
-           
 
-            <li className="md:ml-4">
+            {/* Botones de idioma para DESKTOP (ocultos en móvil) */}
+            <li className="hidden md:inline-block">
               <button
                 onClick={(e) => {
                   switchLanguage("ru", e);
                   setIsOpen(false);
                 }}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                className="pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 
+                           dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
               >
                 Ru
               </button>
             </li>
-           
-            <li>
+            <li className="hidden md:inline-block">
               <button
                 onClick={(e) => {
                   switchLanguage("en", e);
                   setIsOpen(false);
                 }}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                className="pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 
+                           dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
               >
                 En
               </button>
             </li>
-            <li>
+            <li className="hidden md:inline-block">
               <button
                 onClick={(e) => {
                   switchLanguage("es", e);
                   setIsOpen(false);
                 }}
-                className="block pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
+                className="pt-5 py-2 pr-4 pl-3 text-gray-700 hover:text-blue-600 
+                           dark:text-gray-400 dark:hover:text-blue-400 transition duration-200"
               >
                 Es
               </button>
             </li>
 
+            {/* Íconos sociales en móvil */}
             <li className="md:ml-4">
-              <SocialIcons className="flex md:hidden justify-center mt-4" />{" "}
-              {/* Visible en dispositivos móviles */}
+              <SocialIcons className="flex md:hidden justify-center mt-4" />
             </li>
           </ul>
         </div>

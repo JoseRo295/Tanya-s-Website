@@ -9,6 +9,7 @@ const WhatsAppButton = () => {
     window.open(url, '_blank');
   };
 
+  // Estilo del botón
   const buttonStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -17,7 +18,8 @@ const WhatsAppButton = () => {
     height: '60px',
     borderRadius: '100%',
     border: 'none',
-    backgroundColor: isHovered ? '#6E5E50' : '#A79584',
+    // Color base: #556B2F | Hover: #6B8E23
+    backgroundColor: isHovered ? '#6B8E23' : '#556B2F',
     position: 'fixed',
     bottom: '20px',
     right: '20px',
@@ -27,6 +29,7 @@ const WhatsAppButton = () => {
     zIndex: 1000,
   };
 
+  // Estilo del ícono
   const svgStyle = {
     width: '32px',
     height: '32px',

@@ -3,12 +3,13 @@
     import AboutMe from "../components/AboutMe ";
     import ProjectCarousel from "../components/ProjectCarousel";
     import ContactForm from "../components/Contact";
-    import Services from "../components/Services";
+    // import Services from "../components/Services";
     import WhatsAppButton from "../components/WhatsAppButton";
     import { useEffect } from 'react';
     import AOS from 'aos';
     import 'aos/dist/aos.css'; // Importar los estilos de AOS
     import AirbnbOfferBanner from "../components/AirbnbOfferBanner";
+    import NewPricingPlans from "../components/NewPricingPlans";
 
     export default function Home() {
         useEffect(() => {
@@ -32,12 +33,12 @@
                 <section id="projectCarousel" data-aos="fade-up">
                     <ProjectCarousel />
                 </section>
-                <section id="services" data-aos="fade-up">
-                    <Services />
+                <section id="newpricingplans" data-aos="fade-up">
+                <NewPricingPlans /> 
                 </section>
-                <section id="airbnbofferbanner" data-aos="fade-up">
+                {/* <section id="airbnbofferbanner" data-aos="fade-up">
                     <AirbnbOfferBanner />
-                </section>
+                </section> */}
                 <section id="contact" data-aos="fade-up">
                     <ContactForm />
                 </section>
