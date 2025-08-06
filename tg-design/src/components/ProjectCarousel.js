@@ -294,7 +294,7 @@ const ProjectCarousel = () => {
 
   return (
     <div>
-      <div id="project-carousel" className="py-10">
+      <div id="projectCarousel" className="py-10">
         <div className="container mx-auto text-center mb-8">
           <h2 className="text-4xl font-bold text-gray-800">
             {translate("nuestrosProyectos")}

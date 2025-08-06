@@ -133,9 +133,8 @@ const translations = {
       "Purchase of materials and furniture",
       "Site visits and implementation control",
     ],
-    designerSpaceTitle: [
-      "The design of your dreams is closer than you think...",
-    ],
+    designerSpaceTitleLine1: "The design of your dreams",
+    designerSpaceTitleLine2: "is closer than you think...",
     orderDesignProject: ["Order a design project"],
     closeButton: "Close",
 
@@ -367,8 +366,8 @@ const translations = {
       "Закупка материалов и мебели",
       "Выезды на стройку, контроль реализации",
     ],
-    designerSpaceTitle: ["Дизайн вашей мечты – уже рядом..."],
-    orderDesignProject: ["Заказать дизайн-проект"],
+    designerSpaceTitleLine1: "Дизайн вашей мечты",
+    designerSpaceTitleLine2: "ближе, чем вы думаете...",
     closeButton: "Закрыть",
 
     privacyPolicyTitle: "Политика конфиденциальности",
@@ -600,9 +599,8 @@ const translations = {
       "Compra de materiales y muebles",
       "Visitas a la obra y control de implementación",
     ],
-    designerSpaceTitle: [
-      "El diseño de tus sueños está más cerca de lo que piensas...",
-    ],
+    designerSpaceTitleLine1: "El diseño de tus sueños",
+    designerSpaceTitleLine2: "está más cerca de lo que crees...",
     closeButton: "Cerrar",
     orderDesignProject: ["Ordenar un proyecto de diseño"],
     privacyPolicyTitle: "Política de Privacidad",

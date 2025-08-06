@@ -17,7 +17,7 @@ import image3 from "../Images/corrusel/9.png";
 import image4 from "../Images/corrusel/10.png";
 
 // Importa la imagen específica para móvil
-import imageMobile from  "../Images/corrusel/8.png"; // Ajusta la ruta y nombre
+import imageMobile from "../Images/corrusel/8.png"; // Ajusta la ruta y nombre
 
 const openWhatsApp = () => {
   const phoneNumber = "+593983548611"; // Reemplaza con tu número
@@ -37,8 +37,8 @@ const ImageCarousel = () => {
         <img
           src={imageMobile}
           alt="Mobile Hero"
-          className="w-full h-full object-cover" 
-          style={{ objectPosition: '47% 30%' }} 
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "47% 30%" }}
           // Usa "object-contain" si quieres ver la imagen completa sin recortar:
           // className="w-full h-full object-contain"
         />
@@ -49,7 +49,9 @@ const ImageCarousel = () => {
         {/* Contenido Centrado */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-            {translate("designerSpaceTitle")}
+            {translate("designerSpaceTitleLine1")}
+            <br />
+            {translate("designerSpaceTitleLine2")}
           </h1>
           <button
             onClick={openWhatsApp}
@@ -91,7 +93,9 @@ const ImageCarousel = () => {
 
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                  {translate("designerSpaceTitle")}
+                  {translate("designerSpaceTitleLine1")}
+                  <br />
+                  {translate("designerSpaceTitleLine2")}
                 </h1>
                 <button
                   onClick={openWhatsApp}
