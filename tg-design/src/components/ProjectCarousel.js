@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Modal from './Modal'; // Asegúrate de importar el componente Modal
-import { useLocalization } from '../context/LocalizationContext';
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Modal from "./Modal"; // Asegúrate de importar el componente Modal
+import { useLocalization } from "../context/LocalizationContext";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 // Import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 // Importa las imágenes de tus proyectos
 import image1 from "../Images/projects/project1/основнойвид.png";
@@ -124,6 +124,17 @@ import img10_6 from "../Images/projects/project10/6.jpg";
 import img10_7 from "../Images/projects/project10/7.jpg";
 import img10_8 from "../Images/projects/project10/8.jpg";
 
+// Proyecto 11 - Imágenes para el Modal
+import img11_1 from "../Images/projects/project11/1.png";
+import img11_2 from "../Images/projects/project11/2.png";
+import img11_3 from "../Images/projects/project11/3.png";
+import img11_4 from "../Images/projects/project11/4.png";
+import img11_5 from "../Images/projects/project11/5.png";
+import img11_6 from "../Images/projects/project11/6.png";
+import img11_7 from "../Images/projects/project11/7.png";
+import img11_8 from "../Images/projects/project11/8.png";
+import img11_9 from "../Images/projects/project11/9.png";
+
 const ProjectCarousel = () => {
   const { translate } = useLocalization();
   const [modalOpen, setModalOpen] = useState(false);
@@ -132,16 +143,65 @@ const ProjectCarousel = () => {
   const projects = [
     {
       image: image6,
-      images: [img6_1, img6_2, img6_3, img6_4, img6_5, img6_6, img6_7, img6_8, img6_9, img6_10, img6_11],
+      images: [
+        img6_1,
+        img6_2,
+        img6_3,
+        img6_4,
+        img6_5,
+        img6_6,
+        img6_7,
+        img6_8,
+        img6_9,
+        img6_10,
+        img6_11,
+      ],
       title: translate("proyecto6"),
       description: translate("descripcionProyecto6"),
     },
     {
+      image: img11_1,
+      images: [
+        img11_1,
+        img11_2,
+        img11_3,
+        img11_4,
+        img11_5,
+        img11_6,
+        img11_7,
+        img11_8,
+        img11_9,
+      ],
+      title: translate("proyecto11"),
+      description: translate("descripcionProyecto11"),
+    },
+    {
       image: img7_1,
       images: [
-        img7_1, img7_2, img7_3, img7_4, img7_5, img7_6, img7_7, img7_8, img7_9, img7_10, 
-        img7_11, img7_12, img7_13, img7_14, img7_15, img7_16, img7_17, img7_18, img7_19, img7_20, 
-        img7_21, img7_22, img7_23, img7_24
+        img7_1,
+        img7_2,
+        img7_3,
+        img7_4,
+        img7_5,
+        img7_6,
+        img7_7,
+        img7_8,
+        img7_9,
+        img7_10,
+        img7_11,
+        img7_12,
+        img7_13,
+        img7_14,
+        img7_15,
+        img7_16,
+        img7_17,
+        img7_18,
+        img7_19,
+        img7_20,
+        img7_21,
+        img7_22,
+        img7_23,
+        img7_24,
       ],
       title: translate("proyecto7"),
       description: translate("descripcionProyecto7"),
@@ -154,13 +214,33 @@ const ProjectCarousel = () => {
     },
     {
       image: img9_main,
-      images: [img9_main, img9_1, img9_2, img9_3, img9_4, img9_5, img9_6, img9_7, img9_8, img9_9],
+      images: [
+        img9_main,
+        img9_1,
+        img9_2,
+        img9_3,
+        img9_4,
+        img9_5,
+        img9_6,
+        img9_7,
+        img9_8,
+        img9_9,
+      ],
       title: translate("proyecto9"),
       description: translate("descripcionProyecto9"),
     },
     {
       image: img10_1,
-      images: [img10_1, img10_2, img10_3, img10_4, img10_5, img10_6, img10_7, img10_8],
+      images: [
+        img10_1,
+        img10_2,
+        img10_3,
+        img10_4,
+        img10_5,
+        img10_6,
+        img10_7,
+        img10_8,
+      ],
       title: translate("proyecto10"),
       description: translate("descripcionProyecto10"),
     },
@@ -181,7 +261,7 @@ const ProjectCarousel = () => {
       images: [img3_1, img3_2, img3_3, img3_4, img3_5, img3_6, img3_7, img3_8],
       title: translate("proyecto3"),
       description: translate("descripcionProyecto3"),
-    },    
+    },
     {
       image: image4,
       images: [img4_1, img4_5, img4_6, img4_7, img4_8, img4_2],
@@ -216,9 +296,15 @@ const ProjectCarousel = () => {
     <div>
       <div id="project-carousel" className="py-10">
         <div className="container mx-auto text-center mb-8">
-          <h2 className="text-4xl font-bold text-gray-800">{translate("nuestrosProyectos")}</h2>
+          <h2 className="text-4xl font-bold text-gray-800">
+            {translate("nuestrosProyectos")}
+          </h2>
         </div>
-        <Modal isOpen={modalOpen} onClose={handleCloseModal} project={selectedProject} />
+        <Modal
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+          project={selectedProject}
+        />
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={30}
@@ -243,8 +329,8 @@ const ProjectCarousel = () => {
           }}
           pagination={{ clickable: true }}
           navigation={{
-            nextEl: '.custom-swiper-button-next',
-            prevEl: '.custom-swiper-button-prev',
+            nextEl: ".custom-swiper-button-next",
+            prevEl: ".custom-swiper-button-prev",
           }}
           loop={true}
           className="projectSwiper relative"
@@ -259,7 +345,9 @@ const ProjectCarousel = () => {
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-50 transition-all duration-500"></div>
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                  <h3 className="text-2xl font-semibold text-white">
+                    {project.title}
+                  </h3>
                   <p className="text-white mt-2">{project.description}</p>
                 </div>
               </div>
@@ -275,7 +363,11 @@ const ProjectCarousel = () => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </div>
           {/* Flecha "next" personalizada */}
@@ -288,7 +380,11 @@ const ProjectCarousel = () => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </Swiper>

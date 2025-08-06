@@ -69,6 +69,9 @@ const translations = {
     descripcionProyecto10:
       "As part of this project, furniture was designed for the entryway, living room, and children's room. Additionally, decor, wallpaper, paint color, and lighting fixtures were selected to harmoniously match the existing furniture and finishes.",
 
+    proyecto11: "Studio, 31 m², Moscow",
+    descripcionProyecto11:
+      "A modern industrial-style studio with a Grialto ceiling, a brick wall, a bright sofa, and a daring bathroom with a black toilet.",
     airbnbOfferTitle: "Do you need a project for an Airbnb apartment?",
     airbnbOfferText: "We have a special offer for you!",
     whatsappButton: "Write on WhatsApp",
@@ -300,6 +303,9 @@ const translations = {
     descripcionProyecto10:
       "В рамках проекта была разработана мебель для прихожей, гостиной и детской комнаты. Также был подобран декор, обои, цвет краски и светильники таким образом, чтобы они гармонично сочетались с уже существующей мебелью и отделкой.",
 
+    proyecto11: "Студия, 31 м², г. Москва",
+    descripcionProyecto11:
+      "Современная студия в стиле индастриал с потолком грияльто, кирпичной стеной, ярким диваном и дерзким туалетом с черным унитазом.",
     airbnbOfferTitle: "Вам нужен проект для квартиры Airbnb?",
     airbnbOfferText: "У нас есть специальное предложение для вас!",
     whatsappButton: "Написать в WhatsApp",
@@ -530,6 +536,9 @@ const translations = {
     descripcionProyecto10:
       "En este proyecto se diseñó el mobiliario para la entrada, la sala de estar y la habitación infantil. Además, se seleccionó la decoración, el papel tapiz, el color de la pintura y las luminarias de manera que combinaran armoniosamente con los muebles y acabados existentes",
 
+    proyecto11: "Estudio, 31 m², Moscú",
+    descripcionProyecto11:
+      "Un estudio moderno de estilo industrial con techo de Grialto, pared de ladrillo, sofá llamativo y un baño atrevido con inodoro negro.",
     airbnbOfferTitle: "¿Necesitas un proyecto para un apartamento Airbnb?",
     airbnbOfferText: "¡Tenemos una oferta especial para ti!",
     whatsappButton: "Escribir en WhatsApp",
