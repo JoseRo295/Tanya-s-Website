@@ -400,7 +400,7 @@ const translations = {
     conceptPackageTitle: "Пакет «Concept»",
     conceptPackageSubtitle:
       "Для тех, кому нужен дизайн с базовым планированием",
-    conceptPackagePrice: "от 18 $/м2",
+    conceptPackagePrice: "от 1450 руб/м2",
     conceptPackageTime: "2-3 недели",
     conceptPackageItems: [
       "План расстановки мебели (1–2 варианта)",
@@ -413,7 +413,7 @@ const translations = {
     hundredPackageTitle: "Пакет «100%»",
     hundredPackageSubtitle:
       "Для тех, кому нужен полный дизайн-проект с чертежами",
-    hundredPackagePrice: "от 25 $/м2",
+    hundredPackagePrice: "от 2000 руб/м2 ",
     hundredPackageTime: "6 недель",
     hundredPackageItems: [
       "План расстановки мебели (2–3 варианта)",
@@ -427,7 +427,7 @@ const translations = {
     // Package "Airbnb"
     airbnbPackageTitle: "Пакет «Airbnb» (квартиры до 40 м²)",
     airbnbPackageSubtitle: "Для тех, кто готовит недвижимость для аренды",
-    airbnbPackagePrice: "от 27 $/м2",
+    airbnbPackagePrice: "от 2150 руб/м2 ",
     airbnbPackageTime: "5 недель + время ремонта",
     airbnbPackageItems: [
       "План расстановки мебели (2–3 варианта)",
@@ -446,7 +446,7 @@ const translations = {
     wowPackageTitle: "Пакет «WOW Effect»",
     wowPackageSubtitle:
       "Для тех, кто хочет доверить весь процесс профессионалам",
-    wowPackagePrice: "от 40 $/м2",
+    wowPackagePrice: "от 3200 руб/м2",
     wowPackageTime: "6 недель + время ремонта",
     wowPackageItems: [
       "План расстановки мебели (2–3 варианта)",
