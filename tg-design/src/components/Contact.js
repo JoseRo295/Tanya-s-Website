@@ -27,13 +27,23 @@ export default function ContactForm() {
 
   // Cargar países al montar
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v3.1/all?fields=name,cca3,idd")
       .then((response) => response.json())
       .then((data) => {
-        const sortedCountries = data.sort((a, b) =>
+        console.log("⚙️  restcountries response:", data);
+        console.log("⚙️  isArray?", Array.isArray(data));
+        if (!Array.isArray(data)) {
+          console.error("❌ Esperaba un array de países, recibí:", data);
+          return;
+        }
+        const sorted = [...data].sort((a, b) =>
           a.name.common.localeCompare(b.name.common)
         );
-        setCountries(sortedCountries);
+        console.log("⚙️  países ordenados, total:", sorted.length);
+        setCountries(sorted);
+      })
+      .catch((err) => {
+        console.error("❌ Error al cargar países:", err);
       });
   }, []);
 
@@ -95,7 +105,6 @@ export default function ContactForm() {
     Phone: ${phonePrefix} ${phoneNumber}
     Accepted Terms: ${agreed ? "Yes" : "No"}
     `.trim();
-    
 
     const phone = "593983548611"; // Ajusta tu número (sin '+')
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -168,9 +177,7 @@ export default function ContactForm() {
                   onChange={(e) => setLastName(e.target.value)}
                   error={lastName.trim() === ""}
                   helperText={
-                    lastName.trim() === ""
-                      ? translate("lastNameRequired")
-                      : ""
+                    lastName.trim() === "" ? translate("lastNameRequired") : ""
                   }
                 />
               </div>
@@ -252,7 +259,9 @@ export default function ContactForm() {
                     focus-visible:outline-none data-[checked]:bg-[#556B2F]
                   "
                 >
-                  <span className="sr-only">{translate("agreeToPolicies")}</span>
+                  <span className="sr-only">
+                    {translate("agreeToPolicies")}
+                  </span>
                   <span
                     aria-hidden="true"
                     className="
@@ -319,7 +328,9 @@ export default function ContactForm() {
                         {translate("infoWeCollect")}
                       </h4>
                       <p>{translate("infoWeCollectText")}</p>
-                      <h4 className="font-semibold">{translate("useOfInfo")}</h4>
+                      <h4 className="font-semibold">
+                        {translate("useOfInfo")}
+                      </h4>
                       <ul className="list-disc ml-5">
                         {translate("useOfInfoList").map((item, index) => (
                           <li key={index}>{item}</li>
