@@ -293,10 +293,10 @@ const ProjectCarousel = () => {
   };
 
   return (
-    <div>
-      <div id="projectCarousel" className="py-10">
-        <div className="container mx-auto text-center mb-8">
-          <h2 className="text-4xl font-bold text-gray-800">
+    <div className="bg-sand-50 dark:bg-darkbg-DEFAULT transition-colors duration-300">
+      <div id="projectCarousel" className="py-5">
+        <div className="container mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold text-primary-DEFAULT dark:text-white">
             {translate("nuestrosProyectos")}
           </h2>
         </div>
@@ -333,31 +333,34 @@ const ProjectCarousel = () => {
             prevEl: ".custom-swiper-button-prev",
           }}
           loop={true}
-          className="projectSwiper relative"
+          className="projectSwiper relative px-4"
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index} onClick={() => handleOpenModal(project)}>
-              <div className="relative h-[60vh] md:h-[50vh] lg:h-[70vh] flex items-center justify-center bg-white shadow-lg rounded-lg overflow-hidden group">
+              <div className="relative h-[60vh] md:h-[50vh] lg:h-[70vh] flex items-center justify-center bg-white dark:bg-darkbg-paper shadow-2xl rounded-2xl overflow-hidden group border border-gray-100 dark:border-gray-800">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-50 transition-all duration-500"></div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <h3 className="text-2xl font-semibold text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end h-full">
+                  <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
                     {project.title}
                   </h3>
-                  <p className="text-white mt-2">{project.description}</p>
+                  <p className="text-gray-200 text-sm line-clamp-3 drop-shadow-md">{project.description}</p>
+                  <span className="mt-4 text-accent-light text-sm font-semibold uppercase tracking-wider">
+                    {translate("detailsButton") || "View Project"} &rarr;
+                  </span>
                 </div>
               </div>
             </SwiperSlide>
           ))}
           {/* Flecha "prev" personalizada */}
-          <div className="custom-swiper-button-prev absolute left-2 top-1/2 -translate-y-1/2 bg-[#A8957A] hover:bg-[#8C7A5F] text-white w-10 h-10 rounded-full flex items-center justify-center z-10 cursor-pointer">
+          <div className="custom-swiper-button-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center z-10 cursor-pointer transition-all duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -371,10 +374,10 @@ const ProjectCarousel = () => {
             </svg>
           </div>
           {/* Flecha "next" personalizada */}
-          <div className="custom-swiper-button-next absolute right-2 top-1/2 -translate-y-1/2 bg-[#A8957A] hover:bg-[#8C7A5F] text-white w-10 h-10 rounded-full flex items-center justify-center z-10 cursor-pointer">
+          <div className="custom-swiper-button-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/30 text-white w-12 h-12 rounded-full flex items-center justify-center z-10 cursor-pointer transition-all duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

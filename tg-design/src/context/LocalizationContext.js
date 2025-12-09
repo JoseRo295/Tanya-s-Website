@@ -135,7 +135,7 @@ const translations = {
     ],
     designerSpaceTitleLine1: "The design of your dreams",
     designerSpaceTitleLine2: "is closer than you think...",
-    orderDesignProject: ["Order a design project"],
+    orderDesignProject: "Order a design project",
     closeButton: "Close",
 
     privacyPolicyTitle: "Privacy Policy",
@@ -368,6 +368,7 @@ const translations = {
     ],
     designerSpaceTitleLine1: "Дизайн вашей мечты",
     designerSpaceTitleLine2: "ближе, чем вы думаете...",
+    orderDesignProject: "Заказать дизайн-проект",
     closeButton: "Закрыть",
 
     privacyPolicyTitle: "Политика конфиденциальности",
@@ -381,7 +382,7 @@ const translations = {
       "Предоставление и улучшение наших услуг.",
       "Общение с вами и ответы на ваши запросы.",
       "Выполнение наших юридических обязательств.",
-      "Анализ использования нашего сайта и улучшение его функциональности.",
+      "ВАЖНО: Мы будем использовать вашу информацию исключительно в целях совместной работы. Мы НЕ будем распространять или передавать вашу информацию за пределы нашего договора, если вы сами не попросите рекомендацию третьим лицам, с которыми мы работаем.",
     ],
     shareInfo: "3. Передача информации",
     shareInfoText:
@@ -601,6 +602,7 @@ const translations = {
     ],
     designerSpaceTitleLine1: "El diseño de tus sueños",
     designerSpaceTitleLine2: "está más cerca de lo que crees...",
+    orderDesignProject: "Solicitar diseño",
     closeButton: "Cerrar",
     orderDesignProject: ["Ordenar un proyecto de diseño"],
     privacyPolicyTitle: "Política de Privacidad",
@@ -608,15 +610,15 @@ const translations = {
       "En TG-Design nosotros, estamos comprometidos a proteger y respetar tu privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos la información personal que nos proporcionas a través de nuestro sitio web y otros servicios asociados.",
     infoWeCollect: "1. Información que Recopilamos",
     infoWeCollectText:
-      "Recopilamos información personal que nos proporcionas directamente, como tu nombre, dirección de correo electrónico, número de teléfono, y cualquier otra información que decidas compartir con nosotros.",
+      "Recopilamos información personal que nos proporcionas directamente, como tu nombre, dirección de correo electrónico, número de teléfono y cualquier otra información que decidas compartir con nosotros.",
     useOfInfo: "2. Uso de la Información",
     useOfInfoList: [
-      "Proveer y mejorar nuestros servicios.",
+      "Proporcionar y mejorar nuestros servicios.",
       "Comunicarnos contigo y responder a tus consultas.",
       "Cumplir con nuestras obligaciones legales.",
-      "Analizar el uso de nuestro sitio web y mejorar su funcionalidad.",
+      "IMPORTANTE: Usaremos esta información únicamente con fines de trabajar juntos. NO distribuiremos ni compartiremos su información fuera de nuestro contrato, a menos que el mismo cliente solicite alguna referencia con terceros con los que trabajamos.",
     ],
-    shareInfo: "3. Compartir la Información",
+    shareInfo: "3. Compartir Información",
     shareInfoText:
       "No compartimos tu información personal con terceros, excepto cuando sea necesario para cumplir con nuestras obligaciones legales, proteger nuestros derechos, o como parte de un acuerdo comercial (como proveedores de servicios que nos asisten en nuestras operaciones).",
     protectInfo: "4. Protección de la Información",

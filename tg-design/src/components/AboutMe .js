@@ -14,16 +14,16 @@ const AboutMe = () => {
   const fourthParagraph = sentences.slice(5).join(". ");
   
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between p-10 lg:p-16 bg-gray-50">
+    <div className="flex flex-col lg:flex-row items-center justify-between p-10 lg:p-16 bg-sand-50 dark:bg-darkbg-DEFAULT transition-colors duration-300">
       {/* Sección de texto */}
       <div className="lg:w-1/2 w-full mb-8 lg:mb-0 lg:pr-8 text-center lg:text-left">
         {/* Primera oración en grande y negrita */}
-        <p className="text-3xl font-bold text-gray-900 mb-4">{firstSentence}</p>
+        <p className="text-3xl font-bold text-primary-DEFAULT dark:text-white mb-6 leading-tight">{firstSentence}</p>
 
         {/* Segundo, tercero y cuarto párrafo con más espaciado */}
-        <p className="text-lg text-gray-700 leading-relaxed mb-4">{secondParagraph}</p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-4">{thirdParagraph}</p>
-        <p className="text-lg text-gray-700 leading-relaxed">{fourthParagraph}</p>
+        <p className="text-lg text-primary-light dark:text-gray-300 leading-relaxed mb-4">{secondParagraph}</p>
+        <p className="text-lg text-primary-light dark:text-gray-300 leading-relaxed mb-4">{thirdParagraph}</p>
+        <p className="text-lg text-primary-light dark:text-gray-300 leading-relaxed">{fourthParagraph}</p>
       </div>
 
       {/* Sección de la imagen */}
@@ -31,11 +31,8 @@ const AboutMe = () => {
         <img
           src={image1}
           alt="Tatiana Gorshkova"
-          className="w-full max-w-[500px] h-auto object-cover rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
+          className="w-full max-w-[500px] h-auto object-cover rounded-xl shadow-2xl transition-transform duration-500 hover:scale-105 border border-white/20 dark:border-gray-700"
         />
-        {/* <h2 className="text-2xl font-semibold text-gray-800 mt-4 text-center">
-          {translate("tatianaName")}
-        </h2> */}
       </div>
     </div>
   );

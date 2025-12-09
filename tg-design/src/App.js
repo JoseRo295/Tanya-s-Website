@@ -5,10 +5,13 @@ import Otro from "../src/pages/Otro";
 import Services from "../src/pages/Services";
 import ProjectCarousel from "../src/pages/ProjectCarousel";
 import Contact from "./pages/Contacts";
+import SEO from './components/SEO';
 import './index.css';
+
 function App() {
   return (
     <BrowserRouter>
+      <SEO />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/otro" element={<Otro />} />

@@ -14,9 +14,10 @@
     export default function Home() {
         useEffect(() => {
             AOS.init({ 
-                duration: 1000,    // Duración de la animación
-                offset: 200,       // Ajusta el desplazamiento en px (comienza 200px antes de que el elemento entre en el viewport)
+                duration: 800,     // Reducido de 1000 a 800 para mayor agilidad
+                offset: 100,       // Reducido de 200 a 100 para que aparezcan antes
                 once: true,        // La animación ocurre solo una vez
+                easing: 'ease-out-cubic', // Curva de animación más suave
                 disable: 'phone',  // Desactiva las animaciones en teléfonos
             });
         }, []);

@@ -2,19 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fdfbf7; /* Color sand-50 */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+/* Modo oscuro global */
+html.dark body {
+  background-color: #0f172a; /* darkbg-DEFAULT */
+  color: #f3f4f6; /* Gray-100 */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-* {
-  font-family: 'Montserrat', sans-serif;
+/* Animación de carga de imágenes suave */
+.image-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 
