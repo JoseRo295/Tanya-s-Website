@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import { useLocalization } from "../context/LocalizationContext";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import SkeletonImage from "./SkeletonImage";
 
 const openWhatsApp = () => {
   const phoneNumber = "+593983548611";
@@ -34,11 +35,12 @@ const Modal = ({ isOpen, onClose, project }) => {
         <XMarkIcon className="w-8 h-8 group-hover:rotate-90 transition-transform duration-300" />
       </button>
 
-      {/* Contenedor Principal - Altura Controlada y Más Compacta */}
-      <div className="relative bg-white w-full max-w-5xl h-auto max-h-[85vh] sm:h-[550px] rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fade-in-up">
+      {/* Contenedor Principal - Responsivo Total */}
+      <div className="relative bg-white w-full max-w-6xl h-[75vh] md:h-[75vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row animate-fade-in-up my-auto">
         
-        {/* COLUMNA IZQUIERDA: Galería (55% del ancho en desktop) */}
-        <div className="w-full lg:w-[55%] h-[40%] lg:h-full relative bg-gray-100">
+        {/* COLUMNA SUPERIOR/IZQUIERDA: Galería */}
+        {/* En móvil: 40% de altura. En desktop/tablet: 60% de ancho y 100% altura */}
+        <div className="w-full md:w-[60%] h-[40%] md:h-full relative bg-gray-100 flex-shrink-0">
           <Swiper
             modules={[Navigation, Pagination, Keyboard]}
             navigation={{
@@ -56,7 +58,7 @@ const Modal = ({ isOpen, onClose, project }) => {
             {project.images.map((img, index) => (
               <SwiperSlide key={index}>
                 <div className="w-full h-full relative">
-                  <img
+                  <SkeletonImage
                     src={img}
                     alt={`Project view ${index + 1}`}
                     className="w-full h-full object-cover"
@@ -79,12 +81,13 @@ const Modal = ({ isOpen, onClose, project }) => {
           </Swiper>
         </div>
 
-        {/* COLUMNA DERECHA: Información (45% del ancho) */}
-        <div className="w-full lg:w-[45%] h-[55%] lg:h-full bg-white flex flex-col relative z-10">
+        {/* COLUMNA INFERIOR/DERECHA: Información */}
+        {/* En móvil: Ocupa el resto de altura. En desktop/tablet: 40% de ancho */}
+        <div className="w-full md:w-[40%] flex-1 md:h-full bg-white flex flex-col relative z-10 overflow-hidden">
           
           {/* Contenido con Scroll Interno */}
-          <div className="flex-1 overflow-y-auto p-6 lg:p-10 custom-scrollbar">
-            <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3 leading-tight">
+          <div className="flex-1 overflow-y-auto p-6 sm:p-8 custom-scrollbar">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 leading-tight">
               {translate(project.title)}
             </h2>
             
@@ -96,15 +99,12 @@ const Modal = ({ isOpen, onClose, project }) => {
           </div>
 
           {/* Footer Fijo Compacto */}
-          <div className="p-5 border-t border-gray-100 bg-white">
+          <div className="p-4 sm:p-5 border-t border-gray-100 bg-white flex-shrink-0">
             <button
               onClick={openWhatsApp}
               className="w-full py-3 bg-[#FF5A5F] hover:bg-[#ff4449] text-white text-base font-bold rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
               <span>{translate("whatsappButton")}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.097-.168.276-.073.415.772 1.022 1.766 1.987 2.908 2.87.127.102.306.085.41-.038l1.026-1.537a1.875 1.875 0 012.033-.67l4.473 1.118c.867.215 1.477.986 1.477 1.87v1.382a3 3 0 01-3 3H19.5a3 3 0 01-3-3 17.25 17.25 0 013-3 17.25 17.25 0 013-3H6.75a3 3 0 01-3 3V4.5z" clipRule="evenodd" />
-              </svg>
             </button>
           </div>
         </div>

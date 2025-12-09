@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Modal from "./Modal"; // Asegúrate de importar el componente Modal
 import { useLocalization } from "../context/LocalizationContext";
+import SkeletonImage from "./SkeletonImage";
 
 // Import Swiper styles
 import "swiper/css";
@@ -293,10 +294,10 @@ const ProjectCarousel = () => {
   };
 
   return (
-    <div className="bg-sand-50 dark:bg-darkbg-DEFAULT transition-colors duration-300">
+    <div className="bg-sand-50 transition-colors duration-300">
       <div id="projectCarousel" className="py-5">
         <div className="container mx-auto text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary-DEFAULT dark:text-white">
+          <h2 className="text-4xl font-bold text-gray-900">
             {translate("nuestrosProyectos")}
           </h2>
         </div>
@@ -337,11 +338,11 @@ const ProjectCarousel = () => {
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index} onClick={() => handleOpenModal(project)}>
-              <div className="relative h-[60vh] md:h-[50vh] lg:h-[70vh] flex items-center justify-center bg-white dark:bg-darkbg-paper shadow-2xl rounded-2xl overflow-hidden group border border-gray-100 dark:border-gray-800">
-                <img
+              <div className="relative h-[60vh] md:h-[50vh] lg:h-[70vh] flex items-center justify-center bg-white shadow-2xl rounded-2xl overflow-hidden group border border-gray-100">
+                <SkeletonImage
                   src={project.image}
                   alt={project.title}
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end h-full">
