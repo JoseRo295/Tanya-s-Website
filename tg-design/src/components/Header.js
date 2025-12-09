@@ -9,6 +9,14 @@ const Header = () => {
   const { translate, switchLanguage } = useLocalization();
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  const menuItems = [
+    { to: "home", label: "home" },
+    { to: "aboutMe", label: "aboutMe" },
+    { to: "projectCarousel", label: "proyectos" },
+    { to: "newpricingplans", label: "services" },
+    { to: "contact", label: "contacts" },
+  ];
+
   // Manejar el progreso del scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -68,30 +76,17 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Menú desplegable (Desktop y Mobile Overlay) */}
-          <div
-            className={`
-              fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:relative md:inset-auto md:bg-transparent md:flex-row md:space-y-0 md:justify-end md:w-auto md:block md:translate-x-0
-              ${isOpen ? "translate-x-0" : "translate-x-full"}
-            `}
-          >
-            <ul className="flex flex-col md:flex-row md:items-center md:space-x-8 text-xl md:text-base font-medium text-center">
-              {[
-                { to: "home", label: "home" },
-                { to: "aboutMe", label: "aboutMe" },
-                { to: "projectCarousel", label: "proyectos" },
-                { to: "newpricingplans", label: "services" },
-                { to: "contact", label: "contacts" },
-              ].map((item) => (
+          {/* Menú Desktop */}
+          <div className="hidden md:flex md:items-center md:w-auto">
+            <ul className="flex flex-row items-center space-x-8 text-base font-medium">
+              {menuItems.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}
                     smooth={true}
                     duration={800}
-                    offset={-80} // Offset ajustado para no tapar títulos
-                    onClick={() => setIsOpen(false)}
-                    className="block py-3 px-4 text-gray-700 font-medium hover:text-[#FF5A5F] hover:bg-gray-50 md:hover:bg-transparent rounded-lg 
-                               transition duration-300 cursor-pointer"
+                    offset={-80}
+                    className="block py-2 px-1 text-gray-700 hover:text-[#FF5A5F] transition duration-300 cursor-pointer"
                   >
                     {translate(item.label)}
                   </Link>
@@ -99,10 +94,10 @@ const Header = () => {
               ))}
 
               {/* Separador vertical desktop */}
-              <li className="hidden md:block h-5 w-px bg-gray-300 mx-2"></li>
+              <li className="h-5 w-px bg-gray-300 mx-2"></li>
 
               {/* Botones de idioma para DESKTOP */}
-              <li className="hidden md:flex gap-1">
+              <li className="flex gap-1">
                 {['ru', 'en', 'es'].map((lang) => (
                   <button
                     key={lang}
@@ -123,6 +118,31 @@ const Header = () => {
           style={{ width: `${scrollProgress}%` }}
         />
       </nav>
+
+      {/* Menú Móvil (Overlay) - Fuera del nav */}
+      <div
+        className={`
+          fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:hidden
+          ${isOpen ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
+        <ul className="flex flex-col items-center space-y-8 text-xl font-medium text-center">
+          {menuItems.map((item) => (
+            <li key={item.to}>
+              <Link
+                to={item.to}
+                smooth={true}
+                duration={800}
+                offset={-80}
+                onClick={() => setIsOpen(false)}
+                className="block py-3 px-4 text-gray-700 hover:text-[#FF5A5F] hover:bg-gray-50 rounded-lg transition duration-300 cursor-pointer"
+              >
+                {translate(item.label)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
