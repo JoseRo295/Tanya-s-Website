@@ -472,6 +472,13 @@ const translations = {
     countryRequired: "Выберите страну",
     phoneNumberRequired: "Пожалуйста, введите ваш телефон",
     agreeRequired: "Вы должны согласиться с условиями",
+
+    // Cookie Consent
+    cookieTitle: "Мы используем файлы cookie",
+    cookieText: "Этот сайт использует файлы cookie для обеспечения наилучшего пользовательского опыта.",
+    cookieAccept: "Принять все",
+    cookieDecline: "Отклонить",
+    cookiePolicyLink: "Узнать больше",
   },
   es: {
     home: "Inicio",
@@ -706,6 +713,13 @@ const translations = {
     countryRequired: "Selecciona un país",
     phoneNumberRequired: "Por favor ingresa tu teléfono",
     agreeRequired: "Debes aceptar los términos",
+
+    // Cookie Consent
+    cookieTitle: "Usamos cookies",
+    cookieText: "Este sitio web utiliza cookies para garantizar que obtengas la mejor experiencia en nuestro sitio web.",
+    cookieAccept: "Aceptar todas",
+    cookieDecline: "Rechazar",
+    cookiePolicyLink: "Leer más",
   },
 };
 

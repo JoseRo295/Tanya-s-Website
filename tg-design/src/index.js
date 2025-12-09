@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { LocalizationProvider } from './context/LocalizationContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { HelmetProvider } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 import "./App.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +17,7 @@ root.render(
       <ThemeProvider>
         <LocalizationProvider>
           <App />
+          <Analytics />
         </LocalizationProvider>
       </ThemeProvider>
     </HelmetProvider>
