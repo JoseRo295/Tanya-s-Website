@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/*
+ * Tailwind 4 configura el tema aqui, no en tailwind.config.js.
+ * Paleta portada de tg-design/tailwind.config.js y afinada: el coral #FF5A5F
+ * se mantiene como acento de marca, y se anade una escala "sand" calida real
+ * (la vieja era gris de Tailwind con nombre de arena).
+ */
+@theme {
+  --color-ink-50: #f6f6f7;
+  --color-ink-100: #e6e7e9;
+  --color-ink-200: #c9ccd1;
+  --color-ink-300: #a1a6ae;
+  --color-ink-400: #6b7280;
+  --color-ink-500: #4b5563;
+  --color-ink-600: #374151;
+  --color-ink-700: #1f2937;
+  --color-ink-800: #111827;
+  --color-ink-900: #0b0f17;
+
+  --color-sand-50: #fdfbf7;
+  --color-sand-100: #f7f2e9;
+  --color-sand-200: #ece3d5;
+  --color-sand-300: #ddd0bb;
+
+  --color-accent-light: #ff8a8e;
+  --color-accent: #ff5a5f;
+  --color-accent-dark: #e1414a;
+
+  --color-gold: #c9a227;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-fade-up: fade-up 0.8s var(--ease-out-expo) both;
+  --animate-fade-in: fade-in 1.2s ease-out both;
+  --animate-ken-burns: ken-burns 12s ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Deriva lenta del hero: da vida a una foto fija sin coste de red. */
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* El header es sticky: el ancla debe parar por debajo de el. */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-sand-50);
+  color: var(--color-ink-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Titulares con la serif, en todos los niveles. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Respeta a quien pidio menos movimiento en su sistema operativo. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visible y consistente para navegacion por teclado. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Carrusel por scroll-snap: reemplaza a Swiper sin JS ni ~150 KB de bundle. */
+.snap-row {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.snap-row::-webkit-scrollbar {
+  display: none;
+}
