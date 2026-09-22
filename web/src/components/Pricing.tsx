@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Reveal } from './Reveal'
+import { SectionLabel } from './SectionLabel'
 
 export type PackageItem = {
   id: string
@@ -46,9 +47,11 @@ export function Pricing({
     <section id="newpricingplans" className="bg-sand-100 py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-            {labels.eyebrow}
-          </p>
+          <div className="mb-5">
+            <SectionLabel number={3} align="center">
+              {labels.eyebrow}
+            </SectionLabel>
+          </div>
           <h2 className="text-balance text-[clamp(1.9rem,5vw,3.25rem)] font-semibold leading-tight text-ink-900">
             {labels.heading}
           </h2>
@@ -120,7 +123,7 @@ function Card({
     <article
       className={`relative flex h-full flex-col rounded-3xl p-6 transition-all duration-500 sm:p-7 ${
         pkg.popular
-          ? 'bg-ink-900 text-white shadow-[0_24px_60px_-20px_rgba(11,15,23,0.5)] lg:-translate-y-3'
+          ? 'bg-ink-900 text-white shadow-raised lg:-translate-y-3'
           : 'border border-ink-100 bg-white text-ink-800 hover:-translate-y-1 hover:shadow-xl'
       }`}
     >

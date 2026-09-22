@@ -156,7 +156,7 @@ export function Header({
         </nav>
 
         <div
-          className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gradient-to-r from-accent to-accent-light transition-transform duration-150 ease-out"
+          className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-linear-to-r from-accent to-accent-light transition-transform duration-150 ease-out"
           style={{ transform: `scaleX(${progress / 100})` }}
           aria-hidden
         />

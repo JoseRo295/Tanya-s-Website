@@ -2,9 +2,20 @@
 
 /*
  * Tailwind 4 configura el tema aqui, no en tailwind.config.js.
- * Paleta portada de tg-design/tailwind.config.js y afinada: el coral #FF5A5F
- * se mantiene como acento de marca, y se anade una escala "sand" calida real
- * (la vieja era gris de Tailwind con nombre de arena).
+ *
+ * Sobre el acento: el sitio nacio con el coral #ff5a5f, que es exactamente el
+ * rojo de Airbnb y lee como producto tecnologico, no como estudio de
+ * interiorismo. Se cambio a dorado, pero hace falta separarlo en dos tonos
+ * porque el dorado bonito no es legible:
+ *
+ *   #c9a227 sobre papel  -> contraste 2.33:1  (no cumple AA, minimo 4.5)
+ *   #8a6d1b sobre papel  -> contraste 4.80:1  (cumple)
+ *   #c9a227 sobre tinta  -> contraste 7.95:1  (cumple de sobra)
+ *
+ * De ahi la regla: `accent` es el dorado oscuro y es el unico que puede llevar
+ * texto sobre fondo claro; `gold` es el dorado brillante y solo vale para
+ * elementos sin texto (reglas, numeros de seccion, bordes) o para texto sobre
+ * fondo oscuro.
  */
 @theme {
   --color-ink-50: #f6f6f7;
@@ -23,9 +34,11 @@
   --color-sand-200: #ece3d5;
   --color-sand-300: #ddd0bb;
 
-  --color-accent-light: #ff8a8e;
-  --color-accent: #ff5a5f;
-  --color-accent-dark: #e1414a;
+  /* Dorado brillante: sobre fondo oscuro, o sin texto. */
+  --color-accent-light: #c9a227;
+  /* Dorado legible: el unico para texto sobre fondo claro. */
+  --color-accent: #8a6d1b;
+  --color-accent-dark: #6b5415;
 
   --color-gold: #c9a227;
 
@@ -33,6 +46,15 @@
   --font-display: var(--font-playfair), ui-serif, Georgia, serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /*
+   * Tres sombras y no mas. Antes cada componente escribia la suya a mano
+   * (cuatro variantes casi iguales pero distintas), y esa inconsistencia se
+   * percibe aunque no se sepa senalar.
+   */
+  --shadow-card: 0 2px 16px rgba(11, 15, 23, 0.06);
+  --shadow-raised: 0 24px 60px -20px rgba(11, 15, 23, 0.38);
+  --shadow-overlay: 0 32px 80px -24px rgba(11, 15, 23, 0.55);
 
   --animate-fade-up: fade-up 0.8s var(--ease-out-expo) both;
   --animate-fade-in: fade-in 1.2s ease-out both;

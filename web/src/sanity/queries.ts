@@ -50,6 +50,12 @@ export const HOME_QUERY = groq`{
     "pdfUrl": pdf.asset->url
   },
 
+  "faqs": *[_type == "faq"] | order(order asc) {
+    _id,
+    question,
+    answer
+  },
+
   "content": *[_id == "siteContent"][0] {
     heroTitleLine1,
     heroTitleLine2,
@@ -135,10 +141,17 @@ export type SiteContent = {
   strings: StringEntry[] | null
 }
 
+export type Faq = {
+  _id: string
+  question: LocaleField
+  answer: LocaleField
+}
+
 export type HomeData = {
   hero: HeroSlide[]
   projects: Project[]
   packages: PricingPackage[]
+  faqs: Faq[]
   content: SiteContent | null
 }
 

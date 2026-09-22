@@ -38,7 +38,14 @@ export function Footer({
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-ink-900 text-white">
+    <footer className="relative bg-ink-900 text-white">
+      {/* Filete dorado: cierra la pagina y separa el pie del contenido sin
+          recurrir a otra linea gris. */}
+      <div
+        aria-hidden
+        className="h-px w-full bg-linear-to-r from-transparent via-gold/50 to-transparent"
+      />
+
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
@@ -118,8 +125,15 @@ export function Footer({
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-xs text-white/35">
-          © {year} TG Design. {rights}
+        {/* `white/55` y no `white/35`: sobre la tinta del pie, el 35 % daba
+            2.15:1 y no llegaba al minimo legible. */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            © {year} TG Design. {rights}
+          </span>
+          <span className="font-display text-sm tracking-wide text-white/45">
+            Quito · Moscú
+          </span>
         </div>
       </div>
     </footer>

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { SanityPicture } from './SanityPicture'
 import { Reveal } from './Reveal'
+import { SectionLabel } from './SectionLabel'
 import type { SanityImg } from '@/sanity/queries'
 
 export type ContactLabels = {
@@ -108,8 +109,8 @@ export function Contact({
   return (
     <section id="contact" className="bg-sand-50 py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <div className="grid overflow-hidden rounded-3xl bg-white shadow-[0_24px_70px_-30px_rgba(11,15,23,0.4)] lg:grid-cols-2">
+        <Reveal from="none">
+          <div className="grid overflow-hidden rounded-3xl bg-white shadow-raised lg:grid-cols-2">
             {/* Imagen: decorativa, se oculta en movil para no gastar datos */}
             <div className="relative hidden min-h-[560px] bg-ink-800 lg:block">
               <SanityPicture
@@ -119,7 +120,7 @@ export function Contact({
                 className="object-cover"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-ink-900/80 via-ink-900/20 to-transparent"
+                className="absolute inset-0 bg-linear-to-t from-ink-900/80 via-ink-900/20 to-transparent"
                 aria-hidden
               />
               <div className="absolute inset-x-0 bottom-0 p-10">
@@ -134,9 +135,9 @@ export function Contact({
 
             {/* Formulario */}
             <div className="p-6 sm:p-10 lg:p-12">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-                {labels.eyebrow}
-              </p>
+              <div className="mb-4">
+                <SectionLabel number={5}>{labels.eyebrow}</SectionLabel>
+              </div>
               <h2 className="text-balance text-[clamp(1.6rem,4vw,2.25rem)] font-semibold leading-tight text-ink-900">
                 {labels.heading}
               </h2>

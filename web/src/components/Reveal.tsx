@@ -7,14 +7,26 @@ import { useEffect, useRef, useState } from 'react'
  * De paso arregla algo del sitio viejo: alli AOS estaba configurado con
  * `disable: 'phone'`, o sea que en movil solo pesaba y no animaba nada.
  */
+/** Punto de partida de la animacion segun de donde entra el bloque. */
+const FROM = {
+  up: 'translate-y-6',
+  left: '-translate-x-8',
+  right: 'translate-x-8',
+  /* Sin desplazamiento: para imagenes grandes, donde mover el encuadre
+     distrae mas de lo que aporta. */
+  none: 'scale-[0.985]',
+} as const
+
 export function Reveal({
   children,
   delay = 0,
   className = '',
+  from = 'up',
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
+  from?: keyof typeof FROM
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [shown, setShown] = useState(false)
@@ -49,8 +61,8 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        shown ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+      className={`transition-all duration-700 ease-out-expo ${
+        shown ? 'translate-x-0 translate-y-0 scale-100 opacity-100' : `${FROM[from]} opacity-0`
       } ${className}`}
       style={{ transitionDelay: shown ? `${delay}ms` : '0ms' }}
     >

@@ -16,6 +16,7 @@ export function Hero({
   buttonLabel,
   whatsappUrl,
   scrollHint,
+  imageAlt,
 }: {
   slides: HeroSlide[]
   titleLine1: string
@@ -23,6 +24,8 @@ export function Hero({
   buttonLabel: string
   whatsappUrl: string
   scrollHint: string
+  /** Ya traducido en el servidor: el alt del CMS solo existe en ingles. */
+  imageAlt: string
 }) {
   const [index, setIndex] = useState(0)
   const count = slides.length
@@ -48,11 +51,15 @@ export function Hero({
             i === index ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          {/* En movil se usa la foto vertical si existe; si no, se recorta la horizontal. */}
+          {/* En movil se usa la foto vertical si existe; si no, se recorta la horizontal.
+              Mientras las dos ramas sirven la misma foto, marcar `priority` en ambas
+              precarga una sola URL y no cuesta nada. En cuanto exista una vertical
+              propia serian dos descargas para un unico LCP, asi que entonces solo se
+              precarga la de movil, que es donde la red duele. */}
           <div className="absolute inset-0 sm:hidden">
             <SanityPicture
               image={slide.mobile?.url ? slide.mobile : slide.desktop}
-              alt=""
+              alt={imageAlt}
               sizes="100vw"
               priority={i === 0}
               className={`object-cover ${i === index ? 'animate-ken-burns' : ''}`}
@@ -61,9 +68,9 @@ export function Hero({
           <div className="absolute inset-0 hidden sm:block">
             <SanityPicture
               image={slide.desktop}
-              alt=""
+              alt={imageAlt}
               sizes="100vw"
-              priority={i === 0}
+              priority={i === 0 && !slide.mobile?.url}
               className={`object-cover ${i === index ? 'animate-ken-burns' : ''}`}
             />
           </div>
@@ -73,7 +80,7 @@ export function Hero({
       {/* Degradado doble: oscurece arriba y abajo para que el texto siempre
           tenga contraste suficiente, sea cual sea la foto que toque. */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-ink-900/70 via-ink-900/35 to-ink-900/80"
+        className="absolute inset-0 bg-linear-to-b from-ink-900/70 via-ink-900/35 to-ink-900/80"
         aria-hidden
       />
 
@@ -93,7 +100,7 @@ export function Hero({
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-base font-medium text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white hover:text-ink-900"
+            className="group mt-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-base font-medium text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white hover:text-ink-900"
           >
             {buttonLabel}
             <svg

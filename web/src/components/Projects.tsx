@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { SanityPicture } from './SanityPicture'
 import { Reveal } from './Reveal'
+import { SectionLabel } from './SectionLabel'
 import type { SanityImg } from '@/sanity/queries'
 
 /**
@@ -54,9 +55,11 @@ export function Projects({
     <section id="projectCarousel" className="bg-white py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto mb-14 max-w-2xl text-center sm:mb-20">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-            {eyebrow}
-          </p>
+          <div className="mb-5">
+            <SectionLabel number={2} align="center">
+              {eyebrow}
+            </SectionLabel>
+          </div>
           <h2 className="text-balance text-[clamp(1.9rem,5vw,3.25rem)] font-semibold leading-tight text-ink-900">
             {heading}
           </h2>
@@ -119,7 +122,7 @@ function Card({
     <button
       type="button"
       onClick={onOpen}
-      className={`group relative block w-full overflow-hidden rounded-2xl bg-ink-900 text-left shadow-[0_2px_16px_rgba(11,15,23,0.06)] transition-shadow duration-500 hover:shadow-[0_28px_60px_-20px_rgba(11,15,23,0.4)] ${
+      className={`group relative block w-full overflow-hidden rounded-2xl bg-ink-900 text-left shadow-card transition-shadow duration-500 hover:shadow-raised ${
         wide ? 'lg:h-full' : ''
       }`}
     >
@@ -141,7 +144,7 @@ function Card({
       </div>
 
       <div
-        className="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/25 to-transparent transition-opacity duration-500 group-hover:from-ink-900/95"
+        className="absolute inset-0 bg-linear-to-t from-ink-900/90 via-ink-900/25 to-transparent transition-opacity duration-500 group-hover:from-ink-900/95"
         aria-hidden
       />
 

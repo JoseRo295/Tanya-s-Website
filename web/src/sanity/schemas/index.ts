@@ -5,6 +5,7 @@ import { project } from './project'
 import { heroSlide } from './heroSlide'
 import { pricingPackage } from './pricingPackage'
 import { siteContent } from './siteContent'
+import { faq } from './faq'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // tipos localizados reutilizables
@@ -17,6 +18,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   heroSlide,
   pricingPackage,
   siteContent,
+  faq,
 ]
 
 /** Documentos que existen una sola vez: no se listan, se abren directo. */

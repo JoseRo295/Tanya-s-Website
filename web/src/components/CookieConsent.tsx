@@ -76,7 +76,7 @@ export function CookieConsent({
           role="region"
           aria-live="polite"
           aria-label={title}
-          className="fixed bottom-4 left-4 right-4 z-50 animate-fade-up rounded-2xl border border-ink-100 bg-white/95 p-5 shadow-[0_20px_50px_-15px_rgba(11,15,23,0.35)] backdrop-blur-xl sm:left-6 sm:right-auto sm:max-w-sm"
+          className="fixed bottom-4 left-4 right-4 z-50 animate-fade-up rounded-2xl border border-ink-100 bg-white/95 p-5 shadow-overlay backdrop-blur-xl sm:left-6 sm:right-auto sm:max-w-sm"
         >
           <h2 className="mb-2 text-base font-semibold text-ink-900">{title} 🍪</h2>
           <p className="text-sm leading-relaxed text-ink-500">

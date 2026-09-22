@@ -12,6 +12,7 @@ import { Hero } from '@/components/Hero'
 import { AboutMe } from '@/components/AboutMe'
 import { Projects } from '@/components/Projects'
 import { Pricing } from '@/components/Pricing'
+import { Faq } from '@/components/Faq'
 import { Contact } from '@/components/Contact'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
@@ -33,7 +34,7 @@ export default async function HomePage({
   if (!isLocale(raw)) notFound()
   const locale = raw as Locale
 
-  const { hero, projects, packages, content } = await getHomeData()
+  const { hero, projects, packages, faqs, content } = await getHomeData()
   const d = createDictionary(content, locale)
   const whatsapp = content?.whatsappNumber ?? ''
 
@@ -42,12 +43,28 @@ export default async function HomePage({
     { id: 'aboutMe', label: d.t('aboutMe') },
     { id: 'projectCarousel', label: d.t('proyectos') },
     { id: 'newpricingplans', label: d.t('pricing') },
+    ...(faqs.length > 0 ? [{ id: 'faq', label: d.t('faqEyebrow') }] : []),
     { id: 'contact', label: d.t('contacts') },
   ]
 
   return (
     <>
-      <JsonLd locale={locale} projectCount={projects.length} whatsapp={whatsapp} />
+      <JsonLd
+        locale={locale}
+        projectCount={projects.length}
+        whatsapp={whatsapp}
+        email={content?.email ?? null}
+        socialLinks={content?.socialLinks ?? []}
+        packages={packages.map((p) => ({
+          name: text(p.title, locale),
+          description: text(p.subtitle, locale),
+          price: text(p.price, locale),
+        }))}
+        faqs={faqs.map((f) => ({
+          question: text(f.question, locale),
+          answer: text(f.answer, locale),
+        }))}
+      />
 
       <Header locale={locale} nav={nav} logoUrl="/logo.png" />
 
@@ -59,6 +76,7 @@ export default async function HomePage({
           buttonLabel={text(content?.heroButton ?? null, locale)}
           whatsappUrl={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}
           scrollHint={d.t('scrollHint')}
+          imageAlt={d.t('heroImageAlt')}
         />
 
         <AboutMe
@@ -67,6 +85,7 @@ export default async function HomePage({
           eyebrow={d.t('aboutMe')}
           heading={d.t('tatianaName')}
           name={d.t('projectLead')}
+          photoAlt={d.t('aboutPhotoAlt')}
         />
 
         <Projects
@@ -116,6 +135,17 @@ export default async function HomePage({
             contactMessage: d.t('packageInquiry'),
           }}
           whatsappNumber={whatsapp}
+        />
+
+        <Faq
+          items={faqs.map((f) => ({
+            id: f._id,
+            question: text(f.question, locale),
+            answer: text(f.answer, locale),
+          }))}
+          eyebrow={d.t('faqEyebrow')}
+          heading={d.t('faqHeading')}
+          subheading={d.t('faqSubheading')}
         />
 
         <Contact
@@ -198,14 +228,36 @@ function buildPrivacy(d: ReturnType<typeof createDictionary>) {
  * negocio local de diseno de interiores detras de la pagina, y lo que habilita
  * los resultados enriquecidos. El sitio viejo no tenia nada de esto.
  */
+/**
+ * Primera cifra de un precio escrito a mano en el panel.
+ *
+ * Cubre "desde 18 $/m2", "from $18/m²" y "от 18 $/м²", que son las tres formas
+ * en que esta hoy en el CMS. Si algun dia no hay numero, devuelve undefined y
+ * la oferta se emite sin precio, que es preferible a emitir uno invalido.
+ */
+function priceNumber(raw: string): number | undefined {
+  const match = raw.match(/\d+(?:[.,]\d+)?/)
+  if (!match) return undefined
+  const n = Number(match[0].replace(',', '.'))
+  return Number.isFinite(n) ? n : undefined
+}
+
 function JsonLd({
   locale,
   projectCount,
   whatsapp,
+  email,
+  socialLinks,
+  packages,
+  faqs,
 }: {
   locale: Locale
   projectCount: number
   whatsapp: string
+  email: string | null
+  socialLinks: { platform: string; url: string }[]
+  packages: { name: string; description: string; price: string }[]
+  faqs: { question: string; answer: string }[]
 }) {
   const meta = FALLBACK_META[locale]
 
@@ -220,7 +272,9 @@ function JsonLd({
         url: `${SITE_URL}/${locale}`,
         image: `${SITE_URL}/logo.png`,
         telephone: whatsapp || undefined,
+        email: email || undefined,
         priceRange: '$$',
+        currenciesAccepted: 'USD',
         areaServed: [
           { '@type': 'Country', name: 'Ecuador' },
           { '@type': 'Country', name: 'Russia' },
@@ -230,12 +284,55 @@ function JsonLd({
           addressLocality: 'Quito',
           addressCountry: 'EC',
         },
+        /* Coordenadas del centro de Quito. Es un estudio sin local a la calle,
+           asi que no hay una direccion exacta que publicar; el municipio basta
+           para que la busqueda local lo situe en la ciudad correcta. */
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -0.1807,
+          longitude: -78.4678,
+        },
+        /* `sameAs` es lo que ata el sitio a los perfiles reales: sin esto,
+           buscadores y asistentes no saben que esta web y esa cuenta de
+           Instagram son el mismo negocio. */
+        sameAs: socialLinks.map((s) => s.url),
         founder: {
           '@type': 'Person',
           name: 'Tatiana Gorshkova',
           jobTitle: 'Interior Designer',
         },
         knowsLanguage: ['en', 'ru', 'es'],
+        /* Los cuatro paquetes ya estaban en el CMS pero no se declaraban, asi
+           que para un buscador el sitio no vendia nada concreto. */
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: meta.title,
+          itemListElement: packages.map((p) => ({
+            '@type': 'Offer',
+            name: p.name,
+            description: p.description || undefined,
+            /* `price` tiene que ser un numero: el CMS guarda cadenas como
+               "desde 18 $/m2", que schema.org rechaza. De ahi que se extraiga
+               la cifra y se declare la unidad aparte —MTK es metro cuadrado—
+               en vez de mandar el texto tal cual. */
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: priceNumber(p.price),
+              priceCurrency: 'USD',
+              referenceQuantity: {
+                '@type': 'QuantitativeValue',
+                value: 1,
+                unitCode: 'MTK',
+              },
+            },
+            itemOffered: {
+              '@type': 'Service',
+              name: p.name,
+              serviceType: 'Interior design',
+              provider: { '@id': `${SITE_URL}/#business` },
+            },
+          })),
+        },
       },
       {
         '@type': 'WebSite',
@@ -254,6 +351,24 @@ function JsonLd({
         about: { '@id': `${SITE_URL}/#business` },
         numberOfItems: projectCount,
       },
+      /* Es el formato que los buscadores citan literalmente cuando alguien
+         pregunta por precios o plazos, asi que sale solo si hay preguntas
+         cargadas: un FAQPage vacio es un error de validacion. */
+      ...(faqs.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${SITE_URL}/${locale}#faq`,
+              inLanguage: locale,
+              isPartOf: { '@id': `${SITE_URL}/#website` },
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.question,
+                acceptedAnswer: { '@type': 'Answer', text: f.answer },
+              })),
+            },
+          ]
+        : []),
     ],
   }
 
