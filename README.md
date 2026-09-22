@@ -89,6 +89,34 @@ Las traducciones vienen colapsadas bajo cada campo para que el formulario no abr
   formulario imposible de enviar.
 - **Sin Swiper.** El hero y la galería son CSS (`scroll-snap`) más unas líneas de React. Ahorra
   unos 150 KB de JavaScript.
+- **Dos dorados, no uno** (`web/src/app/globals.css`). `accent` (`#8a6d1b`) es el único que puede
+  llevar texto sobre fondo claro: da 4.80:1 y cumple AA. `gold` (`#c9a227`) es más bonito pero da
+  2.33:1, así que solo vale para reglas, números y bordes, o para texto sobre tinta (ahí da 7.95:1).
+  Si se usa el brillante para un texto pequeño sobre papel, deja de ser legible.
+- **La regla de titulares va en `@layer base`.** Fuera de capas ganaba a todas las utilidades de
+  Tailwind —el CSS sin capa siempre gana al capado, sin importar especificidad— y un `h3` con
+  `font-sans` seguía saliendo en serif.
+- **Las tipografías no declaran `weight`** (`web/src/lib/fonts.ts`). Parece una optimización
+  pendiente y es al revés: sin `weight` se sirve la fuente variable, un archivo por subconjunto
+  (~20 KB); declarando pesos pasa a archivos estáticos y cuatro pesos suman unos 48 KB.
+- **Las preguntas frecuentes son `<details>` nativo** (`web/src/components/Faq.tsx`). Sin estado ni
+  JavaScript: la respuesta viaja en el HTML aunque esté plegada, que es lo que la hace indexable.
+  Un acordeón con `useState` normalmente no emite el texto oculto. Toda la sección pesa 3,5 KB.
+
+## Lo que falta para ganar visibilidad, y no es código
+
+**Crear la ficha de Google Business.** Es el activo más determinante para "diseñador de interiores
+en Quito": alimenta el bloque de resultados locales y las respuestas generadas por IA, y desde la
+recalibración de 2026 pesa más la interacción real con la ficha que la antigüedad del dominio.
+Hoy no existe. El nombre y el teléfono tienen que coincidir exactamente con los del sitio y los de
+Instagram: si no cuadran, los asistentes no citan la fuente.
+
+**Las páginas de proyecto siguen pendientes** a propósito. Hoy los 11 proyectos viven en un modal
+sin URL propia, así que ninguno es indexable; darles página llevaría el sitio de 3 a 36 URLs. No se
+hizo porque hay ~32 palabras por proyecto y 33 páginas así serían contenido pobre, que penaliza.
+Cuando Tanya haya cargado los proyectos nuevos, hace falta añadir a `project.ts`: `slug`, un objeto
+`specs` (superficie, ciudad, año, estilo, servicios), `gallery` como array de `{image, alt, caption}`
+y `bodyRich` como `localeBlock`.
 
 ## Pendiente
 
