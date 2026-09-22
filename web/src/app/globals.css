@@ -107,12 +107,21 @@ body {
   overflow-x: hidden;
 }
 
-/* Titulares con la serif, en todos los niveles. */
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
+/*
+ * Titulares con la serif, en todos los niveles.
+ *
+ * Tiene que ir en `@layer base` a la fuerza. Suelto, este bloque queda fuera
+ * de toda capa, y el CSS sin capa gana siempre al que esta en una —da igual la
+ * especificidad—, asi que ninguna utilidad `font-sans` podia sobrescribirlo:
+ * un h3 marcado como sans seguia saliendo en serif.
+ */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Respeta a quien pidio menos movimiento en su sistema operativo. */
