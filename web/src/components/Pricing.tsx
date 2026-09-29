@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SectionHeading } from './SectionHeading'
 
 export type PackageItem = {
@@ -50,6 +50,38 @@ export function Pricing({
   whatsappNumber: string
 }) {
   const [active, setActive] = useState(0)
+  const rowRef = useRef<HTMLDivElement>(null)
+  // Que lado de la fila de pestanas tiene mas contenido fuera de pantalla.
+  const [overflow, setOverflow] = useState({ left: false, right: false })
+
+  const measure = () => {
+    const row = rowRef.current
+    if (!row) return
+    setOverflow({
+      left: row.scrollLeft > 4,
+      right: row.scrollLeft + row.clientWidth < row.scrollWidth - 4,
+    })
+  }
+
+  useEffect(() => {
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  // La pestana elegida se centra en la fila: asi nunca queda cortada y se
+  // asoman las vecinas, que es lo que le dice a quien llega por primera vez
+  // que hay mas paquetes a los lados.
+  useEffect(() => {
+    const row = rowRef.current
+    const tab = row?.children[active] as HTMLElement | undefined
+    if (!row || !tab) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    row.scrollTo({
+      left: tab.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2,
+      behavior: reduce ? 'auto' : 'smooth',
+    })
+  }, [active])
 
   return (
     <section
@@ -66,9 +98,11 @@ export function Pricing({
         {/* Pestanas: solo en movil y tablet. Subrayado que se desplaza en vez
             de pildoras: la pestana activa se lee igual y no parece un boton
             de compra. */}
-        <div className="mt-8 lg:hidden">
+        <div className="relative mt-8 lg:hidden">
           <div
-            className="snap-row -mx-5 flex snap-x gap-6 overflow-x-auto border-b border-ink-200 px-5 sm:-mx-6 sm:px-6"
+            ref={rowRef}
+            onScroll={measure}
+            className="snap-row relative -mx-5 flex gap-6 overflow-x-auto border-b border-ink-200 px-5 sm:-mx-6 sm:px-6"
             role="tablist"
           >
             {packages.map((p, i) => (
@@ -79,7 +113,7 @@ export function Pricing({
                 aria-selected={i === active}
                 aria-controls={`paquete-${p.id}`}
                 onClick={() => setActive(i)}
-                className={`relative shrink-0 snap-start whitespace-nowrap py-3 text-[15px] transition-colors duration-300 ${
+                className={`relative shrink-0 whitespace-nowrap py-3 text-[15px] transition-colors duration-300 ${
                   i === active
                     ? 'text-ink-900'
                     : 'text-ink-400 hover:text-ink-900'
@@ -95,6 +129,20 @@ export function Pricing({
               </button>
             ))}
           </div>
+
+          {/* Desvanecido en el borde que tiene mas pestanas fuera de pantalla. */}
+          <div
+            aria-hidden
+            className={`pointer-events-none absolute inset-y-0 -left-5 w-10 bg-linear-to-r from-sand-100 to-transparent transition-opacity duration-300 sm:-left-6 ${
+              overflow.left ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+          <div
+            aria-hidden
+            className={`pointer-events-none absolute inset-y-0 -right-5 w-10 bg-linear-to-l from-sand-100 to-transparent transition-opacity duration-300 sm:-right-6 ${
+              overflow.right ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
         </div>
 
         {/* Tabla comparativa y no cuatro tarjetas: columnas separadas por un
