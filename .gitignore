@@ -3,3 +3,6 @@ node_modules/
 !.env.example
 .vercel
 scripts/.migration-cache.json
+
+# Configuracion local de Claude Code (permisos de cada maquina)
+.claude/settings.local.json
