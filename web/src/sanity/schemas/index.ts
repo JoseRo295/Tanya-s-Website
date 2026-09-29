@@ -6,6 +6,7 @@ import { heroSlide } from './heroSlide'
 import { pricingPackage } from './pricingPackage'
 import { siteContent } from './siteContent'
 import { faq } from './faq'
+import { valueProp } from './valueProp'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   // tipos localizados reutilizables
@@ -19,6 +20,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   pricingPackage,
   siteContent,
   faq,
+  valueProp,
 ]
 
 /** Documentos que existen una sola vez: no se listan, se abren directo. */

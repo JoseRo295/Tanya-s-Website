@@ -15,6 +15,7 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
+      S.documentTypeListItem('valueProp').title('Por qué elegirme'),
       S.documentTypeListItem('project').title('Proyectos'),
       S.documentTypeListItem('heroSlide').title('Portada'),
       S.documentTypeListItem('pricingPackage').title('Precios'),

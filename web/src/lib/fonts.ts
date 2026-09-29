@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Cormorant, Onest } from 'next/font/google'
 
 /**
  * next/font genera un @font-face por subconjunto con su `unicode-range`, asi
@@ -12,26 +12,32 @@ import { Inter, Playfair_Display } from 'next/font/google'
  * el texto, y `display: swap` pinta de inmediato con la fuente del sistema,
  * quitar la precarga no retrasa nada visible.
  *
- * NO anadir `weight` aqui. Parece una optimizacion —el sitio solo usa 300,
- * 400, 500, 600 y un 700 suelto— pero es la contraria: sin `weight` next/font
- * sirve la fuente VARIABLE, un archivo por subconjunto que cubre todos los
- * pesos (~20 KB el latino de Inter). Declarar pesos la cambia por archivos
- * estaticos, uno por peso, y cuatro pesos del mismo subconjunto pasan de esos
- * 20 KB a unos 48 KB.
+ * NO anadir `weight` aqui. Parece una optimizacion pero es la contraria: sin
+ * `weight` next/font sirve la fuente VARIABLE, un archivo por subconjunto que
+ * cubre todos los pesos. Declarar pesos la cambia por archivos estaticos, uno
+ * por peso, y pesa mas del doble.
+ *
+ * Por que estas dos y no Inter + Playfair: eran las que usa cualquier plantilla
+ * "elegante", y el sitio se leia igual que mil otros. Cormorant tiene el trazo
+ * fino y alto de los rotulos de arquitectura y aguanta tamanos enormes, que es
+ * donde se luce el titular. Onest es una grotesca diseñada con el cirilico
+ * como ciudadano de primera (se nota en /ru, donde Inter quedaba apretada) y
+ * tiene un tono mas calido que Inter para el texto corrido. Las dos traen
+ * cirilico y son variables.
  */
 
-const inter = Inter({
+const onest = Onest({
   subsets: ['latin', 'cyrillic'],
-  variable: '--font-inter',
+  variable: '--font-body',
   display: 'swap',
   preload: false,
 })
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant({
   subsets: ['latin', 'cyrillic'],
-  variable: '--font-playfair',
+  variable: '--font-serif',
   display: 'swap',
   preload: false,
 })
 
-export const fontVariables = `${inter.variable} ${playfair.variable}`
+export const fontVariables = `${onest.variable} ${cormorant.variable}`

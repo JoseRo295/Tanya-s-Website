@@ -1,7 +1,5 @@
 import { PortableText, type PortableTextBlock } from 'next-sanity'
 import { SanityPicture } from './SanityPicture'
-import { Reveal } from './Reveal'
-import { SectionLabel } from './SectionLabel'
 import type { SanityImg } from '@/sanity/queries'
 
 /**
@@ -9,6 +7,10 @@ import type { SanityImg } from '@/sanity/queries'
  * Los parrafos vienen de Portable Text, asi que Tanya los controla desde el
  * panel (antes el codigo los partia buscando ". ", y un punto de mas rompia
  * el formato).
+ *
+ * El nombre es el titular y va enorme: en un estudio de una sola persona la
+ * persona es la marca. El rol pasa a ser el pie de la foto, que es donde un
+ * lector lo busca.
  */
 export function AboutMe({
   photo,
@@ -27,43 +29,40 @@ export function AboutMe({
   photoAlt: string
 }) {
   return (
-    <section id="aboutMe" className="bg-sand-50 py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
-        <Reveal from="left" className="order-2 lg:order-1">
-          <div className="mb-5">
-            <SectionLabel number={1}>{eyebrow}</SectionLabel>
-          </div>
-          <h2 className="mb-8 text-balance text-[clamp(1.9rem,4.5vw,3rem)] font-semibold leading-tight text-ink-900">
-            {heading}
-          </h2>
-
-          <div className="space-y-5 text-[17px] leading-relaxed text-ink-500 [&_strong]:text-ink-800">
-            <PortableText value={body} />
-          </div>
-
-          <div className="mt-10 flex items-center gap-4 border-t border-ink-100 pt-8">
-            <span className="h-px w-10 bg-accent" aria-hidden />
-            <p className="font-display text-lg text-ink-800">{name}</p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={120} from="none" className="order-1 lg:order-2">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md lg:max-w-none">
-            {/* Marco desplazado: da profundidad sin cargar otra imagen. */}
-            <div
-              className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-sand-300 sm:-bottom-6 sm:-right-6"
-              aria-hidden
-            />
-            <div className="relative h-full w-full overflow-hidden rounded-2xl bg-sand-200 shadow-raised">
+    <section id="aboutMe" className="bg-sand-50 py-20 sm:py-28 lg:py-36">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <figure className="lg:col-span-5">
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-sm bg-sand-200">
+            <div className="reveal-photo absolute inset-0">
               <SanityPicture
                 image={photo}
                 alt={photoAlt}
-                sizes="(max-width: 1024px) 90vw, 45vw"
-                className="object-cover transition-transform duration-[1.2s] ease-out hover:scale-[1.04]"
+                sizes="(max-width: 1024px) 92vw, 40vw"
+                className="object-cover"
               />
             </div>
           </div>
-        </Reveal>
+          <figcaption className="mt-4 flex items-center gap-3 text-sm text-ink-500">
+            <span aria-hidden className="h-px w-6 bg-gold" />
+            {name}
+          </figcaption>
+        </figure>
+
+        <div className="lg:col-span-6 lg:col-start-7 lg:pt-10">
+          <p className="mb-6 flex items-center gap-3 text-sm text-accent">
+            <span aria-hidden className="h-px w-6 bg-gold" />
+            {eyebrow}
+          </p>
+          <h2 className="text-balance text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.95] text-ink-900">
+            {heading}
+          </h2>
+
+          {/* El primer parrafo hace de entradilla: mas grande y en tinta
+              plena, para que quien solo lee eso ya sepa lo esencial. */}
+          <div className="mt-10 max-w-[60ch] space-y-5 text-[17px] leading-[1.7] text-ink-500 [&_strong]:font-medium [&_strong]:text-ink-800 [&>p:first-child]:text-xl [&>p:first-child]:leading-snug [&>p:first-child]:text-ink-800">
+            <PortableText value={body} />
+          </div>
+        </div>
       </div>
     </section>
   )
