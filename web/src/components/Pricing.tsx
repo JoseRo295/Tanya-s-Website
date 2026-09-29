@@ -119,7 +119,9 @@ export function Pricing({
                     : 'text-ink-400 hover:text-ink-900'
                 }`}
               >
-                {p.title}
+                {/* En la pestana solo el nombre: el detalle entre parentesis
+                    ("(apartamentos hasta 40 m2)") ya sale en la tarjeta. */}
+                {p.title.replace(/\s*\([^)]*\)\s*$/, '')}
                 <span
                   aria-hidden
                   className={`absolute inset-x-0 -bottom-px h-0.5 origin-left bg-ink-900 transition-transform duration-500 ease-out-expo ${
