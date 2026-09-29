@@ -95,6 +95,9 @@ export type SanityImg = {
   /** Marcados por la editora; alimentan el texto alternativo. */
   room?: string | null
   style?: string | null
+  /** Recorte y punto de enfoque que la editora marca en el Studio (fracciones 0-1). */
+  crop?: { top: number; bottom: number; left: number; right: number } | null
+  hotspot?: { x: number; y: number } | null
 } | null
 
 export type LocaleField = Partial<Record<Locale, string>> | null
