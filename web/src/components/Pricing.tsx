@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Reveal } from './Reveal'
-import { SectionLabel } from './SectionLabel'
+import { SectionHeading } from './SectionHeading'
 
 export type PackageItem = {
   id: string
@@ -11,7 +10,10 @@ export type PackageItem = {
   subtitle: string
   price: string
   time: string
+  /** "Todo lo de «100%», más:" ya compuesto, o vacío si la lista es completa. */
+  includes: string
   features: string[]
+  badge: string
   popular: boolean
   pdfUrl: string | null
 }
@@ -31,6 +33,12 @@ export type PricingLabels = {
  * El sitio viejo mostraba un solo paquete a la vez con pestanas. Se conserva
  * ese patron en movil (cuatro tarjetas completas serian un muro de texto) y en
  * escritorio se muestran todas en rejilla para poder compararlas de un vistazo.
+ *
+ * La seccion llego a medir 1,8 pantallas en escritorio. Dos cosas la acortan:
+ * cada paquete lista solo lo que anade al anterior ("Todo lo de «100%», mas:")
+ * en vez de repetirlo, y los espacios de la tarjeta son mas apretados. El
+ * contraste entre paquetes sigue estando en el precio y en el panel oscuro,
+ * no en el aire alrededor.
  */
 export function Pricing({
   packages,
@@ -44,60 +52,70 @@ export function Pricing({
   const [active, setActive] = useState(0)
 
   return (
-    <section id="newpricingplans" className="bg-sand-100 py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
-          <div className="mb-5">
-            <SectionLabel number={3} align="center">
-              {labels.eyebrow}
-            </SectionLabel>
-          </div>
-          <h2 className="text-balance text-[clamp(1.9rem,5vw,3.25rem)] font-semibold leading-tight text-ink-900">
-            {labels.heading}
-          </h2>
-          {labels.subheading && (
-            <p className="mt-5 text-pretty text-lg leading-relaxed text-ink-400">
-              {labels.subheading}
-            </p>
-          )}
-        </Reveal>
+    <section
+      id="newpricingplans"
+      className="bg-sand-100 py-16 sm:py-20 lg:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={labels.eyebrow}
+          heading={labels.heading}
+          intro={labels.subheading}
+        />
 
-        {/* Pestanas: solo en movil y tablet */}
-        <div className="mb-8 lg:hidden">
+        {/* Pestanas: solo en movil y tablet. Subrayado que se desplaza en vez
+            de pildoras: la pestana activa se lee igual y no parece un boton
+            de compra. */}
+        <div className="mt-8 lg:hidden">
           <div
-            className="snap-row -mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1"
+            className="snap-row -mx-5 flex snap-x gap-6 overflow-x-auto border-b border-ink-200 px-5 sm:-mx-6 sm:px-6"
             role="tablist"
           >
             {packages.map((p, i) => (
               <button
                 key={p.id}
+                id={`paquete-tab-${p.id}`}
                 role="tab"
                 aria-selected={i === active}
+                aria-controls={`paquete-${p.id}`}
                 onClick={() => setActive(i)}
-                className={`shrink-0 snap-start whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`relative shrink-0 snap-start whitespace-nowrap py-3 text-[15px] transition-colors duration-300 ${
                   i === active
-                    ? 'bg-ink-900 text-white shadow-md'
-                    : 'bg-white text-ink-500 hover:text-ink-900'
+                    ? 'text-ink-900'
+                    : 'text-ink-400 hover:text-ink-900'
                 }`}
               >
                 {p.title}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-0 -bottom-px h-0.5 origin-left bg-ink-900 transition-transform duration-500 ease-out-expo ${
+                    i === active ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
               </button>
             ))}
           </div>
         </div>
 
-        {/* `items-stretch` iguala la altura de las cuatro tarjetas, asi los
-            botones quedan alineados aunque un titulo ocupe dos lineas. */}
-        <div className="grid gap-6 lg:grid-cols-4 lg:items-stretch">
+        {/* Tabla comparativa y no cuatro tarjetas: columnas separadas por un
+            filete, con el paquete mas elegido en un panel de grafito que
+            sobresale. `items-stretch` iguala las alturas, asi los botones
+            quedan alineados aunque un titulo ocupe dos lineas. */}
+        <div className="mt-2 grid lg:mt-14 lg:grid-cols-4 lg:items-stretch">
           {packages.map((p, i) => (
             <div
               key={p.id}
-              className={`${i === active ? 'block' : 'hidden lg:block'} lg:h-full`}
+              id={`paquete-${p.id}`}
+              className={`${i === active ? 'block animate-fade-in lg:animate-none' : 'hidden lg:block'} lg:h-full`}
               role="tabpanel"
+              aria-labelledby={`paquete-tab-${p.id}`}
             >
-              <Reveal delay={Math.min(i, 3) * 80} className="lg:h-full">
-                <Card pkg={p} labels={labels} whatsappNumber={whatsappNumber} />
-              </Reveal>
+              <Card
+                pkg={p}
+                labels={labels}
+                whatsappNumber={whatsappNumber}
+                first={i === 0}
+              />
             </div>
           ))}
         </div>
@@ -110,32 +128,50 @@ function Card({
   pkg,
   labels,
   whatsappNumber,
+  first,
 }: {
   pkg: PackageItem
   labels: PricingLabels
   whatsappNumber: string
+  first: boolean
 }) {
   const waUrl = `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${encodeURIComponent(
     labels.contactMessage.replace('{title}', pkg.title),
   )}`
+  const dark = pkg.popular
 
   return (
     <article
-      className={`relative flex h-full flex-col rounded-3xl p-6 transition-all duration-500 sm:p-7 ${
-        pkg.popular
-          ? 'bg-ink-900 text-white shadow-raised lg:-translate-y-3'
-          : 'border border-ink-100 bg-white text-ink-800 hover:-translate-y-1 hover:shadow-xl'
+      className={`relative flex h-full flex-col px-1 py-6 sm:px-2 lg:px-6 lg:py-8 ${
+        dark
+          ? '-mx-5 bg-ink-900 px-6! text-white sm:mx-0 sm:rounded-sm lg:-my-4 lg:h-[calc(100%+2rem)] lg:py-12! lg:shadow-raised'
+          : `text-ink-800 ${first ? '' : 'lg:border-l lg:border-ink-200'}`
       }`}
     >
-      {pkg.popular && (
-        <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
-          {labels.popular}
-        </span>
-      )}
+      {/* Tres tratamientos que no compiten entre si: `popular` invierte la
+          columna entera a grafito; `badge` (el paquete de alquiler corto)
+          lleva un icono de casa junto al rotulo, para que se lea como "esto
+          es para Airbnb" de un vistazo y no solo por el texto. Los rotulos
+          van en minusculas y sin interletrado: en versalitas espaciadas eran
+          el tic de plantilla mas repetido del sitio. */}
+      <div className="mb-3 h-5">
+        {pkg.popular && (
+          <span className="inline-flex items-center gap-2 text-sm text-gold">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
+            {labels.popular}
+          </span>
+        )}
+        {!pkg.popular && pkg.badge && (
+          <span className="inline-flex items-center gap-1.5 text-sm text-accent">
+            <HouseIcon />
+            {pkg.badge}
+          </span>
+        )}
+      </div>
 
       <h3
-        className={`text-balance text-xl font-semibold leading-tight ${
-          pkg.popular ? 'text-white' : 'text-ink-900'
+        className={`text-balance text-[1.6rem] leading-[1.05] ${
+          dark ? 'text-white' : 'text-ink-900'
         }`}
       >
         {pkg.title}
@@ -143,17 +179,15 @@ function Card({
 
       {pkg.subtitle && (
         <p
-          className={`mt-2 text-sm leading-relaxed ${
-            pkg.popular ? 'text-white/60' : 'text-ink-400'
-          }`}
+          className={`mt-2 text-sm leading-relaxed ${dark ? 'text-white/65' : 'text-ink-500'}`}
         >
           {pkg.subtitle}
         </p>
       )}
 
       <p
-        className={`mt-6 font-display text-3xl font-semibold ${
-          pkg.popular ? 'text-white' : 'text-ink-900'
+        className={`mt-5 font-display text-[2.25rem] font-medium leading-none tracking-[-0.02em] ${
+          dark ? 'text-white' : 'text-ink-900'
         }`}
       >
         {pkg.price}
@@ -161,35 +195,42 @@ function Card({
 
       {pkg.time && (
         <p
-          className={`mt-1.5 text-xs uppercase tracking-wider ${
-            pkg.popular ? 'text-white/50' : 'text-ink-400'
-          }`}
+          className={`mt-2 text-sm ${dark ? 'text-white/65' : 'text-ink-400'}`}
         >
           {labels.duration}: {pkg.time}
         </p>
       )}
 
-      <ul
-        className={`mt-7 flex-1 space-y-3 border-t pt-7 text-sm ${
-          pkg.popular ? 'border-white/15' : 'border-ink-100'
+      <div
+        className={`mt-5 flex-1 border-t pt-5 text-sm leading-snug ${
+          dark ? 'border-white/15' : 'border-ink-200'
         }`}
       >
-        {pkg.features.map((f, i) => (
-          <li key={i} className="flex gap-2.5">
-            <Check popular={pkg.popular} />
-            <span className={pkg.popular ? 'text-white/80' : 'text-ink-500'}>{f}</span>
-          </li>
-        ))}
-      </ul>
+        {/* La base va como frase, no como una linea mas con su check: es
+            un resumen de lo de arriba, no una cosa incluida. */}
+        {pkg.includes && (
+          <p className={`mb-3 font-medium ${dark ? 'text-white' : 'text-ink-900'}`}>
+            {pkg.includes}
+          </p>
+        )}
+        <ul className="space-y-2.5">
+          {pkg.features.map((f, i) => (
+            <li key={i} className="flex gap-2.5">
+              <Check popular={dark} />
+              <span className={dark ? 'text-white/85' : 'text-ink-600'}>{f}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <div className="mt-8 space-y-2.5">
+      <div className="mt-6 space-y-1">
         <a
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-            pkg.popular
-              ? 'bg-white text-ink-900 hover:bg-accent hover:text-white'
+          className={`flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-colors duration-300 ${
+            dark
+              ? 'bg-gold text-ink-900 hover:bg-white'
               : 'bg-ink-900 text-white hover:bg-accent'
           }`}
         >
@@ -201,13 +242,18 @@ function Card({
             href={pkg.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex w-full items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-medium transition-colors ${
-              pkg.popular
-                ? 'text-white/60 hover:text-white'
-                : 'text-ink-400 hover:text-ink-900'
+            className={`flex min-h-11 w-full items-center justify-center gap-1.5 px-2 text-sm transition-colors ${
+              dark
+                ? 'text-white/65 hover:text-white'
+                : 'text-ink-500 hover:text-ink-900'
             }`}
           >
-            <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" aria-hidden>
+            <svg
+              viewBox="0 0 16 16"
+              className="h-3.5 w-3.5 shrink-0"
+              fill="none"
+              aria-hidden
+            >
               <path
                 d="M8 1v9m0 0L5 7m3 3l3-3M2 12v2h12v-2"
                 stroke="currentColor"
@@ -219,8 +265,25 @@ function Card({
             {labels.pdf}
           </a>
         )}
+        {/* En escritorio las columnas van lado a lado: sin este hueco, el
+            boton de un paquete sin PDF quedaba mas abajo que los demas. */}
+        {!pkg.pdfUrl && <div aria-hidden className="hidden min-h-11 lg:block" />}
       </div>
     </article>
+  )
+}
+
+function HouseIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" aria-hidden>
+      <path
+        d="M2 7.5 8 2l6 5.5M3.5 6.5V13h9V6.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   )
 }
 
@@ -228,7 +291,7 @@ function Check({ popular }: { popular: boolean }) {
   return (
     <svg
       viewBox="0 0 16 16"
-      className={`mt-0.5 h-4 w-4 shrink-0 ${popular ? 'text-accent-light' : 'text-accent'}`}
+      className={`mt-px h-4 w-4 shrink-0 ${popular ? 'text-accent-light' : 'text-accent'}`}
       fill="none"
       aria-hidden
     >

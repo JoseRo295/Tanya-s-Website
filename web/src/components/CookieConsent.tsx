@@ -1,10 +1,22 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/react'
 
 const STORAGE_KEY = 'cookieConsent'
+
+function readStored(): string | null {
+  try {
+    return localStorage.getItem(STORAGE_KEY)
+  } catch {
+    // Modo privado o cookies bloqueadas: se trata como "sin decidir".
+    return null
+  }
+}
+
+/** Solo se lee al cargar: los cambios de esta visita van por `choice`. */
+const noSubscribe = () => () => {}
 
 /**
  * Dos arreglos respecto al banner viejo:
@@ -30,29 +42,23 @@ export function CookieConsent({
   decline: string
   policyLink: string
 }) {
-  const [consent, setConsent] = useState<'granted' | 'denied' | null>(null)
-  const [visible, setVisible] = useState(false)
+  // La decision guardada se lee como un dato externo: en el servidor no hay
+  // localStorage (null) y en el navegador se lee al hidratar, sin tener que
+  // copiarla a un estado desde un efecto.
+  const stored = useSyncExternalStore(noSubscribe, readStored, () => null)
+  const saved = stored === 'true' ? 'granted' : stored === 'false' ? 'denied' : null
+  // Lo elegido en esta visita manda sobre lo guardado (y cubre el caso en que
+  // no se pudo guardar).
+  const [choice, setChoice] = useState<'granted' | 'denied' | null>(null)
+  const consent = choice ?? saved
 
+  const [delayPassed, setDelayPassed] = useState(false)
   useEffect(() => {
-    let stored: string | null = null
-    try {
-      stored = localStorage.getItem(STORAGE_KEY)
-    } catch {
-      // Modo privado o cookies bloqueadas: se trata como "sin decidir".
-    }
-
-    if (stored === 'true') {
-      setConsent('granted')
-      return
-    }
-    if (stored === 'false') {
-      setConsent('denied')
-      return
-    }
-
-    const timer = setTimeout(() => setVisible(true), 1500)
+    if (saved) return
+    const timer = setTimeout(() => setDelayPassed(true), 1500)
     return () => clearTimeout(timer)
-  }, [])
+  }, [saved])
+  const visible = consent === null && delayPassed
 
   const choose = (granted: boolean) => {
     try {
@@ -60,8 +66,7 @@ export function CookieConsent({
     } catch {
       // Si no se puede guardar, al menos se respeta durante esta visita.
     }
-    setConsent(granted ? 'granted' : 'denied')
-    setVisible(false)
+    setChoice(granted ? 'granted' : 'denied')
   }
 
   return (

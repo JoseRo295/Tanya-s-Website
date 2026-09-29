@@ -15,7 +15,8 @@ const IMAGE = groq`{
   "lqip": asset->metadata.lqip,
   "width": asset->metadata.dimensions.width,
   "height": asset->metadata.dimensions.height,
-  "alt": coalesce(alt, ""),
+  room,
+  style,
   hotspot,
   crop
 }`
@@ -46,8 +47,18 @@ export const HOME_QUERY = groq`{
     price,
     time,
     features,
+    "includes": includes->title,
+    extras,
+    badge,
     popular,
     "pdfUrl": pdf.asset->url
+  },
+
+  "valueProps": *[_type == "valueProp"] | order(order asc) {
+    _id,
+    icon,
+    title,
+    body
   },
 
   "faqs": *[_type == "faq"] | order(order asc) {
@@ -81,7 +92,9 @@ export type SanityImg = {
   lqip: string | null
   width: number | null
   height: number | null
-  alt?: string
+  /** Marcados por la editora; alimentan el texto alternativo. */
+  room?: string | null
+  style?: string | null
 } | null
 
 export type LocaleField = Partial<Record<Locale, string>> | null
@@ -113,6 +126,11 @@ export type PricingPackage = {
   price: LocaleField
   time: LocaleField
   features: LocaleList
+  /** Titulo del paquete cuyo contenido incluye este entero, si lo hay. */
+  includes: LocaleField
+  /** Solo lo que añade sobre `includes`. */
+  extras: LocaleList
+  badge: LocaleField
   popular: boolean | null
   pdfUrl: string | null
 }
@@ -141,6 +159,13 @@ export type SiteContent = {
   strings: StringEntry[] | null
 }
 
+export type ValueProp = {
+  _id: string
+  icon: string | null
+  title: LocaleField
+  body: LocaleField
+}
+
 export type Faq = {
   _id: string
   question: LocaleField
@@ -151,6 +176,7 @@ export type HomeData = {
   hero: HeroSlide[]
   projects: Project[]
   packages: PricingPackage[]
+  valueProps: ValueProp[]
   faqs: Faq[]
   content: SiteContent | null
 }

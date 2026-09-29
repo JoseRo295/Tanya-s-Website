@@ -20,10 +20,13 @@ export function Header({
   const [open, setOpen] = useState(false)
   const [progress, setProgress] = useState(0)
   const [scrolled, setScrolled] = useState(false)
+  // Arranca en `true`: la pagina siempre carga con la portada debajo.
+  const [overHero, setOverHero] = useState(true)
   const [active, setActive] = useState<string>('')
   const pathname = usePathname()
 
-  // Barra de progreso + estado compacto al bajar.
+  // Barra de progreso, estado compacto al bajar, y si aun estamos sobre la
+  // foto de portada (entonces el header va transparente y en blanco).
   useEffect(() => {
     let frame = 0
     const onScroll = () => {
@@ -32,6 +35,8 @@ export function Header({
         const total = document.documentElement.scrollHeight - window.innerHeight
         setProgress(total > 0 ? (window.scrollY / total) * 100 : 0)
         setScrolled(window.scrollY > 24)
+        const hero = document.getElementById('home')
+        setOverHero(hero ? window.scrollY < hero.offsetHeight - 72 : false)
       })
     }
     onScroll()
@@ -79,108 +84,136 @@ export function Header({
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  /** Conserva el ancla al cambiar de idioma: /en#contact -> /ru#contact */
+  /** Al cambiar de idioma se vuelve a la seccion que se estaba viendo:
+   *  leyendo Precios en /es, "ru" lleva a /ru#newpricingplans. Se usa la
+   *  seccion activa y no la posicion en pixeles porque cada idioma tiene
+   *  textos de distinto largo y la misma altura cae en otro sitio. */
   const localeHref = (target: Locale) => {
     const rest = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || ''
-    return `/${target}${rest}`
+    const hash = active && active !== 'home' ? `#${active}` : ''
+    return `/${target}${rest}${hash}`
   }
+
+  // Texto claro sobre la foto de portada y sobre el menu movil (que es oscuro).
+  const light = overHero || open
 
   return (
     <>
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'border-b border-ink-100 bg-sand-50/85 shadow-[0_1px_20px_rgba(11,15,23,0.06)] backdrop-blur-xl'
-            : 'border-b border-transparent bg-sand-50/60 backdrop-blur-md'
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+          light
+            ? 'border-b border-transparent bg-transparent'
+            : 'border-b border-ink-200/70 bg-sand-50/85 backdrop-blur-xl'
         }`}
       >
         <nav
           aria-label="Principal"
-          className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-8"
         >
           <Link
             href={`/${locale}`}
             className="group relative z-50 flex shrink-0 items-center py-3"
             aria-label="TG Design — inicio"
           >
+            {/* Un solo archivo de logo: en claro se vuelve blanco con filtro,
+                asi no se descarga una segunda imagen. */}
             <Image
               src={logoUrl}
               alt="TG Design"
               width={180}
               height={56}
               priority
-              className={`w-auto transition-all duration-300 ${
-                scrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-14'
-              }`}
+              className={`w-auto transition-[height,filter] duration-500 ${
+                scrolled && !open ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+              } ${light ? 'brightness-0 invert' : ''}`}
             />
           </Link>
 
           {/* Menu escritorio */}
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-0.5 lg:flex">
             {nav.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
                   aria-current={active === item.id ? 'true' : undefined}
-                  className={`relative block px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200 ${
-                    active === item.id
-                      ? 'text-ink-900'
-                      : 'text-ink-500 hover:text-ink-900'
+                  className={`relative block px-3 py-2 text-sm transition-colors duration-300 ${
+                    light
+                      ? active === item.id
+                        ? 'text-white'
+                        : 'text-white/75 hover:text-white'
+                      : active === item.id
+                        ? 'text-ink-900'
+                        : 'text-ink-500 hover:text-ink-900'
                   }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute inset-x-3 -bottom-px h-px origin-left bg-accent transition-transform duration-300 ${
-                      active === item.id ? 'scale-x-100' : 'scale-x-0'
-                    }`}
+                    className={`absolute inset-x-3 bottom-0.5 h-px origin-left transition-transform duration-500 ease-out-expo ${
+                      light ? 'bg-white' : 'bg-gold'
+                    } ${active === item.id ? 'scale-x-100' : 'scale-x-0'}`}
                   />
                 </a>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-2">
-            <LocaleSwitch current={locale} href={localeHref} />
+          <div className="relative z-50 flex items-center gap-1">
+            <LocaleSwitch current={locale} href={localeHref} light={light} />
 
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="menu-movil"
-              className="relative z-50 -mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full text-ink-700 transition-colors hover:bg-ink-100 md:hidden"
+              className={`-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden ${
+                light
+                  ? 'text-white hover:bg-white/10'
+                  : 'text-ink-800 hover:bg-ink-100'
+              }`}
             >
-              <span className="sr-only">{open ? 'Cerrar menú' : 'Abrir menú'}</span>
+              <span className="sr-only">
+                {open ? 'Cerrar menú' : 'Abrir menú'}
+              </span>
               <Burger open={open} />
             </button>
           </div>
         </nav>
 
         <div
-          className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-linear-to-r from-accent to-accent-light transition-transform duration-150 ease-out"
+          className={`absolute inset-x-0 bottom-0 h-px origin-left bg-gold transition-opacity duration-300 ${
+            light ? 'opacity-0' : 'opacity-100'
+          }`}
           style={{ transform: `scaleX(${progress / 100})` }}
           aria-hidden
         />
       </header>
 
-      {/* Menu movil a pantalla completa */}
+      {/* Menu movil a pantalla completa. Oscuro, con los enlaces grandes en
+          la serif: en el telefono es la primera vez que se ve la tipografia
+          del sitio a tamano de cartel, y conviene que se note. */}
       <div
         id="menu-movil"
         inert={!open}
-        className={`fixed inset-0 z-40 bg-sand-50 transition-opacity duration-300 md:hidden ${
-          open ? 'opacity-100' : 'pointer-events-none opacity-0'
+        className={`fixed inset-0 z-40 flex flex-col bg-ink-900 transition-[clip-path] duration-700 ease-in-out-quart lg:hidden ${
+          open
+            ? '[clip-path:inset(0_0_0_0)]'
+            : 'pointer-events-none [clip-path:inset(0_0_100%_0)]'
         }`}
       >
-        <ul className="flex h-full flex-col items-center justify-center gap-2 px-8">
+        <ul className="flex flex-1 flex-col justify-center gap-1 px-6 pt-20">
           {nav.map((item, i) => (
-            <li key={item.id} className="w-full max-w-xs">
+            <li key={item.id} className="overflow-hidden">
               <a
                 href={`#${item.id}`}
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-6 py-4 text-center font-display text-2xl text-ink-800 transition-all duration-300 hover:bg-white hover:text-accent"
+                className={`block py-2 font-display text-[clamp(2.25rem,10vw,3.5rem)] leading-tight transition-[translate,color] duration-700 ease-out-expo ${
+                  active === item.id
+                    ? 'text-gold'
+                    : 'text-white hover:text-gold'
+                }`}
                 style={{
-                  transitionDelay: open ? `${i * 40}ms` : '0ms',
-                  opacity: open ? 1 : 0,
-                  transform: open ? 'translateY(0)' : 'translateY(12px)',
+                  transitionDelay: open ? `${150 + i * 50}ms` : '0ms',
+                  translate: open ? '0 0' : '0 110%',
                 }}
               >
                 {item.label}
@@ -196,29 +229,37 @@ export function Header({
 function LocaleSwitch({
   current,
   href,
+  light,
 }: {
   current: Locale
   href: (l: Locale) => string
+  light: boolean
 }) {
   return (
-    <div
-      className="flex items-center gap-0.5 rounded-full border border-ink-200 bg-white/70 p-0.5"
-      role="group"
-      aria-label="Idioma"
-    >
+    <div className="flex items-center" role="group" aria-label="Idioma">
       {LOCALES.map(({ id }) => (
         <Link
           key={id}
           href={href(id)}
           hrefLang={id}
           aria-current={id === current ? 'true' : undefined}
-          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
+          className={`relative flex h-11 min-w-9 items-center justify-center px-1.5 text-[13px] uppercase transition-colors duration-300 ${
             id === current
-              ? 'bg-ink-800 text-white shadow-sm'
-              : 'text-ink-400 hover:text-ink-800'
+              ? light
+                ? 'text-white'
+                : 'text-ink-900'
+              : light
+                ? 'text-white/55 hover:text-white'
+                : 'text-ink-400 hover:text-ink-900'
           }`}
         >
           {id}
+          {id === current && (
+            <span
+              aria-hidden
+              className={`absolute inset-x-2 bottom-2.5 h-px ${light ? 'bg-white' : 'bg-gold'}`}
+            />
+          )}
         </Link>
       ))}
     </div>
@@ -234,7 +275,9 @@ function Burger({ open }: { open: boolean }) {
       <span
         className={`${bar} top-1/2 ${open ? 'opacity-0' : 'opacity-100'}`}
       />
-      <span className={`${bar} ${open ? 'top-1/2 -rotate-45' : 'bottom-0.5 top-auto'}`} />
+      <span
+        className={`${bar} ${open ? 'top-1/2 -rotate-45' : 'bottom-0.5 top-auto'}`}
+      />
     </span>
   )
 }

@@ -5,6 +5,7 @@ import { isLocale, LOCALE_IDS, type Locale } from '@/sanity/locales'
 import { getHomeData, type SanityImg } from '@/sanity/queries'
 import { createDictionary, text, textList } from '@/lib/dictionary'
 import { countriesFor } from '@/lib/countries'
+import { imageAlt } from '@/lib/imageAlt'
 import { FALLBACK_META, SITE_URL } from '@/lib/site'
 
 import { Header } from '@/components/Header'
@@ -89,15 +90,19 @@ export default async function HomePage({
         />
 
         <Projects
-          items={projects.map((p) => ({
-            id: p._id,
-            title: text(p.title, locale),
-            description: text(p.description, locale),
-            cover: p.cover,
-            gallery: (p.gallery ?? []).filter(
-              (g): g is NonNullable<SanityImg> => Boolean(g?.url),
-            ),
-          }))}
+          items={projects.map((p) => {
+            const title = text(p.title, locale)
+            return {
+              id: p._id,
+              title,
+              description: text(p.description, locale),
+              cover: p.cover,
+              coverAlt: imageAlt(p.cover, title, locale),
+              gallery: (p.gallery ?? [])
+                .filter((g): g is NonNullable<SanityImg> => Boolean(g?.url))
+                .map((g) => ({ image: g, alt: imageAlt(g, title, locale) })),
+            }
+          })}
           labels={{
             eyebrow: d.t('proyectos'),
             heading: d.t('nuestrosProyectos'),
@@ -113,17 +118,30 @@ export default async function HomePage({
         />
 
         <Pricing
-          packages={packages.map((p) => ({
-            id: p._id,
-            slug: p.slug,
-            title: text(p.title, locale),
-            subtitle: text(p.subtitle, locale),
-            price: text(p.price, locale),
-            time: text(p.time, locale),
-            features: textList(p.features, locale),
-            popular: Boolean(p.popular),
-            pdfUrl: p.pdfUrl,
-          }))}
+          packages={packages.map((p) => {
+            // "Todo lo de 100%, mas:" solo si hay paquete base, lista de
+            // novedades y la frase en este idioma; si falta algo, la lista
+            // completa de siempre.
+            const base = text(p.includes, locale)
+            const extras = textList(p.extras, locale)
+            const includesLine = d.t('packageIncludes')
+            const cumulative = Boolean(base && extras.length && includesLine)
+            return {
+              id: p._id,
+              slug: p.slug,
+              title: text(p.title, locale),
+              subtitle: text(p.subtitle, locale),
+              price: text(p.price, locale),
+              time: text(p.time, locale),
+              includes: cumulative
+                ? includesLine.replace('{title}', packageName(base))
+                : '',
+              features: cumulative ? extras : textList(p.features, locale),
+              badge: text(p.badge, locale),
+              popular: Boolean(p.popular),
+              pdfUrl: p.pdfUrl,
+            }
+          })}
           labels={{
             eyebrow: d.t('services'),
             heading: d.t('pricing'),
@@ -240,6 +258,15 @@ function priceNumber(raw: string): number | undefined {
   if (!match) return undefined
   const n = Number(match[0].replace(',', '.'))
   return Number.isFinite(n) ? n : undefined
+}
+
+/**
+ * El nombre entre comillas de un paquete: de 'Paquete "100%"' queda '100%',
+ * que es lo que se lee bien dentro de "Todo lo de «100%», mas:". Si el titulo
+ * no lleva comillas se usa entero.
+ */
+function packageName(title: string): string {
+  return title.match(/["«“„]([^"»”“]+)["»”“]/)?.[1] ?? title
 }
 
 function JsonLd({

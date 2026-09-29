@@ -80,8 +80,12 @@ export default async function SiteLayout({
   const { locale } = await params
   if (!isLocale(locale)) notFound()
 
+  // `data-scroll-behavior`: el scroll suave de globals.css hacia que, al
+  // cambiar de idioma desde arriba, Next empezara un desplazamiento animado
+  // hacia el footer que nada cancelaba. Con este atributo Next lo desactiva
+  // solo durante la navegacion; las anclas del menu siguen siendo suaves.
   return (
-    <html lang={locale} className={fontVariables}>
+    <html lang={locale} className={fontVariables} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   )
